@@ -5,14 +5,12 @@ import path from "path";
 import apiCaller from "./ApiCaller";
 
 export function fileOpt(filePath, content, write = true) {
-  let absolutePath = path.join(process.cwd(), filePath);
-
   let result;
   if (write) {
     //will create the file if not exist..
-    result = fs.writeFileSync(absolutePath, JSON.stringify(content));
+    result = fs.writeFileSync(filePath, JSON.stringify(content));
   } else {
-    result = fs.readFileSync(absolutePath);
+    result = fs.readFileSync(filePath);
   }
   return result;
 }
