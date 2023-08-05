@@ -5,6 +5,7 @@ import path from "path";
 import apiCaller from "./ApiCaller";
 
 export function fileOpt(filePath, content, write = true) {
+  console.log("filepath", filePath);
   let result;
   if (write) {
     //will create the file if not exist..
