@@ -1,7 +1,7 @@
 /** @format */
 
 import { fileOpt } from "./Utility/helper";
-import path from "path";
+const path = require("path");
 
 export default async function handler(req, res) {
   let method = req.method;
