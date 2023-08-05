@@ -1,17 +1,17 @@
 /** @format */
 
-import fs from "fs";
-import path from "path";
+import { promises as fs } from "fs";
+
 import apiCaller from "./ApiCaller";
 
-export function fileOpt(filePath, content, write = true) {
+export async function fileOpt(filePath, content, write = true) {
   console.log("filepath", filePath);
   let result;
   if (write) {
     //will create the file if not exist..
-    result = fs.writeFileSync(filePath, JSON.stringify(content));
+    result = await fs.writeFileSync(filePath, JSON.stringify(content));
   } else {
-    result = fs.readFileSync(filePath);
+    result = fs.readFile(filePath);
   }
   return result;
 }
