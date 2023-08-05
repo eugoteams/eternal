@@ -9,7 +9,8 @@ export default async function handler(req, res) {
   let absolutePath = path.join(process.cwd(), "/pages/api/db/chapters.json");
   console.log("ap", absolutePath);
   if (method === "GET") {
-    chapters = fileOpt(absolutePath, undefined, false);
+    chapters = JSON.parse(fileOpt(absolutePath, undefined, false));
+    console.log(fileOpt(absolutePath, undefined, false));
   }
   res.status(200).json({ chapters });
 }
