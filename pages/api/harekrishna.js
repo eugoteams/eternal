@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   let chapters = [];
   if (method === "GET") {
     chapters = JSON.parse(
-      fileOpt("/pages/api/data/chapters.json", undefined, false)
+      fileOpt("/pages/api/db/chapters.json", undefined, false)
     );
   }
   res.status(200).json({ chapters });

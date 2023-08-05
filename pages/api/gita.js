@@ -5,7 +5,7 @@ import { fileOpt } from "./Utility/helper";
 export default async function handler(req, res) {
   let method = req.method;
   let { chapter, slok } = req.body;
-  let path = `/pages/api/data/chapter_${chapter}.json`;
+  let path = `/pages/api/db/chapter_${chapter}.json`;
   if (method === "POST") {
     console.log(
       chapter ? true : false,

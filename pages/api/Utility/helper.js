@@ -6,7 +6,7 @@ import apiCaller from "./ApiCaller";
 
 export function fileOpt(filePath, content, write = true) {
   let absolutePath = path.join(process.cwd(), filePath);
-  console.log(absolutePath);
+
   let result;
   if (write) {
     //will create the file if not exist..
