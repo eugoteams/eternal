@@ -5,7 +5,11 @@ import { fileOpt } from "./Utility/helper";
 export default async function handler(req, res) {
   let method = req.method;
   let { chapter, slok } = req.body;
-  let path = `/pages/api/db/chapter_${chapter}.json`;
+
+  let absolutePath = path.join(
+    process.cwd(),
+    `/pages/api/db/chapter_${chapter}.json`
+  );
   if (method === "POST") {
     console.log(
       chapter ? true : false,
@@ -14,14 +18,14 @@ export default async function handler(req, res) {
     );
     switch (true) {
       case chapter !== undefined && slok !== undefined:
-        let result = JSON.parse(fileOpt(path, undefined, false));
+        let result = JSON.parse(fileOpt(absolutePath, undefined, false));
         let sloka = result.find((sloka, _) => {
           return sloka.verse === slok;
         });
         res.status(200).json({ eternalTruth: sloka });
         break;
       case chapter && !slok:
-        let eternalTruth = JSON.parse(fileOpt(path, undefined, false));
+        let eternalTruth = JSON.parse(fileOpt(absolutePath, undefined, false));
         res.status(200).json({ eternalTruth });
         break;
       default:
