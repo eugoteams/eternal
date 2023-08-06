@@ -1,25 +1,30 @@
 /** @format */
 
-import { promises as fs } from "fs";
-
+import fs from "fs";
+import path from "path";
 import apiCaller from "./ApiCaller";
 
-export async function fileOpt(filePath, content, write = true) {
-  console.log("filepath", filePath);
+export async function fileOpt(filename, content, write = true) {
   let result;
+  let absolutePath = path.join(process.cwd(), `/pages/api/db/${filename}.json`);
   if (write) {
     //will create the file if not exist..
-    result = await fs.writeFileSync(filePath, JSON.stringify(content));
+    result = fs.writeFileSync(absolutePath, JSON.stringify(content));
   } else {
-    result = fs.readFile(filePath);
+    result = fs.readFileSync(absolutePath);
   }
-  return result;
+  return JSON.parse(result);
 }
 
+//call:fetchSlokasForChapter(9, 34);
 export function fetchSlokasForChapter(chapter, verses) {
   const baseUrl = "https://bhagavadgitaapi.in/";
   let urlChapter = `${baseUrl}/chapters`;
   let arrayOfSlokas = [];
+  let filepath = path.join(
+    process.cwd(),
+    `/pages/api/db//chapter_${chapter}.json`
+  );
   [...Array(verses)].map(async (_, index) => {
     let delay = 200 * index;
     let slokaNumber = index + 1;
@@ -29,7 +34,7 @@ export function fetchSlokasForChapter(chapter, verses) {
     arrayOfSlokas.push(apiResult);
     if (arrayOfSlokas.length === verses) {
       console.log(arrayOfSlokas.length);
-      fileOpt(`/pages/api/chapter_${chapter}.json`, arrayOfSlokas);
+      fileOpt(filepath, arrayOfSlokas);
       return arrayOfSlokas;
     }
   });
