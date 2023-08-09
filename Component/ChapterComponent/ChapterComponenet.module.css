@@ -2,8 +2,8 @@
 .container {
   margin: 3rem auto;
   border-radius: 3rem;
-  width: 520px;
-  height: 350px;
+  width: 52rem;
+  height: 35rem;
   font-family: "Poppins", sans-serif;
   background-color: #e9ecef;
   display: grid;
@@ -12,8 +12,8 @@
 }
 
 .img_placeholder {
-  width: 99%;
-  height: 97%;
+  width: 25rem;
+  height: 31rem;
   padding: 1rem;
   border-radius: 2rem;
   overflow: hidden;
