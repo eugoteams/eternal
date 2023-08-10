@@ -76,13 +76,15 @@ const ChapterComponent = (props) => {
                   height="100"
                 />
               </div>
-              <div style={{ padding: "0.5rem" }}>
-                <span className={`${classes.number}`}>{chapterNumber} </span>
-                <h2 className={`${classes.title}`}>{chapter["translation"]}</h2>
-                <p className={`${classes.ch_intro}`}>
-                  Krishna concludes by summarizing the essence of all teachings
-                  and presents the paths of selfless action, self-knowledge, and
-                  devotion, leaving Arjuna to make his choice.
+              <div className={`${classes.text_holder}`}>
+                <span className={`${classes.chapter_number}`}>
+                  {chapterNumber}{" "}
+                </span>
+                <h2 className={`${classes.chapter_title}`}>
+                  {chapter["translation"]}
+                </h2>
+                <p className={`${classes.chapter_short_intro}`}>
+                  {chapter["short_summary"]}
                 </p>
                 <span className={`${classes.slokas}`}>
                   slokas : <mark>{chapter["verses_count"]}</mark>
