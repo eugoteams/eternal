@@ -2,15 +2,16 @@
 
 import { fileOpt } from "./Utility/helper";
 
+export const config = {
+  api: {
+    responseLimit: "5mb",
+  },
+};
+
 export default async function handler(req, res) {
   let method = req.method;
-  let { chapter, slok } = req.body;
+  let { chapter, slok } = JSON.parse(req.body);
   if (method === "POST") {
-    console.log(
-      chapter ? true : false,
-      slok ? true : false,
-      String(chapter) && String(slok)
-    );
     switch (true) {
       case chapter !== undefined && slok !== undefined:
         fileOpt(`chapter_${chapter}`, undefined, false).then((chapter) => {

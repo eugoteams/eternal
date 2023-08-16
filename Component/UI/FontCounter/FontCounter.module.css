@@ -1,0 +1,15 @@
+/** @format */
+
+.container {
+  width: 10rem;
+  font-size: 1.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container button {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}

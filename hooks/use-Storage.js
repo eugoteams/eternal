@@ -3,17 +3,17 @@
 import { STORAGE_KEY } from "@/model/const";
 
 const useStorage = () => {
-  const saveToStorage = (payload) => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+  const saveToStorage = (payload, key) => {
+    localStorage.setItem(key, JSON.stringify(payload));
   };
 
-  const getFromStorage = () => {
-    let dataInStorage = localStorage.getItem(STORAGE_KEY);
+  const getFromStorage = (key) => {
+    let dataInStorage = localStorage.getItem(key);
     return JSON.parse(dataInStorage);
   };
 
-  const clearFromStorage = () => {
-    localStorage.removeItem(STORAGE_KEY);
+  const clearFromStorage = (key) => {
+    localStorage.removeItem(key);
   };
 
   return { saveToStorage, getFromStorage, clearFromStorage };

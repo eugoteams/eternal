@@ -34,7 +34,7 @@ const Navbar = (props) => {
           <Link href="/chapters" className={`${classes.link}`}>
             chapter
           </Link>
-          <Link href="/" className={`${classes.link}`}>
+          <Link href="/slokas" className={`${classes.link}`}>
             slokas
           </Link>
         </nav>

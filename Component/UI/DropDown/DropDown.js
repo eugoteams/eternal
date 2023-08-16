@@ -1,44 +1,54 @@
 /** @format */
 
-import React, { Fragment, useState } from "react";
+import React, { useContext, useState } from "react";
 import { ChevronsUpDown } from "lucide-react";
 import classes from "./DropDown.module.css";
-import { validateConfig } from "next/dist/server/config-shared";
+import { AppContext } from "@/sotre/store";
+import { AUTHORS } from "@/model/const";
 
-const DropDown = (props) => {
+const DropDown = ({ filterKey }) => {
+  const { state, dispatch } = useContext(AppContext);
   const [dropDown, setDropDown] = useState(false);
-  const [itemSelected, setItemSelected] = useState("");
-  const onClickListener = (event) => {
+  let author = state.author["name"];
+  let filteredAuthors = [];
+
+  AUTHORS.map((author, _) => {
+    let result = author["translationLang"].find(
+      (lang, _) => lang === state.translationTo
+    );
+    result !== undefined && filteredAuthors.push(author);
+  });
+
+  const closeDropDown = (event) => {
     setDropDown((prevState) => !prevState);
   };
 
   const onItemClick = (value) => {
-    setItemSelected((prevState) => {
-      return value;
-    });
-    setDropDown((prevState) => false);
+    closeDropDown();
+    dispatch({ type: "ADD", key: "author", payload: value });
   };
+
   return (
     <React.Fragment>
       <div className={`${classes.container}`}>
         <div
           className={`${classes.dropdown_placeholder}`}
-          onClick={onClickListener}
+          onClick={closeDropDown}
         >
-          <span>chapter {itemSelected}</span>
+          <span>{author}</span>
           <ChevronsUpDown size={17} />
         </div>
         {dropDown && (
           <div className={`${classes.dropdown_item}`}>
-            {[...Array(18)].map((_, index) => {
+            {filteredAuthors.map((item, index) => {
               return (
                 <p
-                  key={`chapter_${index}`}
+                  key={`${item}_${index}`}
                   onClick={(event) => {
-                    onItemClick(index + 1);
+                    onItemClick(item);
                   }}
                 >
-                  chapter {index + 1}
+                  {item[filterKey]}
                 </p>
               );
             })}

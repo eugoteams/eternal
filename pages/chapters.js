@@ -1,20 +1,22 @@
 /** @format */
 
 import ChapterComponent from "@/Component/ChapterComponent/ChapterComponent";
-import useApi from "@/hooks/use-Api";
 import usePerfomanceHandler from "@/hooks/use-PerfomanceHandler";
+import { STORAGE_KEY } from "@/model/const";
 import { AppContext } from "@/sotre/store";
 import React, { useContext, useEffect, useState } from "react";
 
 const Chapters = (props) => {
   const [client, setClient] = useState(false);
   const { dispatch } = useContext(AppContext);
-
   const { getData } = usePerfomanceHandler();
+
   useEffect(() => {
-    getData().then((response) => {
-      dispatch({ type: "ADD_CH", payload: response });
-    });
+    getData("api/harekrishna", { method: "GET" }, STORAGE_KEY).then(
+      (response) => {
+        dispatch({ type: "ADD_CH", payload: response });
+      }
+    );
   }, [client]);
 
   useEffect(() => {

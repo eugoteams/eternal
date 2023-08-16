@@ -1,0 +1,15 @@
+/** @format */
+
+.container {
+  width: 95rem;
+  margin: 3rem auto;
+}
+
+.header {
+  text-transform: capitalize;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+}

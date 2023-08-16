@@ -1,6 +1,9 @@
 /** @format */
 
-import React, { useReducer } from "react";
+import useApi from "@/hooks/use-Api";
+import useStorage from "@/hooks/use-Storage";
+import { PERSIST_SETTING, defaultSetting } from "@/model/const";
+import React, { useEffect, useReducer, useState } from "react";
 
 export const AppContext = React.createContext([]);
 
@@ -9,6 +12,12 @@ const reducer = (state, action) => {
     case "ADD_CH":
       state["chapters"] = action.payload;
       return { ...state };
+    case "ADD":
+      //console.log("ADD", action.payload);
+      state[action.key] = action.payload;
+      return { ...state };
+    case "R_STATE":
+      return { ...action.payload };
     default:
       console.log("Test", action);
       break;
@@ -16,11 +25,43 @@ const reducer = (state, action) => {
 };
 
 const StoreProvider = (props) => {
-  const [state, dispatch] = useReducer(reducer, {
-    fontSize: "",
-    fontType: "",
-    chapters: [],
-  });
+  const { fetchData } = useApi();
+  const { saveToStorage, getFromStorage } = useStorage();
+  const [state, dispatch] = useReducer(reducer, defaultSetting);
+  const [client, setClient] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== undefined && window.localStorage) {
+      let dataInStorage = getFromStorage(PERSIST_SETTING);
+      console.log(
+        "use Effect Store .. to get Data From Storage. -->",
+        dataInStorage
+      );
+      if (dataInStorage) {
+        dispatch({ type: "R_STATE", payload: dataInStorage });
+      }
+    }
+  }, [client]);
+
+  useEffect(() => {
+    setClient((prevState) => true);
+    /**Fetch Chapters from the api */
+    fetchData("/api/harekrishna", { method: "GET" }).then((data) => {
+      if (data["chapters"].length > 0) {
+        dispatch({ type: "ADD_CH", payload: data.chapters });
+        return;
+      }
+    });
+  }, []);
+
+  const test = () => {
+    if (client) {
+      // console.log("---> state putside", state);
+      saveToStorage(state, PERSIST_SETTING);
+    }
+  };
+  test();
+
   return (
     <AppContext.Provider value={{ state, dispatch }}>
       {props.children}
