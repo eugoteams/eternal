@@ -9,6 +9,7 @@ import { AppContext } from "@/sotre/store";
 
 const AudioComponent = ({
   trackId,
+  chapterNumber,
   onTrackPlayEnded,
   onPlayerNextTrack,
   onPlayerPrevTrack,

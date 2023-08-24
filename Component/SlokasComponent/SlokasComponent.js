@@ -100,22 +100,19 @@ const SlokasComponent = ({ chapter }) => {
                 let wordMeaning = sortedArray["word_meanings"];
                 let sloakTranslation = sortedArray[authorID][lang];
 
-                if (sloakNumber === 1) {
-                  //For design purpose
-                  return (
-                    <SloakCard
-                      ref={refToSloakContainer}
-                      key={sloakNumber}
-                      chapterNumber={chapter}
-                      sloakNumber={sloakNumber}
-                      sloak={sloak}
-                      sloakTransliteration={sloakTransliteration}
-                      sloakMeaning={wordMeaning}
-                      sloakTranslation={sloakTranslation}
-                      onPlayBtClick={onPlayBtClickListener}
-                    />
-                  );
-                }
+                return (
+                  <SloakCard
+                    ref={refToSloakContainer}
+                    key={sloakNumber}
+                    chapterNumber={chapter}
+                    sloakNumber={sloakNumber}
+                    sloak={sloak}
+                    sloakTransliteration={sloakTransliteration}
+                    sloakMeaning={wordMeaning}
+                    sloakTranslation={sloakTranslation}
+                    onPlayBtClick={onPlayBtClickListener}
+                  />
+                );
               })}
           </Wrapper>
         </section>
@@ -172,6 +169,7 @@ const SlokasComponent = ({ chapter }) => {
         </section> */}
         <AudioComponent
           trackId={trackId}
+          chapter={chapter}
           onTrackPlayEnded={onTrackPlayEndedListener}
           onPlayerNextTrack={onPlayerNextTrackListener}
           onPlayerPrevTrack={onPlayerPrevTrackListener}
