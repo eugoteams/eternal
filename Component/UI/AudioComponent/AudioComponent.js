@@ -9,7 +9,7 @@ import { AppContext } from "@/sotre/store";
 
 const AudioComponent = ({
   trackId,
-  chapterNumber,
+  chapter,
   onTrackPlayEnded,
   onPlayerNextTrack,
   onPlayerPrevTrack,
@@ -47,7 +47,7 @@ const AudioComponent = ({
       switch (true) {
         case key === "play":
           if (value) {
-            audioRef.current.src = `/1/${trackId}.mp3`;
+            audioRef.current.src = `/${chapter}/${trackId}.mp3`;
             audioRef.current.load();
             if (prevState["trackDurationPlayed"] > 0) {
               audioRef.current.currentTime = prevState["trackDurationPlayed"];
