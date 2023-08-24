@@ -6,11 +6,13 @@ import { AppContext } from "@/sotre/store";
 import Image from "next/image";
 import Grid from "../UI/Grid/Grid";
 import useImage from "@/hooks/use-Image";
+import Link from "next/link";
 
 const ChapterComponent = (props) => {
   const { getImage } = useImage();
   const { state } = useContext(AppContext);
   let chapters = state["chapters"];
+
   return (
     <React.Fragment>
       <Grid>
@@ -21,34 +23,37 @@ const ChapterComponent = (props) => {
               : chapter["chapter_number"];
 
           return (
-            <div
-              className={`${classes.container}`}
+            <Link
               key={`${chapter["name"]}${index}`}
+              href={`/slokas/${chapter["chapter_number"]}`}
+              style={{ textDecoration: "none", color: "inherit" }}
             >
-              <div className={`${classes.img_placeholder}`}>
-                <Image
-                  className={`${classes.image}`}
-                  src={getImage(index)}
-                  alt="gita iamge"
-                  width="100"
-                  height="100"
-                />
+              <div className={`${classes.container}`}>
+                <div className={`${classes.img_placeholder}`}>
+                  <Image
+                    className={`${classes.image}`}
+                    src={getImage(index)}
+                    alt="gita iamge"
+                    width="100"
+                    height="100"
+                  />
+                </div>
+                <div className={`${classes.text_holder}`}>
+                  <span className={`${classes.chapter_number}`}>
+                    {chapterNumber}{" "}
+                  </span>
+                  <h2 className={`${classes.chapter_title}`}>
+                    {chapter["translation"]}
+                  </h2>
+                  <p className={`${classes.chapter_short_intro}`}>
+                    {chapter["short_summary"]}
+                  </p>
+                  <span className={`${classes.slokas}`}>
+                    slokas : <mark>{chapter["verses_count"]}</mark>
+                  </span>
+                </div>
               </div>
-              <div className={`${classes.text_holder}`}>
-                <span className={`${classes.chapter_number}`}>
-                  {chapterNumber}{" "}
-                </span>
-                <h2 className={`${classes.chapter_title}`}>
-                  {chapter["translation"]}
-                </h2>
-                <p className={`${classes.chapter_short_intro}`}>
-                  {chapter["short_summary"]}
-                </p>
-                <span className={`${classes.slokas}`}>
-                  slokas : <mark>{chapter["verses_count"]}</mark>
-                </span>
-              </div>
-            </div>
+            </Link>
           );
         })}
       </Grid>

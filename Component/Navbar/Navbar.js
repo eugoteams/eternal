@@ -34,9 +34,6 @@ const Navbar = (props) => {
           <Link href="/chapters" className={`${classes.link}`}>
             chapter
           </Link>
-          <Link href="/slokas" className={`${classes.link}`}>
-            slokas
-          </Link>
         </nav>
         <div className={`${classes.menu_icon}`} onClick={onpenMenu}>
           <GiHamburgerMenu />

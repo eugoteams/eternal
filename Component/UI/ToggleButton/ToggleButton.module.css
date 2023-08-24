@@ -1,6 +1,6 @@
 /** @format */
 
-.toggle_style {
+.container {
   text-transform: capitalize;
   margin: 2rem auto;
   width: 30rem;
@@ -13,6 +13,7 @@
   font-size: 1.3rem;
   font-weight: 500;
   overflow: hidden;
+  transition: all 0.5s ease;
 }
 
 .toggle_item {
@@ -32,4 +33,12 @@
   background-color: #5c7cfa;
   color: white;
   transition: all 0.5s ease;
+}
+
+/*Mobile Large Screen */
+@media (max-width: 27em) {
+  .container {
+    width: 20rem;
+    font-size: 1.1rem;
+  }
 }

@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useContext, useState } from "react";
-import { ChevronsUpDown } from "lucide-react";
+import { LuChevronsDownUp } from "react-icons/lu";
 import classes from "./DropDown.module.css";
 import { AppContext } from "@/sotre/store";
 import { AUTHORS } from "@/model/const";
@@ -36,7 +36,7 @@ const DropDown = ({ filterKey }) => {
           onClick={closeDropDown}
         >
           <span>{author}</span>
-          <ChevronsUpDown size={17} />
+          <LuChevronsDownUp />
         </div>
         {dropDown && (
           <div className={`${classes.dropdown_item}`}>

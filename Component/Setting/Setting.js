@@ -1,10 +1,12 @@
 /** @format */
 
 import React, { useContext, useState } from "react";
+import { AppContext } from "@/sotre/store";
 import classes from "./Setting.module.css";
 import { FcSettings } from "react-icons/fc";
 import { GrClose } from "react-icons/gr";
 import DropDown from "../UI/DropDown/DropDown";
+import FontCounter from "../UI/FontCounter/FontCounter";
 import {
   FONT_2,
   FONT_1,
@@ -12,8 +14,6 @@ import {
   defaultSetting,
   defaultAuthors,
 } from "@/model/const";
-import { AppContext } from "@/sotre/store";
-import FontCounter from "../UI/FontCounter/FontCounter";
 
 const Setting = (props) => {
   const { state, dispatch } = useContext(AppContext);
@@ -176,7 +176,7 @@ const Setting = (props) => {
               <em>{state["author"]["description"]}</em>
             </div>
           </section>
-          <section style={{ textAlign: "center", marginTop: "3rem" }}>
+          <section style={{ textAlign: "center", margin: "4rem auto" }}>
             <button onClick={onClickReset} className={`${classes.button}`}>
               reset setting
             </button>

@@ -28,7 +28,6 @@
   padding: 1rem;
   width: 35rem;
   margin: 1rem auto;
-
   border-bottom: 1px solid #adb5bd;
 }
 
@@ -72,11 +71,12 @@
 
 /* font_size_counter */
 .font_size_counter {
-  margin-top: 3rem;
+  margin-top: 1.5rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
-  justify-items: center;
+  justify-items: start;
+  padding-left: 1rem;
 }
 
 .font_size_counter span {
@@ -122,6 +122,7 @@
   background-color: transparent;
   border: 1px solid gray;
   border-radius: 5px;
+  transition: all 0.5s;
 }
 
 .button:hover {
@@ -129,4 +130,35 @@
   color: #ffff;
   transition: all 0.5s;
   border: none;
+}
+
+/*Tablet View 48em*/
+@media (max-width: 60em) {
+  .container {
+    width: 45vw;
+  }
+}
+
+/* 45em where the ui breaks */
+@media (max-width: 38em) {
+  .container {
+    width: 65vw;
+  }
+}
+
+/*Large Mobile screen View 27em*/
+@media (max-width: 27em) {
+  .container {
+    width: 100%;
+  }
+  .font_style_section {
+    width: 100%;
+  }
+  .section_title {
+    font-size: 1.5rem;
+  }
+  .toggle_style {
+    width: 28rem;
+    font-size: 1.1rem;
+  }
 }

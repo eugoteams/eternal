@@ -13,3 +13,18 @@
   justify-content: space-between;
   font-weight: 700;
 }
+
+/*Table Screen View*/
+@media (max-width: 56em) {
+  .container {
+    width: 100%;
+    /* background-color: green; */
+  }
+}
+
+/*Mobile screen 46em*/
+@media (max-width: 46em) {
+  .container {
+    /* background-color: gray; */
+  }
+}

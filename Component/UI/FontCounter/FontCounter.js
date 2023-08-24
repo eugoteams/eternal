@@ -13,10 +13,10 @@ const FontCounter = ({ datakey }) => {
     let initialFont = state["fontSize"][datakey];
     switch (true) {
       case opt === "minus" && initialFont > 1:
-        initialFont = initialFont - 1;
+        initialFont = initialFont - 0.5;
         break;
-      case opt === "plus" && initialFont < 9:
-        initialFont = initialFont + 1;
+      case opt === "plus" && initialFont < 3:
+        initialFont = initialFont + 0.5;
         break;
       default:
         //no-opt

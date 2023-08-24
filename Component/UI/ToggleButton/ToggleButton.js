@@ -10,7 +10,7 @@ const ToggleButton = () => {
   let readingPreference = state["readingPreference"];
   return (
     <React.Fragment>
-      <div className={`${classes.toggle_style}`}>
+      <div className={`${classes.container}`}>
         <span
           className={
             readingPreference === "translation"

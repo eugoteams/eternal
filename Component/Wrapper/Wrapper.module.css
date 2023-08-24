@@ -1,4 +1,11 @@
 /** @format */
+.wrapper_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  width: 100%;
+}
 
 .shortcut_setting {
   margin: 2rem 0;
@@ -37,5 +44,30 @@
   font-size: 2rem;
 }
 
-.list_container {
+/* player_control*/
+.player_control {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.3rem;
+  text-transform: capitalize;
+  padding: 0.5rem;
+}
+.player_control > span {
+  margin-left: 0.5rem;
+}
+
+.player_control:hover {
+  background-color: #a5d8ff;
+}
+
+/* Mobile Large Screen 26em*/
+@media (max-width: 37em) {
+  .wrapper_header {
+    margin: 4rem auto;
+    justify-content: center;
+  }
+  .shortcut_setting {
+    display: none;
+  }
 }

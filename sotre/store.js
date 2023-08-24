@@ -33,10 +33,7 @@ const StoreProvider = (props) => {
   useEffect(() => {
     if (typeof window !== undefined && window.localStorage) {
       let dataInStorage = getFromStorage(PERSIST_SETTING);
-      console.log(
-        "use Effect Store .. to get Data From Storage. -->",
-        dataInStorage
-      );
+      // console.log("use Effect Store .. -->", dataInStorage);
       if (dataInStorage) {
         dispatch({ type: "R_STATE", payload: dataInStorage });
       }
@@ -54,13 +51,12 @@ const StoreProvider = (props) => {
     });
   }, []);
 
-  const test = () => {
+  const toLocalStorage = () => {
     if (client) {
-      // console.log("---> state putside", state);
       saveToStorage(state, PERSIST_SETTING);
     }
   };
-  test();
+  toLocalStorage();
 
   return (
     <AppContext.Provider value={{ state, dispatch }}>

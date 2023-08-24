@@ -5,8 +5,8 @@
   font-weight: 500;
   padding: 1.5rem;
   width: 100%;
-  /* margin: 2rem auto; */
   position: relative;
+  /* margin: 2rem auto; */
 }
 
 .dropdown_placeholder {
@@ -25,20 +25,24 @@
   font-size: 1.3rem;
   text-transform: capitalize;
   border: 1px solid #adb5bd;
-  width: 100%;
+  width: 90%;
   height: 20rem;
   overflow: auto;
   position: absolute;
   margin: 1.5rem;
   padding: 1rem;
-  top: 3.3rem;
+  top: 3.7rem;
   left: 0;
-  right: 0;
-  bottom: 0;
   z-index: 2;
 }
 
 .dropdown_item p {
   border-bottom: 1px solid #868e96;
   padding: 1rem;
+}
+
+/* Handle */
+.dropdown_item::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 1.5rem;
 }

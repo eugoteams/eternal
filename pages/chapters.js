@@ -22,6 +22,7 @@ const Chapters = (props) => {
   useEffect(() => {
     setClient((prevState) => true);
   }, []);
+
   return (
     <React.Fragment>
       <ChapterComponent />
@@ -30,13 +31,3 @@ const Chapters = (props) => {
 };
 
 export default Chapters;
-
-export async function getStaticPath() {
-  return {
-    paths: [
-      {
-        params: "chapters",
-      },
-    ],
-  };
-}

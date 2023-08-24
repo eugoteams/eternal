@@ -36,7 +36,7 @@ export const defaultAuthors = {
   },
 };
 export const defaultSetting = {
-  fontSize: { sloak: 2, transliteration: 3, translation: 2 },
+  fontSize: { sloak: 1.5, translation: 1.5 },
   fontType: "",
   chapters: [],
   fontStyle: FONT_1,
@@ -45,7 +45,7 @@ export const defaultSetting = {
   readingPreference: "translation",
   transliterationInline: true,
   wordMeaning: false,
-  player: { id: 0, playState: false },
+  player: { chapter: 0, sloakId: 0, playState: false },
 };
 
 export const AUTHORS = [
