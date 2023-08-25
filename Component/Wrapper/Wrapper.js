@@ -54,7 +54,7 @@ const Wrapper = (props) => {
           </div>
         </div>
 
-        <div className={`${classes.list_container}`}>{props.children}</div>
+        <div>{props.children}</div>
       </section>
     </React.Fragment>
   );

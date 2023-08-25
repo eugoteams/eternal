@@ -99,7 +99,7 @@ const SlokasComponent = ({ chapter }) => {
                 let sloakTransliteration = sortedArray["transliteration"];
                 let wordMeaning = sortedArray["word_meanings"];
                 let sloakTranslation = sortedArray[authorID][lang];
-
+                //  if (sloakNumber === 47) {
                 return (
                   <SloakCard
                     ref={refToSloakContainer}
@@ -113,60 +113,10 @@ const SlokasComponent = ({ chapter }) => {
                     onPlayBtClick={onPlayBtClickListener}
                   />
                 );
+                // }
               })}
           </Wrapper>
         </section>
-        {/* <section className={`${classes.container}`}>
-          <div className={`${classes.header}`}>
-            <SmDropDown
-              label={"chapter"}
-              length={18}
-              onSelectListener={chapterSelected}
-              defaultValue={chapterNum}
-            />
-            <SmDropDown
-              label={"slokas"}
-              length={data.length}
-              onSelectListener={selectSloak}
-              defaultValue={"all"}
-            />
-          </div>
-          <section>
-            <ToggleButton />
-          </section>
-
-          <Wrapper onAutoPlayClick={onAutoPlayClickListener}>
-            {data.length > 0 &&
-              [...Array(data.length)].map((_, index) => {
-                let authorID = state["author"]["id"];
-                let lang = state["translationTo"];
-                let sloakNumber = index + 1;
-                let sortedArray = data.find(
-                  (sloak, _) => sloak["verse"] === sloakNumber
-                );
-
-                const refToSloakContainer = React.createRef();
-                refHookArray.push(refToSloakContainer);
-                let sloak = sortedArray["slok"];
-                let sloakTransliteration = sortedArray["transliteration"];
-                let wordMeaning = sortedArray["word_meanings"];
-                let sloakTranslation = sortedArray[authorID][lang];
-                return (
-                  <SloaKContainer
-                    ref={refToSloakContainer}
-                    key={sloakNumber}
-                    chapterNumber={chapter}
-                    sloakNumber={sloakNumber}
-                    sloak={sloak}
-                    sloakTransliteration={sloakTransliteration}
-                    sloakMeaning={wordMeaning}
-                    sloakTranslation={sloakTranslation}
-                    onPlayBtClick={onPlayBtClickListener}
-                  />
-                );
-              })}
-          </Wrapper>
-        </section> */}
         <AudioComponent
           trackId={trackId}
           chapter={chapter}

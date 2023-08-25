@@ -37,12 +37,21 @@
 }
 
 .action_container span:nth-child(2) {
-  font-size: 2.3rem;
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.action_container span:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .action_container > span > mark {
   padding: 0.3rem;
   font-weight: 500;
+  margin-left: 0.2rem;
   border-bottom: 2px solid #748ffc;
 }
 
@@ -51,7 +60,9 @@
   font-size: 1.5rem;
   line-height: 1.6;
   height: fit-content;
-  width: 100%;
+  width: fit-content;
+  overflow-wrap: break-word;
+  text-overflow: ellipsis;
   padding: 1rem;
   display: grid;
   grid-template-rows: repeat(3, fit-content);
@@ -134,7 +145,10 @@
 .content_container_reading_pref_pos {
   position: relative;
   top: -5rem;
-  font-size: 5rem;
+  left: 10%;
+}
+.spl_font_sm {
+  font-size: 1.2rem;
 }
 
 /*Table Screen View*/
@@ -150,11 +164,12 @@
   }
 
   .action_container {
-    width: 20rem;
+    width: 24rem;
     height: 7rem;
-    justify-items: end;
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
+    justify-items: center;
   }
 
   .container_reading_pref {
@@ -177,12 +192,20 @@
 @media (max-width: 46em) {
   .container,
   .container_reading_pref {
-    width: 92%;
+    width: 100%;
     margin: 2rem auto;
+  }
+
+  .div_with_header > div {
+    /* font_size_test*/
   }
 
   .content_container_reading_pref_pos {
     position: relative;
     top: 1rem;
   }
+}
+
+/* Break Down Of Layout*/
+@media (max-width: 32em) {
 }

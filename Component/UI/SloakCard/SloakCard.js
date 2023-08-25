@@ -33,8 +33,8 @@ const SloakCard = forwardRef(
     let sloakFontSize = state["fontSize"]["sloak"];
     let sloakTranslationSize = state["fontSize"]["translation"];
     let sloakNum = sloakNumber / 10 < 1 ? "0" + sloakNumber : sloakNumber;
-
-    console.log("fontSize", sloakFontSize / 16, Math.floor(sloakFontSize / 16));
+    let sTLength = sloakTranslation.length;
+    // console.log("fontSize", sloakFontSize / 16, Math.floor(sloakFontSize / 16));
 
     const onClickPlay = () => {
       onPlayBtClick({ chapterNumber, sloakNumber });
@@ -78,7 +78,12 @@ const SloakCard = forwardRef(
         return <BsFillPlayFill className={`${classes.icon_play}`} />;
       }
     };
-
+    console.log(
+      "Sloak Translation",
+      sloakNumber,
+      "-->",
+      sloakTranslation.length
+    );
     return (
       <React.Fragment>
         <section
@@ -113,10 +118,7 @@ const SloakCard = forwardRef(
                 : `${classes.content_container}`
             }
           >
-            <div
-              className={`${classes.div_with_sloak}`}
-              style={{ fontSize: `1.5rem` }}
-            >
+            <div className={`${classes.div_with_sloak}`}>
               {transliteration ? mergeLines() : newLine(sloak)}
             </div>
             {readingPreference === "translation" && wordMeaning && (
@@ -128,9 +130,7 @@ const SloakCard = forwardRef(
             {readingPreference === "translation" && (
               <div className={`${classes.div_with_header}`}>
                 <h3 className={`${classes.h3_translation}`}>translation</h3>
-                <div style={{ fontSize: `1.5rem` }}>
-                  {newLine(sloakTranslation)}
-                </div>
+                <div>{newLine(sloakTranslation)}</div>
               </div>
             )}
           </div>

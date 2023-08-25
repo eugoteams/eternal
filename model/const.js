@@ -10,7 +10,6 @@ export const PERSIST_SETTING = "setting";
 export const TRANSLATION_LANG = [
   { id: "et", name: "english" },
   { id: "ht", name: "hindi" },
-  { id: "sc", name: "sanskrit" },
 ];
 export const defaultAuthors = {
   et: {
