@@ -18,13 +18,5 @@
 @media (max-width: 56em) {
   .container {
     width: 100%;
-    /* background-color: green; */
-  }
-}
-
-/*Mobile screen 46em*/
-@media (max-width: 46em) {
-  .container {
-    /* background-color: gray; */
   }
 }

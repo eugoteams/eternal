@@ -89,6 +89,7 @@ const SloakCard = forwardRef(
           }
           ref={ref}
         >
+          {/** Grid-Item-1 */}
           <div
             className={
               readingPreference === "reading"
@@ -104,7 +105,14 @@ const SloakCard = forwardRef(
               <BsFillBookmarkFill />
             </span>
           </div>
-          <div className={`${classes.content_container}`}>
+          {/** Grid-Item-2 */}
+          <div
+            className={
+              readingPreference === "reading"
+                ? `${classes.content_container} ${classes.content_container_reading_pref_pos}`
+                : `${classes.content_container}`
+            }
+          >
             <div
               className={`${classes.div_with_sloak}`}
               style={{ fontSize: `1.5rem` }}
