@@ -78,12 +78,7 @@ const SloakCard = forwardRef(
         return <BsFillPlayFill className={`${classes.icon_play}`} />;
       }
     };
-    console.log(
-      "Sloak Translation",
-      sloakNumber,
-      "-->",
-      sloakTranslation.length
-    );
+
     return (
       <React.Fragment>
         <section

@@ -1,6 +1,7 @@
 /** @format */
 
 .container {
+  height: 13rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;

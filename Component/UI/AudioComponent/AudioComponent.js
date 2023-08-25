@@ -42,13 +42,16 @@ const AudioComponent = ({
     return `${minutes}:${extraSeconds}`;
   };
 
+  const [log, setLog] = useState("Logger");
   const playerStateManipulator = (key, value) => {
     setState((prevState) => {
       switch (true) {
         case key === "play":
+          setLog("play");
           if (value) {
             audioRef.current.src = `/${chapter}/${trackId}.mp3`;
             audioRef.current.load();
+            setLog("load");
             if (prevState["trackDurationPlayed"] > 0) {
               audioRef.current.currentTime = prevState["trackDurationPlayed"];
               audioRef.current.playbackRate = prevState["playbackRate"];
@@ -59,11 +62,13 @@ const AudioComponent = ({
                 .then((_) => {
                   // Automatic playback started!
                   // Show playing UI.
+                  setLog("pLaod");
                 })
                 .catch((error) => {
                   // Auto-play was prevented
                   // Show paused UI.
                   //console.log("error", error);
+                  setLog("error" + `${error}`);
                 });
             }
           } else {
@@ -154,6 +159,7 @@ const AudioComponent = ({
             onLoadedMetadata={onLoadMetaDataListener}
           ></audio>
           <div className={`${classes.container}`}>
+            <p>{log}</p>
             <div>
               <input
                 type="range"
