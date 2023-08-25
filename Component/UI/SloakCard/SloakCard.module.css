@@ -145,7 +145,8 @@
 .content_container_reading_pref_pos {
   position: relative;
   top: -5rem;
-  left: 10%;
+  left: 0;
+  width: 100%;
 }
 .spl_font_sm {
   font-size: 1.2rem;
