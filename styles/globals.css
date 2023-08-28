@@ -14,3 +14,17 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+
+/*Marting check box label*/
+.mantine-Checkbox-label {
+  font-size: 1.3rem;
+  font-weight: 500;
+  padding-left: 1rem;
+}
+
+/* Select UI slected Value*/
+.mantine-Select-input {
+  text-transform: capitalize;
+  padding: 1rem;
+  font-weight: 500;
+}

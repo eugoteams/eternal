@@ -7,6 +7,7 @@ import { FcSettings } from "react-icons/fc";
 import { GrClose } from "react-icons/gr";
 import DropDown from "../UI/DropDown/DropDown";
 import FontCounter from "../UI/FontCounter/FontCounter";
+
 import {
   FONT_2,
   FONT_1,
@@ -61,7 +62,7 @@ const Setting = (props) => {
         <FcSettings />
       </div>
       {open && (
-        <main className={`${classes.container}`}>
+        <div className={`${classes.container}`}>
           <div
             className={`${classes.icon}`}
             onClick={(event) => {
@@ -181,7 +182,7 @@ const Setting = (props) => {
               reset setting
             </button>
           </section>
-        </main>
+        </div>
       )}
     </React.Fragment>
   );

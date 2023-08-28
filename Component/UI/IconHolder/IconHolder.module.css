@@ -1,0 +1,15 @@
+/** @format */
+
+.icon_placeholder {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.icon_placeholder:hover {
+  background-color: #dee2e6;
+  border-radius: 50%;
+}
