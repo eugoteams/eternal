@@ -31,6 +31,39 @@ const Navbar = (props) => {
       }`}</p>
     ));
 
+  const navContainer = () => {
+    return (
+      <nav
+        className={
+          opened
+            ? `${classes.nav_container_item_responsive}`
+            : `${classes.nav_container_item}`
+        }
+      >
+        <Link
+          href={"/"}
+          className={`${classes.nav_link}`}
+          onClick={onClickListener}
+        >
+          home
+        </Link>
+        <Link
+          href={"/chapters"}
+          className={`${classes.nav_link}`}
+          onClick={onClickListener}
+        >
+          Chapters
+        </Link>
+        <Link
+          href={"/chapters"}
+          className={`${classes.nav_link}`}
+          onClick={onClickListener}
+        >
+          Art
+        </Link>
+      </nav>
+    );
+  };
   console.log(opened);
   return (
     <React.Fragment>
@@ -47,18 +80,11 @@ const Navbar = (props) => {
               </IconHolder>
             </Group>
           </div>
-          <nav className={`${classes.nav_container_item}`}>
-            <Link href={"#"} className={`${classes.nav_link}`}>
-              home
-            </Link>
-            <Link href={"#"} className={`${classes.nav_link}`}>
-              Chapters
-            </Link>
-            <Link href={"#"} className={`${classes.nav_link}`}>
-              Art
-            </Link>
-          </nav>
-          {opened && <Drawer onClick={onClickListener}>{items} </Drawer>}
+          {opened ? (
+            <Drawer onClick={onClickListener}>{navContainer()} </Drawer>
+          ) : (
+            navContainer()
+          )}
         </div>
 
         <div className={`${classes.setting_icon_container}`}>
