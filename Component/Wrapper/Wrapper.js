@@ -2,10 +2,7 @@
 
 import React, { useContext, useState } from "react";
 import classes from "./Wrapper.module.css";
-import { BiCheckDouble } from "react-icons/bi";
 import { AppContext } from "@/sotre/store";
-import SmDropDown from "../UI/SmDropDown/SmDropDown";
-import { BsFillPlayFill } from "react-icons/bs";
 
 const Wrapper = (props) => {
   const { state, dispatch } = useContext(AppContext);
@@ -32,7 +29,7 @@ const Wrapper = (props) => {
               }}
               className={transliteration ? `${classes.span_active}` : undefined}
             >
-              transliteration <BiCheckDouble className={`${classes.icon}`} />
+              transliteration
             </span>
             {readingPreference === "translation" && (
               <span
@@ -41,7 +38,7 @@ const Wrapper = (props) => {
                 }}
                 className={word_meanings ? `${classes.span_active}` : undefined}
               >
-                word_meanings <BiCheckDouble className={`${classes.icon}`} />
+                word_meanings
               </span>
             )}
           </div>
@@ -49,7 +46,6 @@ const Wrapper = (props) => {
             className={`${classes.player_control}`}
             onClick={togglePlayerControl}
           >
-            <BsFillPlayFill className={`${classes.icon}`} />
             <span>play audio</span>
           </div>
         </div>

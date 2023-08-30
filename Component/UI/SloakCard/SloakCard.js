@@ -2,11 +2,7 @@
 
 import React, { forwardRef, useContext, useEffect, useState } from "react";
 import classes from "./SloakCard.module.css";
-import {
-  BsFillPlayFill,
-  BsFillPauseFill,
-  BsFillBookmarkFill,
-} from "react-icons/bs";
+
 import { AppContext } from "@/sotre/store";
 
 const SloakCard = forwardRef(
@@ -69,13 +65,14 @@ const SloakCard = forwardRef(
 
     const playerButton = () => {
       if (audioId === sloakNumber) {
-        return playerState ? (
-          <BsFillPauseFill className={`${classes.icon_pause}`} />
-        ) : (
-          <BsFillPlayFill className={`${classes.icon_play}`} />
-        );
+        return playerState
+          ? // <BsFillPauseFill className={`${classes.icon_pause}`} />
+            pa
+          : // <BsFillPlayFill className={`${classes.icon_play}`} />
+            p;
       } else {
-        return <BsFillPlayFill className={`${classes.icon_play}`} />;
+        return p;
+        // return <BsFillPlayFill className={`${classes.icon_play}`} />;
       }
     };
 
@@ -101,9 +98,7 @@ const SloakCard = forwardRef(
               {chapterNumber}:<mark>{sloakNum}</mark>
             </span>
             <span onClick={onClickPlay}>{playerButton()}</span>
-            <span>
-              <BsFillBookmarkFill />
-            </span>
+            <span>b</span>
           </div>
           {/** Grid-Item-2 */}
           <div

@@ -6,14 +6,14 @@ import apiCaller from "./ApiCaller";
 
 export async function fileOpt(filename, content, write = true) {
   let result;
-  let absolutePath = path.join(process.cwd(), `/pages/api/db/${filename}.json`);
+  let absolutePath = path.join(process.cwd(), `/pages/api/${filename}.json`);
   if (write) {
     //will create the file if not exist..
     result = fs.writeFileSync(absolutePath, JSON.stringify(content));
   } else {
     result = fs.readFileSync(absolutePath);
   }
-  return JSON.parse(result);
+  return write ? "write-opt" : JSON.parse(result);
 }
 
 //call:fetchSlokasForChapter(9, 34);

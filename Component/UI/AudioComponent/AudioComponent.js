@@ -1,11 +1,7 @@
 /** @format */
 
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import classes from "./AudioComponent.module.css";
-import { FaForward, FaPlay, FaBackward, FaPause } from "react-icons/fa";
-import { PiDotsThreeOutlineFill } from "react-icons/pi";
-import { GrClose } from "react-icons/gr";
-import { AppContext } from "@/sotre/store";
 
 const AudioComponent = ({
   trackId,

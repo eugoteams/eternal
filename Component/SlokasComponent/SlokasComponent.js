@@ -5,10 +5,10 @@ import classes from "./SlokasComponent.module.css";
 import usePerfomanceHandler from "@/hooks/use-PerfomanceHandler";
 import Setting from "../Setting/Setting";
 import { AppContext } from "@/sotre/store";
-import ToggleButton from "../UI/Switch/Switch";
+
 import SloaKContainer from "../UI/SloakCard/SloakCard";
 import Wrapper from "../Wrapper/Wrapper";
-import SmDropDown from "../UI/SmDropDown/SmDropDown";
+
 import { GITA_CH } from "@/model/const";
 import AudioComponent from "../UI/AudioComponent/AudioComponent";
 import SloakCard from "../UI/SloakCard/SloakCard";
@@ -22,7 +22,7 @@ const SlokasComponent = ({ chapter }) => {
   const [trackId, setTrackId] = useState(0);
   const { getData } = usePerfomanceHandler();
   const [data, setData] = useState([]);
-
+  console.log("state", state);
   const chapterSelected = (chapter) => {
     setChapter((prevState) => chapter);
   };
@@ -78,41 +78,25 @@ const SlokasComponent = ({ chapter }) => {
   return (
     <React.Fragment>
       <main style={{ fontFamily: `${fontFamily}` }}>
-        <Setting />
-        <section>
-          <ToggleButton />
-        </section>
+        <section></section>
         <section className={`${classes.container}`}>
           <Wrapper onAutoPlayClick={onAutoPlayClickListener}>
             {data.length > 0 &&
               [...Array(data.length)].map((_, index) => {
-                let authorID = state["author"]["id"];
-                let lang = state["translationTo"];
-                let sloakNumber = index + 1;
-                let sortedArray = data.find(
-                  (sloak, _) => sloak["verse"] === sloakNumber
-                );
-
-                const refToSloakContainer = React.createRef();
-                refHookArray.push(refToSloakContainer);
-                let sloak = sortedArray["slok"];
-                let sloakTransliteration = sortedArray["transliteration"];
-                let wordMeaning = sortedArray["word_meanings"];
-                let sloakTranslation = sortedArray[authorID][lang];
                 //  if (sloakNumber === 47) {
-                return (
-                  <SloakCard
-                    ref={refToSloakContainer}
-                    key={sloakNumber}
-                    chapterNumber={chapter}
-                    sloakNumber={sloakNumber}
-                    sloak={sloak}
-                    sloakTransliteration={sloakTransliteration}
-                    sloakMeaning={wordMeaning}
-                    sloakTranslation={sloakTranslation}
-                    onPlayBtClick={onPlayBtClickListener}
-                  />
-                );
+                // return (
+                //   <SloakCard
+                //     ref={refToSloakContainer}
+                //     key={sloakNumber}
+                //     chapterNumber={chapter}
+                //     sloakNumber={sloakNumber}
+                //     sloak={sloak}
+                //     sloakTransliteration={sloakTransliteration}
+                //     sloakMeaning={wordMeaning}
+                //     sloakTranslation={sloakTranslation}
+                //     onPlayBtClick={onPlayBtClickListener}
+                //   />
+                // );
                 // }
               })}
           </Wrapper>
