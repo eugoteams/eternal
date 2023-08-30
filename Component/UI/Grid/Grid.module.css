@@ -14,7 +14,7 @@
   padding: 1rem;
 }
 
-/*Tablet Screnn size */
+/*Tablet Screen size */
 @media (max-width: 48em) {
   .container {
     width: 100vw;
