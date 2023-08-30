@@ -111,7 +111,6 @@
 /* Tablet  Screen Size */
 @media (max-width: 59em) {
   .layout_container {
-    background-color: antiquewhite;
     width: 100%;
   }
   .container {
@@ -140,7 +139,6 @@
 /* Mobile Large Screen Size  27em Original. 47em =>is where my ui breaks down*/
 @media (max-width: 47em) {
   .container {
-    background-color: gray;
     border-radius: 2.5rem;
     padding: 2rem;
     grid-template-columns: 1fr;
