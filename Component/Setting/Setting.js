@@ -1,189 +1,161 @@
 /** @format */
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { AppContext } from "@/sotre/store";
+import Group from "../UI/Group/Group";
+import Switch from "../UI/Switch/Switch";
+import { fontToggleBtx } from "@/model/const";
+import { validateConfig } from "next/dist/server/config-shared";
+import Stack from "../UI/Stack/Stack";
 import classes from "./Setting.module.css";
-import { FcSettings } from "react-icons/fc";
-import { GrClose } from "react-icons/gr";
+import CheckBoxGroup from "../UI/CheckBoxGroup/CheckBoxGroup";
 import DropDown from "../UI/DropDown/DropDown";
-import FontCounter from "../UI/FontCounter/FontCounter";
-
-import {
-  FONT_2,
-  FONT_1,
-  TRANSLATION_LANG,
-  defaultSetting,
-  defaultAuthors,
-} from "@/model/const";
+import { wordByWordLocale, translators, defaultAuthors } from "@/model/const";
 
 const Setting = (props) => {
   const { state, dispatch } = useContext(AppContext);
-  const [open, setOpen] = useState(false);
+  let readerPreferences = state["readingPreferencesN"];
+  let readerPref = readerPreferences["readingPreference"];
+  let translator = readerPreferences["readingPreferenceTranslator"];
+  let contentType = readerPreferences["wordByWordContentType"];
+  let displayType = readerPreferences["wordByWordDisplay"];
+  let lang = readerPreferences["wordByWordLocale"];
+  let theme = readerPreferences[""];
+  let readerStyles = state["gitaReaderStyles"];
+  let fontType = readerStyles["gitaFont"];
+  let fontDescription = fontToggleBtx.find((font, _) => {
+    return font["value"] === fontType;
+  });
 
-  const onClickReset = () => {
-    dispatch({ type: "R_STATE", payload: defaultSetting });
-  };
-
-  const onLangSelectListener = (lang) => {
+  const onItemChangeListener = (value) => {
+    readerStyles["gitaFont"] = value;
     dispatch({
       type: "ADD",
-      key: "translationTo",
-      payload: lang,
-    });
-    dispatch({
-      type: "ADD",
-      key: "author",
-      payload: defaultAuthors[lang],
+      key: "gitaReaderStyles",
+      payload: { ...readerStyles },
     });
   };
 
-  const onDisplaySelect = (stateKey) => {
-    dispatch({
-      type: "ADD",
-      key: stateKey,
-      payload: !state[stateKey],
+  const filterTranslatorByLang = () => {
+    return translators.filter((translator, _) => {
+      let translationLang = translator["translationlang"];
+      let result = translationLang.find((language) => language === lang);
+      if (result) {
+        return translator;
+      }
     });
   };
-  const onSelectFont = (font) => {
+
+  const getTranslatorDescription = () => {
+    return translators.find((translatorObj, _) => {
+      return translatorObj["value"] === translator;
+    })["description"];
+  };
+
+  const onLangChange = (value) => {
+    readerPreferences["wordByWordLocale"] = value;
+    readerPreferences["readingPreferenceTranslator"] = defaultAuthors[value];
     dispatch({
       type: "ADD",
-      key: "fontStyle",
-      payload: font,
+      key: "readingPreferencesN",
+      payload: { ...readerPreferences },
     });
   };
+
+  const onTranslatorChange = (value) => {
+    readerPreferences["readingPreferenceTranslator"] = value;
+
+    dispatch({
+      type: "ADD",
+      key: "readingPreferencesN",
+      payload: { ...readerPreferences },
+    });
+  };
+
+  let isExist = (checkedItem) => {
+    return contentType.find((value) => value === checkedItem);
+  };
+
+  const onCheckBoxChange = (value) => {
+    //readerPreferences["wordByWordDisplay"] = [...displayType, value];
+    console.log("Setting -->", value);
+    readerPreferences["wordByWordContentType"] = [...value];
+
+    dispatch({
+      type: "ADD",
+      key: "readingPreferencesN",
+      payload: { ...readerPreferences },
+    });
+  };
+
   return (
     <React.Fragment>
-      <div
-        className={`${classes.icon}`}
-        onClick={(event) => {
-          setOpen((prevState) => !prevState);
-        }}
-      >
-        <FcSettings />
-      </div>
-      {open && (
-        <div className={`${classes.container}`}>
-          <div
-            className={`${classes.icon}`}
-            onClick={(event) => {
-              setOpen((prevState) => !prevState);
-            }}
-          >
-            <GrClose />
-          </div>
-          <section className={`${classes.font_style_section}`}>
-            <h3 className={`${classes.section_title}`}>bagvad gita font</h3>
-            <div className={`${classes.toggle_style}`}>
-              <span
-                className={
-                  state.fontStyle === FONT_2
-                    ? `${classes.toggle_item} ${classes.toggle_item_active} `
-                    : `${classes.toggle_item}`
-                }
-                onClick={(event) => {
-                  onSelectFont(FONT_2);
-                }}
-              >
-                noto devanagari
-              </span>
-              <span
-                className={
-                  state.fontStyle === FONT_1
-                    ? `${classes.toggle_item} ${classes.toggle_item_active} `
-                    : `${classes.toggle_item}`
-                }
-                onClick={(event) => {
-                  onSelectFont(FONT_1);
-                }}
-              >
-                poppins
-              </span>
-            </div>
-          </section>
-          <section className={`${classes.font_style_section}`}>
-            <h3 className={`${classes.section_title}`}>sloak font size</h3>
-            <div className={`${classes.font_size_counter}`}>
-              <span>font size</span>
-              <FontCounter datakey="sloak" />
-            </div>
-            <div className={`${classes.font_size_counter}`}>
-              <span>translation size</span>
-              <FontCounter datakey="translation" />
-            </div>
-          </section>
-          <section className={`${classes.font_style_section}`}>
-            <h3 className={`${classes.section_title}`}>translation to ...</h3>
-            {TRANSLATION_LANG.map((lang, index) => {
-              return (
-                <div
-                  key={`${lang}${index}`}
-                  className={`${classes.radio_select}`}
-                >
-                  <input
-                    type="checkbox"
-                    className={`${classes.radio}`}
-                    id={lang["id"]}
-                    name="fav_language"
-                    value={lang["id"]}
-                    onChange={(event) => {
-                      onLangSelectListener(event.target.value);
-                    }}
-                    checked={state.translationTo === lang["id"] ? true : false}
-                  />
-                  <label htmlFor={lang["id"]}>{lang["name"]}</label>
-                </div>
-              );
-            })}
-          </section>
-          <section className={`${classes.font_style_section}`}>
-            <h3 className={`${classes.section_title}`}>word by word</h3>
-            <div className={`${classes.radio_select}`}>
-              <input
-                type="checkbox"
-                className={`${classes.radio}`}
-                id={"transliterationInline"}
-                name="transliterationInline"
-                value={state.transliterationInline}
-                onChange={(e) => {
-                  onDisplaySelect("transliterationInline");
-                }}
-                checked={state.transliterationInline ? true : false}
-              />
-              <label htmlFor={"transliterationInline"}>
-                inline transliteration
-              </label>
-            </div>
-            <div className={`${classes.radio_select}`}>
-              <input
-                type="checkbox"
-                className={`${classes.radio}`}
-                id={"word_meanings"}
-                name="word_meanings"
-                value={state.wordMeaning}
-                onChange={(e) => {
-                  onDisplaySelect("wordMeaning");
-                }}
-                checked={state.wordMeaning ? true : false}
-              />
-              <label htmlFor={"wordMeaning"}>word meanings</label>
-            </div>
-          </section>
-          <section className={`${classes.font_style_section}`}>
-            <h3 className={`${classes.section_title}`}>translators</h3>
-            <div>
-              <DropDown filterKey="name" />
-            </div>
-            <div className={`${classes.author_description}`}>
-              <em>{state["author"]["description"]}</em>
-            </div>
-          </section>
-          <section style={{ textAlign: "center", margin: "4rem auto" }}>
-            <button onClick={onClickReset} className={`${classes.button}`}>
-              reset setting
-            </button>
-          </section>
-        </div>
-      )}
+      <aside>
+        <Stack>
+          <h3 className={`${classes.title}`}>gita font</h3>
+          <Group posV="center" posH="center">
+            <Switch
+              itemSelected={fontType}
+              toggleButton={fontToggleBtx}
+              onItemChange={(value) => {
+                onItemChangeListener(value);
+              }}
+            />
+          </Group>
+          <Group posV="center" posH="center">
+            <p className={`${classes.text}`}>
+              {fontDescription["description"]}
+            </p>
+          </Group>
+        </Stack>
+        <Stack>
+          <h3 className={`${classes.title}`}>word by word</h3>
+          <Group>
+            {/* <CheckBoxGroup
+              defaultValue={readerPreferences["wordByWordContentType"]}
+              onChange={onCheckBoxChange}
+            /> */}
+          </Group>
+          <Group posV="center" posH="center">
+            <p className={`${classes.text}`}>
+              Transliteration refers to the method of mapping from one system of
+              writing to another based on phonetic similarity,which are
+              converted to characters that have similar pronunciation in the
+              target language.
+            </p>
+          </Group>
+        </Stack>
+        <Stack>
+          <h3 className={`${classes.title}`}>translation language</h3>
+          <DropDown
+            data={wordByWordLocale}
+            defaultValue={lang}
+            onChange={onLangChange}
+          />
+          <Group posV="center" posH="center">
+            <p className={`${classes.text}`}>
+              Word by word translation source : partly web and majority of party
+              id taken the book BHAGAVAD GITA AS IT IS.
+            </p>
+          </Group>
+        </Stack>
+        <Stack>
+          <h3 className={`${classes.title}`}>translation</h3>
+          <DropDown
+            data={filterTranslatorByLang()}
+            defaultValue={translator}
+            onChange={onTranslatorChange}
+          />
+          <Group posV="center" posH="center">
+            <p className={`${classes.text}`}>{getTranslatorDescription()}</p>
+          </Group>
+        </Stack>
+        <Stack>
+          <Group posV="center" posH="center">
+            <button className={`${classes.button}`}>reset settings</button>
+          </Group>
+        </Stack>
+      </aside>
     </React.Fragment>
   );
 };

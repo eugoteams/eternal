@@ -2,8 +2,21 @@
 
 export const fontSizes = ["sm", "md", "l"];
 export const fontTypes = ["open sans", "popins"];
-export const FONT_1 = `"Poppins", sans-serif`;
-export const FONT_2 = `'Noto Sans Devanagari', sans-serif`;
+export const fontToggleBtx = [
+  {
+    label: "noto sans devanagiri",
+    value: `'Noto Sans Devanagari', sans-serif`,
+    description:
+      " Noto is a global font collection for writing in all modern and ancient languages. Noto Sans Devanagari is an unmodulated (“sans serif”) design for texts in the Indic ",
+  },
+  {
+    label: "poppins",
+    value: `"Poppins", sans-serif`,
+    description:
+      "Poppins is desgined by Indian Type Foundry , this font is widley used for printing vedic scripts and on web for ancient scripts.",
+  },
+];
+
 export const STORAGE_KEY = "HARE_KRISHNA";
 export const GITA_CH = "GITA_CHAPTERS";
 export const PERSIST_SETTING = "setting";
@@ -29,13 +42,7 @@ export const defaultSetting = {
   fontSize: { sloak: 1.5, translation: 1.5 },
   fontType: "",
   chapters: [],
-  fontStyle: FONT_1,
-  translationTo: "et",
-  author: defaultAuthors["et"],
-  readingPreference: "translation",
-  transliterationInline: true,
-  wordMeaning: false,
-  player: { chapter: 0, sloakId: 0, playState: false },
+  gitaReaderStyles: { gitaFont: fontToggleBtx[1]["value"] },
   readingPreferencesN: {
     readingPreference: "translation",
     wordByWordLocale: "et",
@@ -45,7 +52,7 @@ export const defaultSetting = {
   },
 };
 
-export const AUTHORS = [
+export const translators = [
   {
     value: "rams",
     label: "Swami Ramsukhdas",

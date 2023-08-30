@@ -1,0 +1,25 @@
+/** @format */
+
+.checkbox_container {
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  font-weight: 400;
+}
+
+.checkbox_container > span {
+  margin-left: 1.2rem;
+}
+
+.bt_checkbox {
+  background-color: #ffffff;
+  width: 3rem;
+  height: 3rem;
+
+  border-radius: 5px;
+}
+
+.bt_checkbox_active {
+  background-color: green;
+}

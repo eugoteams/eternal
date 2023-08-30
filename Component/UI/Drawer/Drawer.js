@@ -1,14 +1,13 @@
 /** @format */
 
 import React from "react";
-import classes from "./Drawer.module.css";
 import OverlayComponent from "@/Component/OverlayComponent/OverlayComponent";
 
 const Drawer = (props) => {
-  const { onClick } = props;
+  const { position, onClick } = props;
   return (
     <React.Fragment>
-      <OverlayComponent openDrawer={true} onOverlayClickListener={onClick}>
+      <OverlayComponent position={position} onOverlayClickListener={onClick}>
         {props.children}
       </OverlayComponent>
     </React.Fragment>

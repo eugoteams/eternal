@@ -29,28 +29,7 @@
   height: 100%;
 }
 
-.nav_container_item {
-  width: 20rem;
-  height: 100%;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: all 0.5s ease;
-}
-
-.nav_link {
-  color: inherit;
-  text-decoration: none;
-  text-align: center;
-}
-
-/* .nav_link:last-child {
-  text-align: left;
-} */
-
 /* setting_icon_container */
-
 .setting_icon_container {
   display: flex;
   align-items: center;
@@ -90,25 +69,6 @@
 
   .logo {
     text-align: center;
-  }
-
-  .nav_container_item_responsive {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
-  .nav_container_item {
-    display: none;
-  }
-  .nav_link {
-    margin-top: 1rem;
-    padding: 1rem;
-    width: 100%;
-    border-bottom: 1px solid gray;
-    text-align: left;
   }
 
   .menu_icon {

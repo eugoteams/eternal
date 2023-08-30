@@ -1,31 +1,15 @@
 /** @format */
 
-import React, { useContext, useState } from "react";
-import { LuChevronsDownUp } from "react-icons/lu";
+import React, { useState } from "react";
 import classes from "./DropDown.module.css";
-import { AppContext } from "@/sotre/store";
-import { AUTHORS } from "@/model/const";
 
-const DropDown = ({ filterKey }) => {
-  const { state, dispatch } = useContext(AppContext);
+const DropDown = ({ data, defaultValue, onChange }) => {
   const [dropDown, setDropDown] = useState(false);
-  let author = state.author["name"];
-  let filteredAuthors = [];
-
-  AUTHORS.map((author, _) => {
-    let result = author["translationLang"].find(
-      (lang, _) => lang === state.translationTo
-    );
-    result !== undefined && filteredAuthors.push(author);
-  });
-
+  const valueSelected = data.find((item) => item.value === defaultValue)[
+    "label"
+  ];
   const closeDropDown = (event) => {
     setDropDown((prevState) => !prevState);
-  };
-
-  const onItemClick = (value) => {
-    closeDropDown();
-    dispatch({ type: "ADD", key: "author", payload: value });
   };
 
   return (
@@ -35,20 +19,27 @@ const DropDown = ({ filterKey }) => {
           className={`${classes.dropdown_placeholder}`}
           onClick={closeDropDown}
         >
-          <span>{author}</span>
-          <LuChevronsDownUp />
+          <span>{valueSelected}</span>
+          {/* <LuChevronsDownUp /> */}
         </div>
         {dropDown && (
-          <div className={`${classes.dropdown_item}`}>
-            {filteredAuthors.map((item, index) => {
+          <div className={`${classes.dropdown_item_container}`}>
+            {data.map((item, index) => {
+              const { value, label } = item;
               return (
                 <p
-                  key={`${item}_${index}`}
-                  onClick={(event) => {
-                    onItemClick(item);
+                  className={
+                    value === defaultValue
+                      ? `${classes.dropdown_item} ${classes.dropdown_item_active}`
+                      : `${classes.dropdown_item} ${`${classes.item_hover}`}`
+                  }
+                  key={`${label}_${index}`}
+                  onClick={(e) => {
+                    closeDropDown();
+                    onChange(value);
                   }}
                 >
-                  {item[filterKey]}
+                  {label}
                 </p>
               );
             })}

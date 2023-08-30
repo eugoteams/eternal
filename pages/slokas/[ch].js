@@ -1,14 +1,15 @@
 /** @format */
 
 import React from "react";
-import SlokasComponent from "@/Component/SlokasComponent/SlokasComponent";
+// import SlokasComponent from "@/Component/SlokasComponent/SlokasComponent";
 
 const Chapter = (props) => {
   let chapter = props.chapterNumber;
   console.log("ch", chapter);
   return (
     <React.Fragment>
-      <SlokasComponent chapter={chapter} />
+      {chapter}
+      {/* <SlokasComponent chapter={chapter} /> */}
     </React.Fragment>
   );
 };

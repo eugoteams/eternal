@@ -1,10 +1,10 @@
 /** @format */
 
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import classes from "./OverlayComponent.module.css";
 
 const OverlayComponent = (props) => {
-  const { openDrawer, onOverlayClickListener } = props;
+  const { position, onOverlayClickListener } = props;
 
   return (
     <React.Fragment>
@@ -13,8 +13,14 @@ const OverlayComponent = (props) => {
           className={`${classes.overlay}`}
           onClick={onOverlayClickListener}
         />
-        <div className={`${classes.overlay_cnt}`} style={{ right: 0 }}>
-          <div className={`${classes.overlay_cnt_header}`}>
+        <div
+          className={
+            position === "right"
+              ? `${classes.overlay_content_box_right}`
+              : `${classes.overlay_content_box}`
+          }
+        >
+          <div className={`${classes.overlay_content_box_header}`}>
             <h3>setting</h3>
             <span onClick={onOverlayClickListener}>close</span>
           </div>

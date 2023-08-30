@@ -5,7 +5,7 @@ import classes from "./SlokasComponent.module.css";
 import usePerfomanceHandler from "@/hooks/use-PerfomanceHandler";
 import Setting from "../Setting/Setting";
 import { AppContext } from "@/sotre/store";
-import ToggleButton from "../UI/ToggleButton/ToggleButton";
+import ToggleButton from "../UI/Switch/Switch";
 import SloaKContainer from "../UI/SloakCard/SloakCard";
 import Wrapper from "../Wrapper/Wrapper";
 import SmDropDown from "../UI/SmDropDown/SmDropDown";
