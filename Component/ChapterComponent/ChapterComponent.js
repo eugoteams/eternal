@@ -41,7 +41,7 @@ const ChapterComponent = (props) => {
                   </div>
                   <div className={`${classes.text_holder}`}>
                     <span className={`${classes.chapter_number}`}>
-                      {chapterNumber}{" "}
+                      {chapterNumber}
                     </span>
                     <h2 className={`${classes.chapter_title}`}>
                       {chapter["translation"]}
