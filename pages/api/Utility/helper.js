@@ -6,7 +6,10 @@ import apiCaller from "./ApiCaller";
 
 export async function fileOpt(filename, content, write = true) {
   let result;
-  let absolutePath = path.join(process.cwd(), `/pages/api/${filename}.json`);
+  let absolutePath = path.join(
+    process.cwd(),
+    `/pages/api/db_sorted/${filename}.json`
+  );
   if (write) {
     //will create the file if not exist..
     result = fs.writeFileSync(absolutePath, JSON.stringify(content));
