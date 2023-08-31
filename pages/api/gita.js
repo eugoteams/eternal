@@ -11,6 +11,7 @@ export const config = {
 export default async function handler(req, res) {
   let method = req.method;
   let { chapter, slok } = JSON.parse(req.body);
+  console.log(req.body);
   if (method === "POST") {
     switch (true) {
       case chapter !== undefined && slok !== undefined:
