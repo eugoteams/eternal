@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   let chapter = req.query.ch;
   let translator = req.query.translator;
   let sloakBytranslator = [];
-  let arr = await fileOpt(`db_sorted/chapter_${chapter}`, undefined, false);
+  let arr = await fileOpt(`chapter_${chapter}`, undefined, false);
   arr.map((sloak, _) => {
     sloakBytranslator.push({
       _id: sloak["_id"],
