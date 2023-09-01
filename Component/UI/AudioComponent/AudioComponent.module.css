@@ -1,7 +1,8 @@
 /** @format */
 
 .container {
-  height: 13rem;
+  height: 6rem;
+  padding-bottom: 2rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
@@ -18,6 +19,9 @@
   left: 0;
   right: 0;
   z-index: 2;
+  -webkit-animation: scale-up-ver-bottom 0.4s
+    cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: scale-up-ver-bottom 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
 .container > div:first-child {
@@ -124,4 +128,41 @@
 .slider:focus::-moz-range-thumb {
   outline: 3px solid #808080;
   outline-offset: 0.125rem;
+}
+
+.scale-up-ver-bottom {
+}
+
+/**
+ * ----------------------------------------
+ * animation scale-up-ver-bottom
+ * ----------------------------------------
+ */
+@-webkit-keyframes scale-up-ver-bottom {
+  0% {
+    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.4);
+    -webkit-transform-origin: 0% 100%;
+    transform-origin: 0% 100%;
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    -webkit-transform-origin: 0% 100%;
+    transform-origin: 0% 100%;
+  }
+}
+@keyframes scale-up-ver-bottom {
+  0% {
+    -webkit-transform: scaleY(0.4);
+    transform: scaleY(0.4);
+    -webkit-transform-origin: 0% 100%;
+    transform-origin: 0% 100%;
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    -webkit-transform-origin: 0% 100%;
+    transform-origin: 0% 100%;
+  }
 }

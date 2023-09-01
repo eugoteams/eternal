@@ -8,6 +8,8 @@ import Drawer from "../UI/Drawer/Drawer";
 import NavLinkComponent from "./NavLinkComponent/NavLinkComponent";
 import Setting from "../Setting/Setting";
 
+import { ICON_COLOR, ICON_SIZE } from "@/model/const";
+
 const Navbar = (props) => {
   const [drawerState, setDrawerSate] = useState("");
 
@@ -80,7 +82,9 @@ const Navbar = (props) => {
               onClickDrawerListener("setting");
             }}
           >
-            <IconHolder>s{/* <IoSettingsSharp /> */}</IconHolder>
+            <IconHolder>
+              S{/* <Settings size={ICON_SIZE} color={ICON_COLOR} /> */}
+            </IconHolder>
           </div>
         </div>
       </main>

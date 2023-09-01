@@ -132,6 +132,7 @@ const AudioComponent = ({
 
   /** Track ID  */
   useEffect(() => {
+    console.log("AudioComponenet", trackId);
     if (trackId !== 0 && trackId !== undefined) {
       playerStateManipulator("playerClosed", true);
       playerStateManipulator("reset", undefined);
@@ -155,7 +156,6 @@ const AudioComponent = ({
             onLoadedMetadata={onLoadMetaDataListener}
           ></audio>
           <div className={`${classes.container}`}>
-            <p>{log}</p>
             <div>
               <input
                 type="range"
@@ -172,40 +172,44 @@ const AudioComponent = ({
                 className={`${classes.icons} `}
                 onClick={(e) => playerStateManipulator("optMenu", true)}
               >
-                <PiDotsThreeOutlineFill />
+                <span>...</span>
               </div>
               <div
                 className={`${classes.icons}`}
                 onClick={onClickBackWardListener}
               >
-                <FaBackward />
+                <span>fb</span>
               </div>
               <div className={`${classes.icons}`}>
                 {playerState["play"] ? (
-                  <FaPause
+                  <span
                     onClick={(e) => {
                       playerStateManipulator("play", false);
                     }}
-                  />
+                  >
+                    paa
+                  </span>
                 ) : (
-                  <FaPlay
+                  <span
                     onClick={(e) => {
                       playerStateManipulator("play", true);
                     }}
-                  />
+                  >
+                    p
+                  </span>
                 )}
               </div>
               <div
                 className={`${classes.icons}`}
                 onClick={onClickForwardListener}
               >
-                <FaForward />
+                <span>fa</span>
               </div>
               <div
                 className={`${classes.icons}`}
                 onClick={(e) => playerStateManipulator("playerClosed", false)}
               >
-                <GrClose />
+                <span>c</span>
               </div>
             </div>
             <div>{convertSecToMinutes(playerState["trackDuration"])}</div>

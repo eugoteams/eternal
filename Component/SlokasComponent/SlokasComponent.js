@@ -1,39 +1,57 @@
 /** @format */
 
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import classes from "./SlokasComponent.module.css";
 import usePerfomanceHandler from "@/hooks/use-PerfomanceHandler";
-import Setting from "../Setting/Setting";
 import { AppContext } from "@/sotre/store";
-
-import SloaKContainer from "../UI/SloakCard/SloakCard";
-import Wrapper from "../Wrapper/Wrapper";
-
-import { GITA_CH } from "@/model/const";
+import SlokCard from "../UI/SlokCard/SlokCard";
+import { GITA_CH, readingPrefSwitch } from "@/model/const";
 import AudioComponent from "../UI/AudioComponent/AudioComponent";
-import SloakCard from "../UI/SloakCard/SloakCard";
+import Switch from "../UI/Switch/Switch";
 
 const SlokasComponent = ({ chapter }) => {
   const { state, dispatch } = useContext(AppContext);
-  let fontFamily = state["fontStyle"];
+  const [data, setData] = useState([]);
+  //let data = state["data"];
+  let readingPref = state["readingPreferencesN"];
+  let translator = readingPref["readingPreferenceTranslator"];
+  let lang = readingPref["wordByWordLocale"];
+  let readerPref = readingPref["readingPreference"];
   let chapterDetail = state["chapters"][chapter - 1];
   let refHookArray = [];
-  const [chapterNum, setChapter] = useState(chapter);
+
+  //Player track state
   const [trackId, setTrackId] = useState(0);
   const { getData } = usePerfomanceHandler();
-  const [data, setData] = useState([]);
-  console.log("state", state);
-  const chapterSelected = (chapter) => {
-    setChapter((prevState) => chapter);
-  };
-
+  //Smooth Scrolling
   const selectSloak = (sloakNum) => {
     refHookArray[sloakNum - 1].current.scrollIntoView({ behavior: "smooth" });
   };
 
+  const fetchData = () => {
+    getData(
+      `/api/gita`,
+      {
+        method: "POST",
+        body: JSON.stringify(`{\n"chapter":${chapter}}`),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      },
+      GITA_CH
+    ).then((response) => {
+      setData((prevState) => response);
+    });
+  };
+
+  //OnComponentLoad.
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   const onPlayBtClickListener = (payload) => {
-    const { chapterNumber, sloakNumber } = payload;
-    setTrackId((prevState) => sloakNumber);
+    const { chapterNumber, slokNumber } = payload;
+    setTrackId((prevState) => slokNumber);
   };
   const onTrackPlayEndedListener = () => {
     if (true && trackId < data.length) {
@@ -60,46 +78,52 @@ const SlokasComponent = ({ chapter }) => {
     onTrackPlayEndedListener();
   };
 
-  useEffect(() => {
-    console.log("useEffect");
-    getData(
-      "/api/gita",
-      {
-        method: "POST",
-        body: JSON.stringify({ chapter: chapter }),
-        headers: { "Content-Type": "application-json" },
-      },
-      GITA_CH
-    ).then((response) => {
-      setData((prevState) => response);
+  const onItemSelectListener = (item) => {
+    readingPref["readingPreference"] = item;
+    dispatch({
+      type: "ADD",
+      key: "readingPreferencesN",
+      payload: { ...readingPref },
     });
-  }, [chapter]);
+  };
 
+  //console.log(translator, lang, data[0]);
   return (
     <React.Fragment>
-      <main style={{ fontFamily: `${fontFamily}` }}>
-        <section></section>
+      <main>
+        <section>
+          <Switch
+            toggleButton={readingPrefSwitch}
+            itemSelected={readerPref}
+            onItemChange={onItemSelectListener}
+          />
+        </section>
         <section className={`${classes.container}`}>
-          <Wrapper onAutoPlayClick={onAutoPlayClickListener}>
-            {data.length > 0 &&
-              [...Array(data.length)].map((_, index) => {
-                //  if (sloakNumber === 47) {
-                // return (
-                //   <SloakCard
-                //     ref={refToSloakContainer}
-                //     key={sloakNumber}
-                //     chapterNumber={chapter}
-                //     sloakNumber={sloakNumber}
-                //     sloak={sloak}
-                //     sloakTransliteration={sloakTransliteration}
-                //     sloakMeaning={wordMeaning}
-                //     sloakTranslation={sloakTranslation}
-                //     onPlayBtClick={onPlayBtClickListener}
-                //   />
-                // );
-                // }
-              })}
-          </Wrapper>
+          {data.length > 0 &&
+            data.map((slokObj, index) => {
+              let refToSlokCard = React.createRef();
+              refHookArray.push(refToSlokCard);
+              let verse = slokObj["verse"];
+              let slok = slokObj["slok"];
+              let slokTransliteration = slokObj["transliteration"];
+              let slokMeaning = slokObj["word_meanings"];
+              let slokTranslation = slokObj[translator][lang];
+
+              return (
+                <SlokCard
+                  ref={refToSlokCard}
+                  key={verse}
+                  chapterNumber={chapter}
+                  slokNumber={verse}
+                  slok={slok}
+                  slokTransliteration={slokTransliteration}
+                  slokMeaning={slokMeaning}
+                  slokTranslation={slokTranslation}
+                  readerPref={readerPref}
+                  onPlayBtClick={onPlayBtClickListener}
+                />
+              );
+            })}
         </section>
         <AudioComponent
           trackId={trackId}

@@ -64,7 +64,6 @@ const Setting = (props) => {
 
   const onTranslatorChange = (value) => {
     readerPreferences["readingPreferenceTranslator"] = value;
-
     dispatch({
       type: "ADD",
       key: "readingPreferencesN",

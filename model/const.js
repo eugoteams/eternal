@@ -1,7 +1,18 @@
 /** @format */
-
+export const ICON_SIZE = 15;
+export const ICON_COLOR = "#5c7cfa";
 export const fontSizes = ["sm", "md", "l"];
 export const fontTypes = ["open sans", "popins"];
+export const readingPrefSwitch = [
+  {
+    label: "translation",
+    value: "translation",
+  },
+  {
+    label: "reading",
+    value: "reading",
+  },
+];
 export const fontToggleBtx = [
   {
     label: "noto sans devanagiri",

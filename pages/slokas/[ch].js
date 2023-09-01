@@ -1,11 +1,11 @@
 /** @format */
 
-import React from "react";
+import React, { useContext } from "react";
 import SlokasComponent from "@/Component/SlokasComponent/SlokasComponent";
+import { AppContext } from "@/sotre/store";
 
 const Chapter = (props) => {
   let chapter = props.chapterNumber;
-  console.log("ch", chapter);
   return (
     <React.Fragment>
       <SlokasComponent chapter={chapter} />
@@ -31,7 +31,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   let chapterNumber = context.params.ch;
-
   /** code is excuted in Server */
   return {
     props: { chapterNumber },

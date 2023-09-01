@@ -11,7 +11,7 @@ export const config = {
 export default async function handler(req, res) {
   let method = req.method;
   let { chapter, slok } = JSON.parse(req.body);
-  console.log(req.body);
+
   if (method === "POST") {
     switch (true) {
       case chapter !== undefined && slok !== undefined:
@@ -19,11 +19,13 @@ export default async function handler(req, res) {
           let sloka = chapter.find((sloka, _) => {
             return sloka.verse === slok;
           });
+
           res.status(200).json({ eternalTruth: sloka });
         });
         break;
       case chapter && !slok:
         fileOpt(`chapter_${chapter}`, undefined, false).then((chapter) => {
+          console.log("test", chapter.length);
           res.status(200).json({ eternalTruth: chapter });
         });
         break;

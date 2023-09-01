@@ -13,7 +13,6 @@ const reducer = (state, action) => {
       state["chapters"] = action.payload;
       return { ...state };
     case "ADD":
-      //console.log("ADD", action.payload);
       state[action.key] = action.payload;
       return { ...state };
     case "R_STATE":
@@ -51,12 +50,12 @@ const StoreProvider = (props) => {
     });
   }, []);
 
-  const toLocalStorage = () => {
+  useEffect(() => {
+    console.log("sate updated");
     if (client) {
       saveToStorage(state, PERSIST_SETTING);
     }
-  };
-  toLocalStorage();
+  }, [state]);
 
   return (
     <AppContext.Provider value={{ state, dispatch }}>

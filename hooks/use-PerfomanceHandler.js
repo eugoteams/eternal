@@ -17,6 +17,7 @@ const usePerfomanceHandler = () => {
       return storageData;
     }
     let res = await fetchData(url, parameter);
+
     return Object.keys(res).map((resKey, _) => {
       saveToStorage(res[resKey], key);
       return res[resKey];
