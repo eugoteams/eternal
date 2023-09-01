@@ -59,13 +59,15 @@ const AudioComponent = ({
                 .then((_) => {
                   // Automatic playback started!
                   // Show playing UI.
-                  setLog("pLaod");
+                  console.log("Change Playe");
+                  prevState["mute"] = true;
                 })
                 .catch((error) => {
                   // Auto-play was prevented
                   // Show paused UI.
                   //console.log("error", error);
-                  setLog("error" + `${error}`);
+                  prevState["mute"] = false;
+                  prevState["play"] = true;
                 });
             }
           } else {
@@ -154,6 +156,7 @@ const AudioComponent = ({
       {playerState["playerClosed"] && (
         <div>
           <audio
+            autoPlay
             style={{ display: "none" }}
             ref={audioRef}
             onTimeUpdate={onPlayerDurationUpdateListener}
@@ -161,7 +164,7 @@ const AudioComponent = ({
             preload="metadata"
             onLoadedMetadata={onLoadMetaDataListener}
             onCanPlay={onCanPlayListener}
-            muted
+            muted={playerState["mute"]}
           ></audio>
           <div className={`${classes.container}`}>
             <div>
