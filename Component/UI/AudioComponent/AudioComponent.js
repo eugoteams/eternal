@@ -164,6 +164,7 @@ const AudioComponent = ({
             preload="metadata"
             onLoadedMetadata={onLoadMetaDataListener}
             onCanPlay={onCanPlayListener}
+            playsInline
             muted={playerState["mute"]}
           ></audio>
           <div className={`${classes.container}`}>
