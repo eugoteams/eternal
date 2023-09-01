@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import classes from "./AudioComponent.module.css";
+import { AlignRightIcon } from "lucide-react";
 
 const AudioComponent = ({
   trackId,
@@ -39,67 +40,84 @@ const AudioComponent = ({
     return `${minutes}:${extraSeconds}`;
   };
 
-  const [log, setLog] = useState("Logger");
   const playerStateManipulator = (key, value) => {
-    setState((prevState) => {
-      switch (true) {
-        case key === "play":
-          setLog("play");
-          if (value) {
-            audioRef.current.src = `/${chapter}/${trackId}.mp3`;
-            audioRef.current.load();
-            setLog("load");
-            if (prevState["trackDurationPlayed"] > 0) {
-              audioRef.current.currentTime = prevState["trackDurationPlayed"];
-              audioRef.current.playbackRate = prevState["playbackRate"];
-            }
-            let playPromise = audioRef.current.play();
-            if (playPromise !== undefined) {
-              playPromise
-                .then((_) => {
-                  // Automatic playback started!
-                  // Show playing UI.
-                  console.log("Change Playe");
-                  prevState["mute"] = false;
-                })
-                .catch((error) => {
-                  // Auto-play was prevented
-                  // Show paused UI.
-                  //console.log("error", error);
-                  prevState["mute"] = true;
-                  prevState["play"] = true;
-                });
-            }
-          } else {
-            audioRef.current.pause();
+    let prevState = playerState;
+
+    switch (true) {
+      case key === "play":
+        if (value) {
+          audioRef.current.src = `/${chapter}/${trackId}.mp3`;
+          audioRef.current.load();
+
+          if (prevState["trackDurationPlayed"] > 0) {
+            audioRef.current.currentTime = prevState["trackDurationPlayed"];
+            audioRef.current.playbackRate = prevState["playbackRate"];
           }
-          prevState[key] = value;
-          break;
-        case key === "playbackRate":
-          if (value === 0 || value === "normal") {
-            audioRef.current.playbackRate = 1;
-            prevState[key] = 1;
-          } else {
-            audioRef.current.playbackRate = value;
-            prevState[key] = value;
+          let playPromise = audioRef.current.play();
+
+          if (playPromise !== undefined) {
+            playPromise
+              .then((_) => {
+                // Automatic playback started!
+                // Show playing UI.
+                console.log("Playing audio");
+              })
+              .catch((error) => {
+                // Auto-play was prevented
+                // Show paused UI.
+                console.log("error", error.name);
+
+                if (error.name === "NotAllowedError") {
+                  console.log("PopUp");
+                  alert("Browser Permission Denied");
+                }
+                return;
+              });
           }
-
-          prevState["optMenu"] = false;
-          break;
-        case key === "reset":
-          prevState["trackDuration"] = 0;
-          prevState["trackDurationPlayed"] = 0;
-          prevState["playbackRate"] = 1;
-
-          break;
-        default:
+        } else {
+          audioRef.current.pause();
+        }
+        prevState[key] = value;
+        setState((prevSt) => {
+          return { ...prevState };
+        });
+        break;
+      case key === "playbackRate":
+        if (value === 0 || value === "normal") {
+          audioRef.current.playbackRate = 1;
+          prevState[key] = 1;
+        } else {
+          audioRef.current.playbackRate = value;
           prevState[key] = value;
-      }
+        }
 
-      return { ...prevState };
-    });
+        prevState["optMenu"] = false;
+        setState((prevSt) => {
+          return { ...prevState };
+        });
+        break;
+      case key === "reset":
+        prevState["trackDuration"] = 0;
+        prevState["trackDurationPlayed"] = 0;
+        prevState["playbackRate"] = 1;
+        setState((prevSt) => {
+          return { ...prevState };
+        });
+        break;
+      default:
+        prevState[key] = value;
+        setState((prevSt) => {
+          return { ...prevState };
+        });
+    }
+
+    // setState((prevState) => {
+
+    //   return { ...prevState };
+    // });
   };
 
+  //console.log("Play State", playerState["play"]);
   const onPlayerDurationUpdateListener = () => {
     let durationPlayed = audioRef.current.currentTime;
     playerStateManipulator("trackDurationPlayed", durationPlayed);
@@ -135,13 +153,12 @@ const AudioComponent = ({
 
   const onCanPlayListener = (e) => {
     console.log("onCanPlayListener");
-    playerStateManipulator("mute", false);
   };
 
   /** Track ID  */
   useEffect(() => {
-    console.log("AudioComponenet", trackId);
     if (trackId !== 0 && trackId !== undefined) {
+      console.log("Test", trackId);
       playerStateManipulator("playerClosed", true);
       playerStateManipulator("reset", undefined);
       setTimeout(() => {
@@ -156,7 +173,6 @@ const AudioComponent = ({
       {playerState["playerClosed"] && (
         <div>
           <audio
-            autoPlay
             style={{ display: "none" }}
             ref={audioRef}
             onTimeUpdate={onPlayerDurationUpdateListener}
@@ -164,8 +180,6 @@ const AudioComponent = ({
             preload="metadata"
             onLoadedMetadata={onLoadMetaDataListener}
             onCanPlay={onCanPlayListener}
-            playsInline
-            muted={playerState["mute"]}
           ></audio>
           <div className={`${classes.container}`}>
             <div>
@@ -196,16 +210,19 @@ const AudioComponent = ({
                 {playerState["play"] ? (
                   <span
                     onClick={(e) => {
+                      console.log("onPause clicked");
                       playerStateManipulator("play", false);
                     }}
                   >
-                    paa
+                    pa
                   </span>
                 ) : (
                   <span
                     onClick={(e) => {
+                      console.log("Click Activated");
                       playerStateManipulator("play", true);
                     }}
+                    style={{ border: "1px solid red" }}
                   >
                     p
                   </span>

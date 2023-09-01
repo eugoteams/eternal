@@ -15,14 +15,17 @@ const AudioTest = ({ trackId, onTrackPlayEnded }) => {
       console.log(ref.current);
     }
   }, [trackId]);
+  //`/1/${trackId > 0 && trackId}.mp3`
   return (
     <React.Fragment>
       <ReactPlayer
         ref={ref}
-        url={`/1/${trackId > 0 && trackId}.mp3`}
+        url={trackId}
         playing={play}
         onEnded={onTrackPlayEnded}
         controls
+        width="100%"
+        height="100%"
       />
     </React.Fragment>
   );
