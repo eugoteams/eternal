@@ -35,15 +35,15 @@ export const TRANSLATION_LANG = [
   { id: "et", name: "english" },
   { id: "ht", name: "hindi" },
 ];
-export const wordByWordLocale = [
+export const LOCAL_DATA = [
   {
     value: "et",
     label: "english",
   },
   { value: "ht", label: "hindi" },
 ];
-export const wordByWordContentType = ["translation", "transliteration"];
-export const wordByWordDisplay = ["tooltip", "in-line"];
+export const CONTENT_TYPE_DATA = ["translation", "transliteration"];
+export const W_DISPLAY_DATA = ["tooltip", "in-line"];
 export const defaultAuthors = {
   et: "gambir",
   ht: "rams",

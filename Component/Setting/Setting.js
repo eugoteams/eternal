@@ -1,39 +1,35 @@
 /** @format */
 
-import React, { useContext, useEffect } from "react";
-import { AppContext } from "@/sotre/store";
+import React from "react";
 import Group from "../UI/Group/Group";
 import Switch from "../UI/Switch/Switch";
 import { fontToggleBtx } from "@/model/const";
-import { validateConfig } from "next/dist/server/config-shared";
 import Stack from "../UI/Stack/Stack";
 import classes from "./Setting.module.css";
 import CheckBoxGroup from "../UI/CheckBoxGroup/CheckBoxGroup";
 import DropDown from "../UI/DropDown/DropDown";
-import { wordByWordLocale, translators, defaultAuthors } from "@/model/const";
+import { translators, defaultAuthors } from "@/model/const";
+import useDispatch from "@/hooks/use-Dispatch";
+import { CONTENT_TYPE_DATA, LOCAL_DATA, W_DISPLAY_DATA } from "@/model/const";
 
 const Setting = (props) => {
-  const { state, dispatch } = useContext(AppContext);
-  let readerPreferences = state["readingPreferencesN"];
-  let readerPref = readerPreferences["readingPreference"];
-  let translator = readerPreferences["readingPreferenceTranslator"];
-  let contentType = readerPreferences["wordByWordContentType"];
-  let displayType = readerPreferences["wordByWordDisplay"];
-  let lang = readerPreferences["wordByWordLocale"];
-  let theme = readerPreferences[""];
-  let readerStyles = state["gitaReaderStyles"];
-  let fontType = readerStyles["gitaFont"];
+  const {
+    setReaderPref,
+    setReaderStyle,
+    fontType,
+    contentType,
+    wordByWordLocale,
+    displayType,
+    translator,
+    lang,
+  } = useDispatch();
+
   let fontDescription = fontToggleBtx.find((font, _) => {
     return font["value"] === fontType;
   });
 
   const onItemChangeListener = (value) => {
-    readerStyles["gitaFont"] = value;
-    dispatch({
-      type: "ADD",
-      key: "gitaReaderStyles",
-      payload: { ...readerStyles },
-    });
+    setReaderStyle("gitaFont", value);
   };
 
   const filterTranslatorByLang = () => {
@@ -52,39 +48,8 @@ const Setting = (props) => {
     })["description"];
   };
 
-  const onLangChange = (value) => {
-    readerPreferences["wordByWordLocale"] = value;
-    readerPreferences["readingPreferenceTranslator"] = defaultAuthors[value];
-    dispatch({
-      type: "ADD",
-      key: "readingPreferencesN",
-      payload: { ...readerPreferences },
-    });
-  };
-
-  const onTranslatorChange = (value) => {
-    readerPreferences["readingPreferenceTranslator"] = value;
-    dispatch({
-      type: "ADD",
-      key: "readingPreferencesN",
-      payload: { ...readerPreferences },
-    });
-  };
-
-  let isExist = (checkedItem) => {
-    return contentType.find((value) => value === checkedItem);
-  };
-
-  const onCheckBoxChange = (value) => {
-    //readerPreferences["wordByWordDisplay"] = [...displayType, value];
-    console.log("Setting -->", value);
-    readerPreferences["wordByWordContentType"] = [...value];
-
-    dispatch({
-      type: "ADD",
-      key: "readingPreferencesN",
-      payload: { ...readerPreferences },
-    });
+  const readerPrefListener = (key, value) => {
+    setReaderPref(key, value);
   };
 
   return (
@@ -110,10 +75,13 @@ const Setting = (props) => {
         <Stack>
           <h3 className={`${classes.title}`}>word by word</h3>
           <Group>
-            {/* <CheckBoxGroup
-              defaultValue={readerPreferences["wordByWordContentType"]}
-              onChange={onCheckBoxChange}
-            /> */}
+            <CheckBoxGroup
+              defaultValue={contentType}
+              data={CONTENT_TYPE_DATA}
+              onChange={(value) => {
+                readerPrefListener("wordByWordContentType", value);
+              }}
+            />
           </Group>
           <Group posV="center" posH="center">
             <p className={`${classes.text}`}>
@@ -127,10 +95,24 @@ const Setting = (props) => {
         <Stack>
           <h3 className={`${classes.title}`}>translation language</h3>
           <DropDown
-            data={wordByWordLocale}
+            data={LOCAL_DATA}
             defaultValue={lang}
-            onChange={onLangChange}
+            onChange={(value) => {
+              readerPrefListener("wordByWordLocale", value);
+              readerPrefListener(
+                "readingPreferenceTranslator",
+                defaultAuthors[value]
+              );
+            }}
           />
+          {/* This Advance features will be added later
+           <CheckBoxGroup
+            defaultValue={displayType}
+            data={W_DISPLAY_DATA}
+            onChange={(value) => {
+              readerPrefListener("wordByWordDisplay", value);
+            }}
+          /> */}
           <Group posV="center" posH="center">
             <p className={`${classes.text}`}>
               Word by word translation source : partly web and majority of party
@@ -143,7 +125,9 @@ const Setting = (props) => {
           <DropDown
             data={filterTranslatorByLang()}
             defaultValue={translator}
-            onChange={onTranslatorChange}
+            onChange={(value) => {
+              readerPrefListener("readingPreferenceTranslator", value);
+            }}
           />
           <Group posV="center" posH="center">
             <p className={`${classes.text}`}>{getTranslatorDescription()}</p>

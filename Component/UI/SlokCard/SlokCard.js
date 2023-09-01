@@ -19,8 +19,6 @@ const SlokCard = forwardRef(
     },
     ref
   ) => {
-    let wordMeaning = true;
-
     let verse = slokNumber / 10 < 1 ? "0" + slokNumber : slokNumber;
 
     const onClickPlay = () => {
@@ -92,10 +90,8 @@ const SlokCard = forwardRef(
                 : `${classes.content_container}`
             }
           >
-            <div className={`${classes.div_with_sloak}`}>
-              {true ? mergeLines() : newLine(slok)}
-            </div>
-            {readerPref === "translation" && wordMeaning && (
+            <div className={`${classes.div_with_sloak}`}>{mergeLines()}</div>
+            {readerPref === "translation" && slokMeaning !== "" && (
               <div className={`${classes.div_with_header}`}>
                 <h3>word meanings</h3>
                 <div>{newLine(slokMeaning)}</div>

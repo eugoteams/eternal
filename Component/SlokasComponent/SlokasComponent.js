@@ -1,31 +1,25 @@
 /** @format */
 
-import React, { useContext, useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./SlokasComponent.module.css";
 import usePerfomanceHandler from "@/hooks/use-PerfomanceHandler";
-import { AppContext } from "@/sotre/store";
 import SlokCard from "../UI/SlokCard/SlokCard";
 import { GITA_CH, readingPrefSwitch } from "@/model/const";
 import AudioComponent from "../UI/AudioComponent/AudioComponent";
 import Switch from "../UI/Switch/Switch";
 import { useRouter } from "next/router";
-import AudioTest from "../AudioTest/AudioTest";
+import useDispatch from "@/hooks/use-Dispatch";
 
 const SlokasComponent = ({ chapter }) => {
-  const { state, dispatch } = useContext(AppContext);
   const [data, setData] = useState([]);
   const router = useRouter();
-  //let data = state["data"];
-  let readingPref = state["readingPreferencesN"];
-  let translator = readingPref["readingPreferenceTranslator"];
-  let lang = readingPref["wordByWordLocale"];
-  let readerPref = readingPref["readingPreference"];
-  let chapterDetail = state["chapters"][chapter - 1];
-  let refHookArray = [];
-
-  //Player track state
   const [trackId, setTrackId] = useState(0);
   const { getData } = usePerfomanceHandler();
+  const { translator, lang, readerPref, chapters, contentType, setReaderPref } =
+    useDispatch();
+  let chapterDetail = chapters[chapter - 1];
+  let refHookArray = [];
+
   //Smooth Scrolling
   const selectSloak = (sloakNum) => {
     refHookArray[sloakNum - 1].current.scrollIntoView({ behavior: "smooth" });
@@ -56,6 +50,7 @@ const SlokasComponent = ({ chapter }) => {
     const { chapterNumber, slokNumber } = payload;
     setTrackId((prevState) => slokNumber);
   };
+
   const onTrackPlayEndedListener = () => {
     if (true && trackId < data.length) {
       setTrackId((prevState) => prevState + 1);
@@ -82,19 +77,13 @@ const SlokasComponent = ({ chapter }) => {
   };
 
   const onItemSelectListener = (item) => {
-    readingPref["readingPreference"] = item;
-    dispatch({
-      type: "ADD",
-      key: "readingPreferencesN",
-      payload: { ...readingPref },
-    });
+    setReaderPref("readingPreference", item);
   };
 
   const onClickBack = () => {
     router.push("/chapters");
   };
 
-  //console.log(translator, lang, data[0]);
   return (
     <React.Fragment>
       <main>
@@ -104,6 +93,11 @@ const SlokasComponent = ({ chapter }) => {
             itemSelected={readerPref}
             onItemChange={onItemSelectListener}
           />
+        </section>
+        <section>
+          {contentType.map((item, _) => {
+            return <span key={`${contentType}_${item}`}>{item}</span>;
+          })}
         </section>
         <section className={`${classes.container}`}>
           <section>
@@ -119,8 +113,14 @@ const SlokasComponent = ({ chapter }) => {
                 refHookArray.push(refToSlokCard);
                 let verse = slokObj["verse"];
                 let slok = slokObj["slok"];
-                let slokTransliteration = slokObj["transliteration"];
-                let slokMeaning = slokObj["word_meanings"];
+                let slokTransliteration = contentType.includes(
+                  "transliteration"
+                )
+                  ? slokObj["transliteration"]
+                  : "";
+                let slokMeaning = contentType.includes("translation")
+                  ? slokObj["word_meanings"]
+                  : "";
                 let slokTranslation = slokObj[translator][lang];
 
                 return (

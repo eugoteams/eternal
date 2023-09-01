@@ -4,34 +4,26 @@ import React, { useEffect, useState } from "react";
 import classes from "./CheckBoxGroup.module.css";
 import Stack from "../Stack/Stack";
 
-const CheckBoxGroup = ({ defaultValue, onChange }) => {
-  const checkboxes = ["translation", "transliteration"];
-  const [checked, setchecked] = useState([]);
-
+const CheckBoxGroup = ({ defaultValue, onChange, data }) => {
   const checkBoxListener = (e) => {
-    var updatedList = [...checked];
+    var updatedList = [...defaultValue];
     if (e.target.checked) {
-      updatedList = [...checked, e.target.value];
+      updatedList = [...defaultValue, e.target.value];
     } else {
-      updatedList.splice(checked.indexOf(e.target.value), 1);
+      updatedList.splice(defaultValue.indexOf(e.target.value), 1);
     }
-    setchecked(updatedList);
+    onChange(updatedList);
   };
-
-  useEffect(() => {
-    console.log("Compoenent loaded");
-    console.log("dfv", defaultValue);
-  }, []);
-
-  useEffect(() => {
-    onChange(checked);
-  }, [checked]);
-  console.log(checked);
-
   return (
     <React.Fragment>
       <Stack>
-        {checkboxes.map((checkbox, index) => {
+        {data.map((checkbox, index) => {
+          console.log(
+            defaultValue,
+            checkbox,
+            defaultValue.includes(checkbox),
+            checkbox
+          );
           return (
             <label
               key={`${checkbox}_${index}`}
@@ -43,6 +35,7 @@ const CheckBoxGroup = ({ defaultValue, onChange }) => {
                 name={checkbox}
                 value={checkbox}
                 onChange={checkBoxListener}
+                checked={defaultValue.includes(checkbox)}
               />
               <span> {checkbox}</span>
             </label>

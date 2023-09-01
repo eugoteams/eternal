@@ -17,6 +17,8 @@ const reducer = (state, action) => {
       return { ...state };
     case "R_STATE":
       return { ...action.payload };
+    case "ADD_R":
+      return { ...action.payload };
     default:
       console.log("Test", action);
       break;
@@ -32,7 +34,6 @@ const StoreProvider = (props) => {
   useEffect(() => {
     if (typeof window !== undefined && window.localStorage) {
       let dataInStorage = getFromStorage(PERSIST_SETTING);
-      // console.log("use Effect Store .. -->", dataInStorage);
       if (dataInStorage) {
         dispatch({ type: "R_STATE", payload: dataInStorage });
       }
@@ -51,7 +52,6 @@ const StoreProvider = (props) => {
   }, []);
 
   useEffect(() => {
-    console.log("sate updated");
     if (client) {
       saveToStorage(state, PERSIST_SETTING);
     }
