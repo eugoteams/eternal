@@ -18,6 +18,7 @@ const AudioComponent = ({
     optMenu: false,
     playbackRate: 1,
     playerClosed: false,
+    mute: false,
   });
 
   let playbackRate = [
@@ -130,6 +131,11 @@ const AudioComponent = ({
     onPlayerPrevTrack();
   };
 
+  const onCanPlayListener = (e) => {
+    console.log("onCanPlayListener");
+    playerStateManipulator("mute", false);
+  };
+
   /** Track ID  */
   useEffect(() => {
     console.log("AudioComponenet", trackId);
@@ -154,6 +160,8 @@ const AudioComponent = ({
             onEnded={onPlayerPlayEndedListener}
             preload="metadata"
             onLoadedMetadata={onLoadMetaDataListener}
+            onCanPlay={onCanPlayListener}
+            muted={playerState["mute"]}
           ></audio>
           <div className={`${classes.container}`}>
             <div>

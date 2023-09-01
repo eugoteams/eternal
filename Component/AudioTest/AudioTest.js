@@ -1,19 +1,29 @@
 /** @format */
 
-import { Play } from "lucide-react";
-import React, { useEffect, useState } from "react";
-import ReactPlayer from "react-player";
+import dynamic from "next/dynamic";
+import React, { useEffect, useRef, useState } from "react";
 
-const AudioTest = ({ trackId }) => {
+const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
+
+const AudioTest = ({ trackId, onTrackPlayEnded }) => {
   const [play, setPlay] = useState(false);
+  let ref = useRef();
+  console.log(trackId);
   useEffect(() => {
     if (trackId > 0) {
       setPlay((prevState) => !prevState);
+      console.log(ref.current);
     }
   }, [trackId]);
   return (
     <React.Fragment>
-      <ReactPlayer url={`/1/${trackId > 0 && trackId}.mp3`} playing={play} />
+      <ReactPlayer
+        ref={ref}
+        url={`/1/${trackId > 0 && trackId}.mp3`}
+        playing={play}
+        onEnded={onTrackPlayEnded}
+        controls
+      />
     </React.Fragment>
   );
 };

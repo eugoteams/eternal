@@ -140,14 +140,17 @@ const SlokasComponent = ({ chapter }) => {
               })}
           </section>
         </section>
-        <AudioTest trackId={trackId} />
-        {/* <AudioComponent
+        {/* <AudioTest
+          trackId={trackId}
+          onTrackPlayEnded={onTrackPlayEndedListener}
+        /> */}
+        <AudioComponent
           trackId={trackId}
           chapter={chapter}
           onTrackPlayEnded={onTrackPlayEndedListener}
           onPlayerNextTrack={onPlayerNextTrackListener}
           onPlayerPrevTrack={onPlayerPrevTrackListener}
-        /> */}
+        />
       </main>
     </React.Fragment>
   );
