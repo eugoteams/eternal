@@ -18,7 +18,7 @@ const AudioComponent = ({
     optMenu: false,
     playbackRate: 1,
     playerClosed: false,
-    mute: false,
+    mute: true,
   });
 
   let playbackRate = [
@@ -60,13 +60,13 @@ const AudioComponent = ({
                   // Automatic playback started!
                   // Show playing UI.
                   console.log("Change Playe");
-                  prevState["mute"] = true;
+                  prevState["mute"] = false;
                 })
                 .catch((error) => {
                   // Auto-play was prevented
                   // Show paused UI.
                   //console.log("error", error);
-                  prevState["mute"] = false;
+                  prevState["mute"] = true;
                   prevState["play"] = true;
                 });
             }
