@@ -8,10 +8,13 @@ import SlokCard from "../UI/SlokCard/SlokCard";
 import { GITA_CH, readingPrefSwitch } from "@/model/const";
 import AudioComponent from "../UI/AudioComponent/AudioComponent";
 import Switch from "../UI/Switch/Switch";
+import { useRouter } from "next/router";
+import AudioTest from "../AudioTest/AudioTest";
 
 const SlokasComponent = ({ chapter }) => {
   const { state, dispatch } = useContext(AppContext);
   const [data, setData] = useState([]);
+  const router = useRouter();
   //let data = state["data"];
   let readingPref = state["readingPreferencesN"];
   let translator = readingPref["readingPreferenceTranslator"];
@@ -87,6 +90,10 @@ const SlokasComponent = ({ chapter }) => {
     });
   };
 
+  const onClickBack = () => {
+    router.push("/chapters");
+  };
+
   //console.log(translator, lang, data[0]);
   return (
     <React.Fragment>
@@ -99,39 +106,48 @@ const SlokasComponent = ({ chapter }) => {
           />
         </section>
         <section className={`${classes.container}`}>
-          {data.length > 0 &&
-            data.map((slokObj, index) => {
-              let refToSlokCard = React.createRef();
-              refHookArray.push(refToSlokCard);
-              let verse = slokObj["verse"];
-              let slok = slokObj["slok"];
-              let slokTransliteration = slokObj["transliteration"];
-              let slokMeaning = slokObj["word_meanings"];
-              let slokTranslation = slokObj[translator][lang];
+          <section>
+            <span className={`${classes.back_bt}`} onClick={onClickBack}>
+              back
+            </span>
+          </section>
 
-              return (
-                <SlokCard
-                  ref={refToSlokCard}
-                  key={verse}
-                  chapterNumber={chapter}
-                  slokNumber={verse}
-                  slok={slok}
-                  slokTransliteration={slokTransliteration}
-                  slokMeaning={slokMeaning}
-                  slokTranslation={slokTranslation}
-                  readerPref={readerPref}
-                  onPlayBtClick={onPlayBtClickListener}
-                />
-              );
-            })}
+          <section>
+            {data.length > 0 &&
+              data.map((slokObj, index) => {
+                let refToSlokCard = React.createRef();
+                refHookArray.push(refToSlokCard);
+                let verse = slokObj["verse"];
+                let slok = slokObj["slok"];
+                let slokTransliteration = slokObj["transliteration"];
+                let slokMeaning = slokObj["word_meanings"];
+                let slokTranslation = slokObj[translator][lang];
+
+                return (
+                  <SlokCard
+                    ref={refToSlokCard}
+                    key={verse}
+                    chapterNumber={chapter}
+                    slokNumber={verse}
+                    slok={slok}
+                    slokTransliteration={slokTransliteration}
+                    slokMeaning={slokMeaning}
+                    slokTranslation={slokTranslation}
+                    readerPref={readerPref}
+                    onPlayBtClick={onPlayBtClickListener}
+                  />
+                );
+              })}
+          </section>
         </section>
-        <AudioComponent
+        <AudioTest trackId={trackId} />
+        {/* <AudioComponent
           trackId={trackId}
           chapter={chapter}
           onTrackPlayEnded={onTrackPlayEndedListener}
           onPlayerNextTrack={onPlayerNextTrackListener}
           onPlayerPrevTrack={onPlayerPrevTrackListener}
-        />
+        /> */}
       </main>
     </React.Fragment>
   );

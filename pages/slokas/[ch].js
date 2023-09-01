@@ -1,8 +1,7 @@
 /** @format */
 
-import React, { useContext } from "react";
+import React from "react";
 import SlokasComponent from "@/Component/SlokasComponent/SlokasComponent";
-import { AppContext } from "@/sotre/store";
 
 const Chapter = (props) => {
   let chapter = props.chapterNumber;

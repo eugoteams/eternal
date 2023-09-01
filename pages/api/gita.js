@@ -25,7 +25,6 @@ export default async function handler(req, res) {
         break;
       case chapter && !slok:
         fileOpt(`chapter_${chapter}`, undefined, false).then((chapter) => {
-          console.log("test", chapter.length);
           res.status(200).json({ eternalTruth: chapter });
         });
         break;
