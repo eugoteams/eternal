@@ -9,14 +9,36 @@ import AudioComponent from "../UI/AudioComponent/AudioComponent";
 import Switch from "../UI/Switch/Switch";
 import { useRouter } from "next/router";
 import useDispatch from "@/hooks/use-Dispatch";
+import Layout from "../Layout/Layout";
+import Stack from "../UI/Stack/Stack";
+import useHelper from "@/hooks/use-Helper";
+import {
+  ArrowLeft,
+  BackpackIcon,
+  BadgeCheck,
+  ChevronLeft,
+  Play,
+} from "lucide-react";
+import Grid from "../UI/Grid/Grid";
+import IconHolder from "../UI/IconHolder/IconHolder";
 
 const SlokasComponent = ({ chapter }) => {
   const [data, setData] = useState([]);
   const router = useRouter();
   const [trackId, setTrackId] = useState(0);
   const { getData } = usePerfomanceHandler();
-  const { translator, lang, readerPref, chapters, contentType, setReaderPref } =
-    useDispatch();
+  const { getTranslator } = useHelper();
+  const {
+    translator,
+    lang,
+    readerPref,
+    chapters,
+    contentType,
+    fontType,
+    sideNavVisible,
+    setReaderPref,
+  } = useDispatch();
+
   let chapterDetail = chapters[chapter - 1];
   let refHookArray = [];
 
@@ -40,6 +62,11 @@ const SlokasComponent = ({ chapter }) => {
       setData((prevState) => response);
     });
   };
+
+  //Load component on chapter change
+  // useEffect(() => {
+  //   fetchData();
+  // }, [chapter, sideNavVisible]);
 
   //OnComponentLoad.
   useEffect(() => {
@@ -72,7 +99,7 @@ const SlokasComponent = ({ chapter }) => {
   };
 
   const onAutoPlayClickListener = () => {
-    setTrackId((prevState) => 0);
+    // setTrackId((prevState) => 0);
     onTrackPlayEndedListener();
   };
 
@@ -86,68 +113,90 @@ const SlokasComponent = ({ chapter }) => {
 
   return (
     <React.Fragment>
-      <main>
-        <section>
-          <Switch
-            toggleButton={readingPrefSwitch}
-            itemSelected={readerPref}
-            onItemChange={onItemSelectListener}
+      <Layout>
+        <main
+          style={{ fontFamily: `${fontType}` }}
+          className={`${classes.root_main}`}
+        >
+          <section>
+            <div className={`${classes.back_bt}`} onClick={onClickBack}>
+              <ChevronLeft
+                style={{ textAlign: "center" }}
+                className={`${classes.icon}`}
+              />
+              <span>back</span>
+            </div>
+          </section>
+          <section>
+            <Switch
+              toggleButton={readingPrefSwitch}
+              itemSelected={readerPref}
+              onItemChange={onItemSelectListener}
+              size="md"
+            />
+          </section>
+          <section className={`${classes.translator_section}`}>
+            <div className={`${classes.translator_name}`}>
+              <Stack>
+                <span>translation by</span>
+                <span>{getTranslator(translator)["label"]}</span>
+              </Stack>
+            </div>
+
+            <div
+              className={`${classes.play_button}`}
+              onClick={onAutoPlayClickListener}
+            >
+              <Play size={15} color="#3b5bdb" strokeWidth={3} />
+              <span>play audio</span>
+            </div>
+          </section>
+
+          <section className={`${classes.container}`}>
+            <Stack>
+              {data.length > 0 &&
+                data.map((slokObj, index) => {
+                  let refToSlokCard = React.createRef();
+                  refHookArray.push(refToSlokCard);
+                  let verse = slokObj["verse"];
+                  let slok = slokObj["slok"];
+                  let slokTransliteration = contentType.includes(
+                    "transliteration"
+                  )
+                    ? slokObj["transliteration"]
+                    : "";
+                  let slokMeaning = contentType.includes("translation")
+                    ? slokObj["word_meanings"]
+                    : "";
+                  let slokTranslation = slokObj[translator][lang];
+
+                  return (
+                    <SlokCard
+                      ref={refToSlokCard}
+                      key={verse}
+                      chapterNumber={chapter}
+                      slokNumber={verse}
+                      slok={slok}
+                      slokTransliteration={slokTransliteration}
+                      slokMeaning={slokMeaning}
+                      slokTranslation={slokTranslation}
+                      readerPref={readerPref}
+                      onPlayBtClick={onPlayBtClickListener}
+                    />
+                  );
+                })}
+            </Stack>
+          </section>
+
+          <AudioComponent
+            trackId={trackId}
+            chapter={chapter}
+            onTrackPlayEnded={onTrackPlayEndedListener}
+            onPlayerNextTrack={onPlayerNextTrackListener}
+            onPlayerPrevTrack={onPlayerPrevTrackListener}
           />
-        </section>
-        <section>
-          {contentType.map((item, _) => {
-            return <span key={`${contentType}_${item}`}>{item}</span>;
-          })}
-        </section>
-        <section className={`${classes.container}`}>
-          <section>
-            <span className={`${classes.back_bt}`} onClick={onClickBack}>
-              back
-            </span>
-          </section>
-
-          <section>
-            {data.length > 0 &&
-              data.map((slokObj, index) => {
-                let refToSlokCard = React.createRef();
-                refHookArray.push(refToSlokCard);
-                let verse = slokObj["verse"];
-                let slok = slokObj["slok"];
-                let slokTransliteration = contentType.includes(
-                  "transliteration"
-                )
-                  ? slokObj["transliteration"]
-                  : "";
-                let slokMeaning = contentType.includes("translation")
-                  ? slokObj["word_meanings"]
-                  : "";
-                let slokTranslation = slokObj[translator][lang];
-
-                return (
-                  <SlokCard
-                    ref={refToSlokCard}
-                    key={verse}
-                    chapterNumber={chapter}
-                    slokNumber={verse}
-                    slok={slok}
-                    slokTransliteration={slokTransliteration}
-                    slokMeaning={slokMeaning}
-                    slokTranslation={slokTranslation}
-                    readerPref={readerPref}
-                    onPlayBtClick={onPlayBtClickListener}
-                  />
-                );
-              })}
-          </section>
-        </section>
-        <AudioComponent
-          trackId={trackId}
-          chapter={chapter}
-          onTrackPlayEnded={onTrackPlayEndedListener}
-          onPlayerNextTrack={onPlayerNextTrackListener}
-          onPlayerPrevTrack={onPlayerPrevTrackListener}
-        />
-      </main>
+        </main>
+      </Layout>
     </React.Fragment>
   );
 };

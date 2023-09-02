@@ -53,6 +53,11 @@ export const defaultSetting = {
   fontSize: { sloak: 1.5, translation: 1.5 },
   fontType: "",
   chapters: [],
+  navigation: {
+    chapter: "Arjuna's Dilemma",
+    sloks: 0,
+    navigationIsVisible: false,
+  },
   gitaReaderStyles: { gitaFont: fontToggleBtx[1]["value"] },
   readingPreferencesN: {
     readingPreference: "translation",
@@ -62,6 +67,81 @@ export const defaultSetting = {
     readingPreferenceTranslator: defaultAuthors["et"],
   },
 };
+
+export const CHAPTERS_DROP_DOWN = [
+  {
+    label: "Arjuna's Dilemma",
+    value: "Arjuna's Dilemma",
+  },
+  {
+    label: "Sankhya Yoga",
+    value: "Sankhya Yoga",
+  },
+  {
+    label: "Karma Yoga",
+    value: "Karma Yoga",
+  },
+  {
+    label: "Jnana Karma Sanyasa Yoga",
+    value: "Jnana Karma Sanyasa Yoga",
+  },
+  {
+    label: "Karma Sanyasa Yoga",
+    value: "Karma Sanyasa Yoga",
+  },
+  {
+    label: "Dhyana Yoga",
+    value: "Dhyana Yoga",
+  },
+  {
+    label: "Gyaan Vigyana Yoga",
+    value: "Gyaan Vigyana Yoga",
+  },
+  {
+    label: "Akshara Brahma Yoga",
+    value: "Akshara Brahma Yoga",
+  },
+  {
+    label: "Raja Vidya Yoga",
+    value: "Raja Vidya Yoga",
+  },
+  {
+    label: "Vibhooti Yoga",
+    value: "Vibhooti Yoga",
+  },
+  {
+    label: "Vishwaroopa Darshana Yoga",
+    value: "Vishwaroopa Darshana Yoga",
+  },
+  {
+    label: "Bhakti Yoga",
+    value: "Bhakti Yoga",
+  },
+  {
+    label: "Ksetra Ksetrajna Vibhaaga Yoga",
+    value: "Ksetra Ksetrajna Vibhaaga Yoga",
+  },
+  {
+    label: "Gunatraya Vibhaga Yoga",
+    value: "Gunatraya Vibhaga Yoga",
+  },
+  {
+    label: "Purushottama Yoga",
+    value: "Purushottama Yoga",
+  },
+  {
+    label: "Daivasura Sampad Vibhaga Yoga",
+    value: "Daivasura Sampad Vibhaga Yoga",
+  },
+  {
+    label: "Sraddhatraya Vibhaga Yoga",
+    value: "Sraddhatraya Vibhaga Yoga",
+  },
+  {
+    label: "Moksha Sanyaas Yoga",
+    value: "Moksha Sanyaas Yoga",
+  },
+];
 
 export const translators = [
   {

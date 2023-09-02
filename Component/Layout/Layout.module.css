@@ -1,0 +1,21 @@
+/** @format */
+
+.layout {
+  width: 95rem;
+  padding: 1rem;
+  margin: 1rem auto;
+}
+
+/*Layout breakdown before table View- 768px*/
+@media (max-width: 58em) {
+  .layout {
+    width: 75rem;
+  }
+}
+
+/*Layout breakdown before Mobile Larger View -425px*/
+@media (max-width: 47em) {
+  .layout {
+    width: 100vw;
+  }
+}

@@ -7,6 +7,7 @@ const useDispatch = () => {
   const { state, dispatch } = useContext(AppContext);
   let readerPreferences = state["readingPreferencesN"];
   let readerStyles = state["gitaReaderStyles"];
+  let navigation = state["navigation"];
   let readerPref = readerPreferences["readingPreference"];
   let translator = readerPreferences["readingPreferenceTranslator"];
   let contentType = readerPreferences["wordByWordContentType"];
@@ -15,6 +16,9 @@ const useDispatch = () => {
   let theme = readerPreferences[""];
   let fontType = readerStyles["gitaFont"];
   let chapters = state["chapters"];
+  let chapterNavigated = navigation["chapter"];
+  let sideNavVisible = navigation["navigationIsVisible"];
+  let sloks = navigation["sloks"];
 
   const setReaderPref = (key, value) => {
     readerPreferences[key] = value;
@@ -34,9 +38,18 @@ const useDispatch = () => {
     });
   };
 
+  const setNavigation = (key, value) => {
+    navigation[key] = value;
+    dispatch({
+      type: "ADD_R",
+      payload: { ...state },
+    });
+  };
+
   return {
     setReaderPref,
     setReaderStyle,
+    setNavigation,
     readerPref,
     translator,
     contentType,
@@ -46,6 +59,9 @@ const useDispatch = () => {
     readerStyles,
     fontType,
     chapters,
+    chapterNavigated,
+    sloks,
+    sideNavVisible,
   };
 };
 

@@ -19,7 +19,6 @@ const Stack = (props) => {
           flexDirection: "column",
           alignItems: "flex-start",
           padding: "0.5rem",
-          border: "1px solid red",
           marginTop: "1rem",
         }}
       >

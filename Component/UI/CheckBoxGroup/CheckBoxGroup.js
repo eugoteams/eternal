@@ -18,12 +18,6 @@ const CheckBoxGroup = ({ defaultValue, onChange, data }) => {
     <React.Fragment>
       <Stack>
         {data.map((checkbox, index) => {
-          console.log(
-            defaultValue,
-            checkbox,
-            defaultValue.includes(checkbox),
-            checkbox
-          );
           return (
             <label
               key={`${checkbox}_${index}`}

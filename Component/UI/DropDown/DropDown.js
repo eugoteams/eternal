@@ -8,6 +8,7 @@ const DropDown = ({ data, defaultValue, onChange }) => {
   const valueSelected = data.find((item) => item.value === defaultValue)[
     "label"
   ];
+
   const closeDropDown = (event) => {
     setDropDown((prevState) => !prevState);
   };

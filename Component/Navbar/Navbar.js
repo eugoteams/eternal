@@ -9,6 +9,7 @@ import NavLinkComponent from "./NavLinkComponent/NavLinkComponent";
 import Setting from "../Setting/Setting";
 
 import { ICON_COLOR, ICON_SIZE } from "@/model/const";
+import { Menu, Settings } from "lucide-react";
 
 const Navbar = (props) => {
   const [drawerState, setDrawerSate] = useState("");
@@ -69,7 +70,7 @@ const Navbar = (props) => {
           >
             <Group posV={"center"} posH={"flex-start"}>
               <IconHolder>
-                {/* <GiHamburgerMenu className={`${classes.menu_icon}`} /> */}m
+                <Menu />
               </IconHolder>
             </Group>
           </div>
@@ -83,7 +84,7 @@ const Navbar = (props) => {
             }}
           >
             <IconHolder>
-              S{/* <Settings size={ICON_SIZE} color={ICON_COLOR} /> */}
+              <Settings />
             </IconHolder>
           </div>
         </div>
