@@ -10,6 +10,7 @@ const AudioComponent = ({
   onTrackPlayEnded,
   onPlayerNextTrack,
   onPlayerPrevTrack,
+  onBrowserError,
 }) => {
   let audioRef = useRef();
   const [playerState, setState] = useState({
@@ -69,6 +70,7 @@ const AudioComponent = ({
 
                 if (error.name === "NotAllowedError") {
                   console.log("PopUp");
+                  onBrowserError();
                   alert("NotAllowedError");
                 }
                 return;
