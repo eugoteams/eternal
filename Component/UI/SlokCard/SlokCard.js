@@ -4,6 +4,7 @@ import React, { forwardRef } from "react";
 import classes from "./SlokCard.module.css";
 import { ICON_COLOR, ICON_SIZE } from "@/model/const";
 import IconHolder from "../IconHolder/IconHolder";
+import { Play, Bookmark } from "lucide-react";
 
 const SlokCard = forwardRef(
   (
@@ -72,13 +73,13 @@ const SlokCard = forwardRef(
 
             <span onClick={onClickPlay}>
               <IconHolder>
-                p{/* <Play size={ICON_SIZE} color={ICON_COLOR} /> */}
+                <Play size={ICON_SIZE} color={ICON_COLOR} />
               </IconHolder>
             </span>
 
             <span>
               <IconHolder>
-                b{/* <Bookmark size={ICON_SIZE} color={ICON_COLOR} /> */}
+                <Bookmark size={ICON_SIZE} color={ICON_COLOR} />
               </IconHolder>
             </span>
           </div>

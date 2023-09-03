@@ -16,7 +16,7 @@ const useDispatch = () => {
   let theme = readerPreferences[""];
   let fontType = readerStyles["gitaFont"];
   let chapters = state["chapters"];
-  let chapterNavigated = navigation["chapter"];
+  // let chapterNavigated = navigation["chapter"];
   let sideNavVisible = navigation["navigationIsVisible"];
   let sloks = navigation["sloks"];
 
@@ -59,7 +59,7 @@ const useDispatch = () => {
     readerStyles,
     fontType,
     chapters,
-    chapterNavigated,
+    // chapterNavigated,
     sloks,
     sideNavVisible,
   };

@@ -75,7 +75,17 @@ const SlokasComponent = ({ chapter }) => {
 
   const onPlayBtClickListener = (payload) => {
     const { chapterNumber, slokNumber } = payload;
-    setTrackId((prevState) => slokNumber);
+    //  setTrackId((prevState) => slokNumber);
+    console.log("PlayButton clicked");
+    let audio = new Audio(
+      `http://commondatastorage.googleapis.com/codeskulptor-assets/Collision8-Bit.ogg`
+    );
+    audio.play();
+    setTimeout(() => {
+      audio.pause();
+      console.log("timeout & pause");
+      setTrackId((prevState) => slokNumber);
+    }, 1200);
   };
 
   const onTrackPlayEndedListener = () => {
