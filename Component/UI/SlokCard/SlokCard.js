@@ -71,7 +71,7 @@ const SlokCard = forwardRef(
               {chapterNumber}:<mark>{verse}</mark>
             </span>
 
-            <span onClick={onClickPlay}>
+            <span onClick={onClickPlay} onTouchStart={onClickPlay}>
               <IconHolder>
                 <Play size={ICON_SIZE} color={ICON_COLOR} />
               </IconHolder>
