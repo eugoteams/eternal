@@ -217,7 +217,7 @@ const AudioComponent = ({
               </div>
               <div>
                 {playerState["play"] ? (
-                  <span
+                  <div
                     onClick={(e) => {
                       console.log("onPause clicked");
                       playerStateManipulator("play", false);
@@ -226,19 +226,18 @@ const AudioComponent = ({
                     <IconHolder>
                       <Pause size={18} />
                     </IconHolder>
-                  </span>
+                  </div>
                 ) : (
-                  <span
+                  <div
                     onClick={(e) => {
                       console.log("Click Activated");
                       playerStateManipulator("play", true);
                     }}
-                    style={{ border: "1px solid red" }}
                   >
                     <IconHolder>
                       <Play size={18} />
                     </IconHolder>
-                  </span>
+                  </div>
                 )}
               </div>
               <div onClick={onClickForwardListener}>
