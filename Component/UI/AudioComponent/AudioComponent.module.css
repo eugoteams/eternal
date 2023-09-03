@@ -1,7 +1,7 @@
 /** @format */
 
 .container {
-  height: 6rem;
+  height: 8rem;
   padding-bottom: 2rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -13,12 +13,13 @@
   font-size: 1.5rem;
   font-weight: 700;
   font-family: sans-serif;
-  background-color: #dee2e6;
+  background-color: #91a7ff;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 2;
+
   -webkit-animation: scale-up-ver-bottom 0.4s
     cubic-bezier(0.39, 0.575, 0.565, 1) both;
   animation: scale-up-ver-bottom 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
@@ -30,7 +31,7 @@
   height: 100%;
 }
 
-.icons {
+/* .icons {
   font-size: 1.5rem;
   font-weight: 800;
   cursor: pointer;
@@ -38,7 +39,7 @@
 
 .icons:hover {
   color: red;
-}
+} */
 
 .controls {
   width: 25rem;

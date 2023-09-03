@@ -2,7 +2,16 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import classes from "./AudioComponent.module.css";
-import { AlignRightIcon } from "lucide-react";
+import {
+  AlignRightIcon,
+  MoreHorizontal,
+  Pause,
+  Play,
+  SkipBack,
+  SkipForward,
+  X,
+} from "lucide-react";
+import IconHolder from "../IconHolder/IconHolder";
 
 const AudioComponent = ({
   trackId,
@@ -196,19 +205,17 @@ const AudioComponent = ({
             </div>
             <div>{convertSecToMinutes(playerState["trackDurationPlayed"])}</div>
             <div className={`${classes.controls}`}>
-              <div
-                className={`${classes.icons} `}
-                onClick={(e) => playerStateManipulator("optMenu", true)}
-              >
-                <span>...</span>
+              <div onClick={(e) => playerStateManipulator("optMenu", true)}>
+                <IconHolder>
+                  <MoreHorizontal size={18} />
+                </IconHolder>
               </div>
-              <div
-                className={`${classes.icons}`}
-                onClick={onClickBackWardListener}
-              >
-                <span>fb</span>
+              <div onClick={onClickBackWardListener}>
+                <IconHolder>
+                  <SkipBack size={18} />
+                </IconHolder>
               </div>
-              <div className={`${classes.icons}`}>
+              <div>
                 {playerState["play"] ? (
                   <span
                     onClick={(e) => {
@@ -216,7 +223,9 @@ const AudioComponent = ({
                       playerStateManipulator("play", false);
                     }}
                   >
-                    pa
+                    <IconHolder>
+                      <Pause size={18} />
+                    </IconHolder>
                   </span>
                 ) : (
                   <span
@@ -226,21 +235,23 @@ const AudioComponent = ({
                     }}
                     style={{ border: "1px solid red" }}
                   >
-                    p
+                    <IconHolder>
+                      <Play size={18} />
+                    </IconHolder>
                   </span>
                 )}
               </div>
-              <div
-                className={`${classes.icons}`}
-                onClick={onClickForwardListener}
-              >
-                <span>fa</span>
+              <div onClick={onClickForwardListener}>
+                <IconHolder>
+                  <SkipForward size={18} />
+                </IconHolder>
               </div>
               <div
-                className={`${classes.icons}`}
                 onClick={(e) => playerStateManipulator("playerClosed", false)}
               >
-                <span>c</span>
+                <IconHolder>
+                  <X size={18} />
+                </IconHolder>
               </div>
             </div>
             <div>{convertSecToMinutes(playerState["trackDuration"])}</div>
