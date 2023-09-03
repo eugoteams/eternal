@@ -88,6 +88,11 @@ const SlokasComponent = ({ chapter }) => {
     }, 1200);
   };
 
+  const onBrowserErrorListener = () => {
+    setTrackId((prevState) => prevState);
+    alert("On Error Listener");
+  };
+
   const onTrackPlayEndedListener = () => {
     if (true && trackId < data.length) {
       setTrackId((prevState) => prevState + 1);
@@ -204,6 +209,7 @@ const SlokasComponent = ({ chapter }) => {
             onTrackPlayEnded={onTrackPlayEndedListener}
             onPlayerNextTrack={onPlayerNextTrackListener}
             onPlayerPrevTrack={onPlayerPrevTrackListener}
+            onBrowserError={onBrowserErrorListener}
           />
         </main>
       </Layout>

@@ -69,7 +69,7 @@ const AudioComponent = ({
 
                 if (error.name === "NotAllowedError") {
                   console.log("PopUp");
-                  alert("Browser Permission Denied");
+                  alert("NotAllowedError");
                 }
                 return;
               });
