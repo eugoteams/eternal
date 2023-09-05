@@ -22,6 +22,7 @@ const Navbar = (props) => {
             onClick={() => {
               onClickDrawerListener("close");
             }}
+            title={"menu"}
           >
             <NavLinkComponent
               breakPoint={"md"}
@@ -39,6 +40,7 @@ const Navbar = (props) => {
               onClickDrawerListener("close");
             }}
             position={"right"}
+            title={"setting"}
           >
             <Setting />
           </Drawer>

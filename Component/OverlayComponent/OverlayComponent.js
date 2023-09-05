@@ -5,7 +5,7 @@ import classes from "./OverlayComponent.module.css";
 import { X } from "lucide-react";
 
 const OverlayComponent = (props) => {
-  const { position = "left", onOverlayClickListener } = props;
+  const { position = "left", onOverlayClickListener, title } = props;
 
   return (
     <React.Fragment>
@@ -20,7 +20,7 @@ const OverlayComponent = (props) => {
           }`}
         >
           <div className={`${classes.overlay_content_box_header}`}>
-            <h3>setting</h3>
+            <h3>{title}</h3>
             <span
               onClick={onOverlayClickListener}
               style={{ marginTop: "0.5rem" }}
