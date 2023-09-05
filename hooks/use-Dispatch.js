@@ -2,14 +2,13 @@
 
 import { defaultSetting } from "@/model/const";
 import { AppContext } from "@/sotre/store";
-import { validateConfig } from "next/dist/server/config-shared";
+import { defaultAuthors, fontToggleBtx } from "@/model/const";
 import { useContext } from "react";
 
 const useDispatch = () => {
   const { state, dispatch, player, setPlayer } = useContext(AppContext);
   let readerPreferences = state["readingPreferencesN"];
   let readerStyles = state["gitaReaderStyles"];
-
   let navigation = state["navigation"];
   let readerPref = readerPreferences["readingPreference"];
   let translator = readerPreferences["readingPreferenceTranslator"];
@@ -54,7 +53,21 @@ const useDispatch = () => {
   const setDefaultSetting = () => {
     dispatch({
       type: "ADD_R",
-      payload: { ...defaultSetting },
+      payload: {
+        navigation: {
+          chapter: "Arjuna's Dilemma",
+          sloks: 0,
+          navigationIsVisible: false,
+        },
+        gitaReaderStyles: { gitaFont: fontToggleBtx[1]["value"] },
+        readingPreferencesN: {
+          readingPreference: "translation",
+          wordByWordLocale: "et",
+          wordByWordContentType: [],
+          wordByWordDisplay: [],
+          readingPreferenceTranslator: defaultAuthors["et"],
+        },
+      },
     });
   };
 

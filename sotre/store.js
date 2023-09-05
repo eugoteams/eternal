@@ -9,10 +9,8 @@ export const AppContext = React.createContext([]);
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "ADD_CH":
-      state["chapters"] = action.payload;
-      return { ...state };
     case "ADD_R":
+      console.log("payload", action.payload);
       return { ...action.payload };
     default:
       console.log("Test", action);
@@ -31,7 +29,6 @@ const StoreProvider = (props) => {
   useEffect(() => {
     if (typeof window !== undefined && window.localStorage) {
       let dataInStorage = getFromStorage(PERSIST_SETTING);
-      console.log("Entered in to useEffect of client");
       if (dataInStorage) {
         dispatch({ type: "ADD_R", payload: dataInStorage });
       } else {
