@@ -2,7 +2,7 @@
 
 import Navbar from "@/Component/Navbar/Navbar";
 import SlokHeader from "@/Component/SlokHeader/SlokHeader";
-import StoreProvider from "@/sotre/store";
+import StoreProvider from "@/store/store";
 import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }) {

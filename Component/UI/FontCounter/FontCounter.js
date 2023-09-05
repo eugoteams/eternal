@@ -4,7 +4,7 @@ import React, { useContext, useEffect, useState } from "react";
 import classes from "./FontCounter.module.css";
 import { DefaultContext } from "react-icons";
 import { BiMinus, BiPlus } from "react-icons/bi";
-import { AppContext } from "@/sotre/store";
+import { AppContext } from "@/store/store";
 
 const FontCounter = ({ datakey }) => {
   const { state, dispatch } = useContext(AppContext);

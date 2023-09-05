@@ -1,7 +1,7 @@
 /** @format */
 
 import { defaultSetting } from "@/model/const";
-import { AppContext } from "@/sotre/store";
+import { AppContext } from "@/store/store";
 import { defaultAuthors, fontToggleBtx } from "@/model/const";
 import { useContext } from "react";
 
