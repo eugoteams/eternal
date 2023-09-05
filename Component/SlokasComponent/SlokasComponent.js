@@ -13,6 +13,7 @@ import Layout from "../Layout/Layout";
 import Stack from "../UI/Stack/Stack";
 import useHelper from "@/hooks/use-Helper";
 import { ChevronLeft, Play } from "lucide-react";
+import Modal from "../UI/Modal/Modal";
 
 const SlokasComponent = ({ chapter }) => {
   const [data, setData] = useState([]);
@@ -32,7 +33,7 @@ const SlokasComponent = ({ chapter }) => {
     setPlayerState,
     setReaderPref,
   } = useDispatch();
-
+  const [error, setError] = useState("");
   let chapterDetail = chapters[chapter - 1];
   let refHookArray = [];
 
@@ -78,8 +79,9 @@ const SlokasComponent = ({ chapter }) => {
   }, [audioTagRef]);
 
   const onBrowserErrorListener = () => {
-    setTrackId((prevState) => prevState);
-    alert("On Error Listener");
+    setError(
+      (prevState) => "browser error audio player interuppted by browser"
+    );
   };
 
   const onTrackPlayEndedListener = () => {
@@ -113,6 +115,9 @@ const SlokasComponent = ({ chapter }) => {
 
   const onClickBack = () => {
     router.push("/chapters");
+  };
+  const onModalClickListener = () => {
+    setError((prevState) => "");
   };
 
   return (
@@ -200,6 +205,7 @@ const SlokasComponent = ({ chapter }) => {
             onPlayerPrevTrack={onPlayerPrevTrackListener}
             onBrowserError={onBrowserErrorListener}
           />
+          {error && <Modal message={error} onClick={onModalClickListener} />}
         </main>
       </Layout>
     </React.Fragment>
