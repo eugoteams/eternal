@@ -50,8 +50,6 @@ export const defaultAuthors = {
   sc: "sankar",
 };
 export const defaultSetting = {
-  fontSize: { sloak: 1.5, translation: 1.5 },
-  fontType: "",
   chapters: [],
   navigation: {
     chapter: "Arjuna's Dilemma",

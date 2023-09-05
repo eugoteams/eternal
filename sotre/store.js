@@ -12,11 +12,6 @@ const reducer = (state, action) => {
     case "ADD_CH":
       state["chapters"] = action.payload;
       return { ...state };
-    case "ADD":
-      state[action.key] = action.payload;
-      return { ...state };
-    case "R_STATE":
-      return { ...action.payload };
     case "ADD_R":
       return { ...action.payload };
     default:
@@ -30,12 +25,13 @@ const StoreProvider = (props) => {
   const { saveToStorage, getFromStorage } = useStorage();
   const [state, dispatch] = useReducer(reducer, defaultSetting);
   const [client, setClient] = useState(false);
+  const [player, setPlayer] = useState({ audioRef: "", isVisible: false });
 
   useEffect(() => {
     if (typeof window !== undefined && window.localStorage) {
       let dataInStorage = getFromStorage(PERSIST_SETTING);
       if (dataInStorage) {
-        dispatch({ type: "R_STATE", payload: dataInStorage });
+        dispatch({ type: "ADD_R", payload: dataInStorage });
       }
     }
   }, [client]);
@@ -58,7 +54,7 @@ const StoreProvider = (props) => {
   }, [state]);
 
   return (
-    <AppContext.Provider value={{ state, dispatch }}>
+    <AppContext.Provider value={{ state, dispatch, player, setPlayer }}>
       {props.children}
     </AppContext.Provider>
   );

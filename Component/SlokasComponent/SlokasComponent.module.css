@@ -36,7 +36,7 @@
   line-height: 1.5;
   text-transform: capitalize;
   display: flex;
-  align-items: center;
+  align-items: last baseline;
   justify-content: space-between;
   padding: 1rem;
 }
@@ -85,4 +85,20 @@
 .root_main > section:nth-child(4) {
   margin: 3rem auto;
   padding: 1.4rem;
+}
+
+/* Moabile Large Screen . */
+@media (max-width: 27em) {
+  .translator_section {
+    align-items: center;
+    font-size: 1.2rem;
+  }
+
+  .translator_name span:first-child {
+    font-size: 1.1rem;
+  }
+
+  .play_button > span {
+    font-size: 1.2rem;
+  }
 }

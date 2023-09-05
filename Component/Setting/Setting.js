@@ -10,12 +10,18 @@ import CheckBoxGroup from "../UI/CheckBoxGroup/CheckBoxGroup";
 import DropDown from "../UI/DropDown/DropDown";
 import { translators, defaultAuthors } from "@/model/const";
 import useDispatch from "@/hooks/use-Dispatch";
-import { CONTENT_TYPE_DATA, LOCAL_DATA, W_DISPLAY_DATA } from "@/model/const";
+import {
+  CONTENT_TYPE_DATA,
+  LOCAL_DATA,
+  W_DISPLAY_DATA,
+  defaultSetting,
+} from "@/model/const";
 
 const Setting = (props) => {
   const {
     setReaderPref,
     setReaderStyle,
+    setDefaultSetting,
     fontType,
     contentType,
     wordByWordLocale,
@@ -50,6 +56,10 @@ const Setting = (props) => {
 
   const readerPrefListener = (key, value) => {
     setReaderPref(key, value);
+  };
+
+  const resetTheSate = () => {
+    setDefaultSetting();
   };
 
   return (
@@ -135,7 +145,9 @@ const Setting = (props) => {
         </Stack>
         <Stack>
           <Group posV="center" posH="center">
-            <button className={`${classes.button}`}>reset settings</button>
+            <button className={`${classes.button}`} onClick={resetTheSate}>
+              reset settings
+            </button>
           </Group>
         </Stack>
       </aside>

@@ -1,9 +1,9 @@
 /** @format */
 
 import React, { useEffect, useRef, useState } from "react";
+import useDispatch from "@/hooks/use-Dispatch";
 import classes from "./AudioComponent.module.css";
 import {
-  AlignRightIcon,
   MoreHorizontal,
   Pause,
   Play,
@@ -42,7 +42,11 @@ const AudioComponent = ({
     "1.75",
     "2",
   ];
-
+  const {
+    audioTagRef, //It holds the refrenc to audio Tag,
+    isVisible,
+    setPlayerState,
+  } = useDispatch();
   const convertSecToMinutes = (time) => {
     let minutes = Math.floor(time / 60);
     let extraSeconds = Math.round(time % 60);
@@ -121,14 +125,8 @@ const AudioComponent = ({
           return { ...prevState };
         });
     }
-
-    // setState((prevState) => {
-
-    //   return { ...prevState };
-    // });
   };
 
-  //console.log("Play State", playerState["play"]);
   const onPlayerDurationUpdateListener = () => {
     let durationPlayed = audioRef.current.currentTime;
     playerStateManipulator("trackDurationPlayed", durationPlayed);
@@ -219,7 +217,6 @@ const AudioComponent = ({
                 {playerState["play"] ? (
                   <div
                     onClick={(e) => {
-                      console.log("onPause clicked");
                       playerStateManipulator("play", false);
                     }}
                   >
@@ -230,7 +227,6 @@ const AudioComponent = ({
                 ) : (
                   <div
                     onClick={(e) => {
-                      console.log("Click Activated");
                       playerStateManipulator("play", true);
                     }}
                   >
@@ -246,7 +242,9 @@ const AudioComponent = ({
                 </IconHolder>
               </div>
               <div
-                onClick={(e) => playerStateManipulator("playerClosed", false)}
+                onClick={(e) => {
+                  playerStateManipulator("playerClosed", false);
+                }}
               >
                 <IconHolder>
                   <X size={18} />

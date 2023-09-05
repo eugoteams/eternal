@@ -1,12 +1,15 @@
 /** @format */
 
+import { defaultSetting } from "@/model/const";
 import { AppContext } from "@/sotre/store";
+import { validateConfig } from "next/dist/server/config-shared";
 import { useContext } from "react";
 
 const useDispatch = () => {
-  const { state, dispatch } = useContext(AppContext);
+  const { state, dispatch, player, setPlayer } = useContext(AppContext);
   let readerPreferences = state["readingPreferencesN"];
   let readerStyles = state["gitaReaderStyles"];
+
   let navigation = state["navigation"];
   let readerPref = readerPreferences["readingPreference"];
   let translator = readerPreferences["readingPreferenceTranslator"];
@@ -19,6 +22,8 @@ const useDispatch = () => {
   // let chapterNavigated = navigation["chapter"];
   let sideNavVisible = navigation["navigationIsVisible"];
   let sloks = navigation["sloks"];
+  let audioTagRef = player["audioRef"];
+  let isVisible = player["isVisible"];
 
   const setReaderPref = (key, value) => {
     readerPreferences[key] = value;
@@ -46,10 +51,36 @@ const useDispatch = () => {
     });
   };
 
+  const setDefaultSetting = () => {
+    defaultSetting["chapters"] = state["chapters"];
+    dispatch({
+      type: "ADD_R",
+      payload: { ...defaultSetting },
+    });
+  };
+
+  // const setPlayer = (key, value) => {
+  //   player[key] = value;
+  //   dispatch({
+  //     type: "ADD_R",
+  //     payload: { ...state },
+  //   });
+  // };
+
+  const setPlayerState = (key, value) => {
+    player[key] = value;
+    setPlayer((prevState) => {
+      return { ...player };
+    });
+    console.log("Player State", player);
+  };
+
   return {
     setReaderPref,
     setReaderStyle,
     setNavigation,
+    setPlayerState,
+    setDefaultSetting,
     readerPref,
     translator,
     contentType,
@@ -62,6 +93,8 @@ const useDispatch = () => {
     // chapterNavigated,
     sloks,
     sideNavVisible,
+    audioTagRef, //It holds the refrenc to audio Tag,
+    isVisible, //on this state we will display / hide the player.
   };
 };
 

@@ -12,15 +12,7 @@ import useDispatch from "@/hooks/use-Dispatch";
 import Layout from "../Layout/Layout";
 import Stack from "../UI/Stack/Stack";
 import useHelper from "@/hooks/use-Helper";
-import {
-  ArrowLeft,
-  BackpackIcon,
-  BadgeCheck,
-  ChevronLeft,
-  Play,
-} from "lucide-react";
-import Grid from "../UI/Grid/Grid";
-import IconHolder from "../UI/IconHolder/IconHolder";
+import { ChevronLeft, Play } from "lucide-react";
 
 const SlokasComponent = ({ chapter }) => {
   const [data, setData] = useState([]);
@@ -35,7 +27,9 @@ const SlokasComponent = ({ chapter }) => {
     chapters,
     contentType,
     fontType,
-    sideNavVisible,
+    audioTagRef, //It holds the reference to audio Tag,
+    isVisible,
+    setPlayerState,
     setReaderPref,
   } = useDispatch();
 
@@ -75,18 +69,13 @@ const SlokasComponent = ({ chapter }) => {
 
   const onPlayBtClickListener = (payload) => {
     const { chapterNumber, slokNumber } = payload;
-    //  setTrackId((prevState) => slokNumber);
-    console.log("PlayButton clicked");
-    let audio = new Audio(
-      `http://commondatastorage.googleapis.com/codeskulptor-assets/Collision8-Bit.ogg`
-    );
-    audio.play();
-    setTimeout(() => {
-      audio.pause();
-      console.log("timeout & pause");
-      setTrackId((prevState) => slokNumber);
-    }, 1200);
+    setTrackId((prevState) => slokNumber);
   };
+
+  useEffect(() => {
+    console.log("AudioRef Tag ---> init", audioTagRef);
+    audioTagRef?.current?.play();
+  }, [audioTagRef]);
 
   const onBrowserErrorListener = () => {
     setTrackId((prevState) => prevState);
