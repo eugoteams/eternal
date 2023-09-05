@@ -5,9 +5,10 @@ import SlokasComponent from "@/Component/SlokasComponent/SlokasComponent";
 
 const Chapter = (props) => {
   let chapter = props.chapterNumber;
+  let content = props.content;
   return (
     <React.Fragment>
-      <SlokasComponent chapter={chapter} />
+      <SlokasComponent chapter={chapter} content={content} />
     </React.Fragment>
   );
 };
@@ -29,10 +30,15 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  let chapterNumber = context.params.ch;
   /** code is excuted in Server */
+  let chapterNumber = context.params.ch;
+  const path = require("path");
+  const fs = require("fs");
+  const subPath = `/pages/api/db_sorted/chapter_${chapterNumber}.json`;
+  let absoluteFilePath = path.join(process.cwd(), subPath);
+  let content = JSON.parse(fs.readFileSync(absoluteFilePath));
   return {
-    props: { chapterNumber },
+    props: { chapterNumber, content },
   };
 }
 

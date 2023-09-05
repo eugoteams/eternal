@@ -15,8 +15,7 @@ import useHelper from "@/hooks/use-Helper";
 import { ChevronLeft, Play } from "lucide-react";
 import Modal from "../UI/Modal/Modal";
 
-const SlokasComponent = ({ chapter }) => {
-  const [data, setData] = useState([]);
+const SlokasComponent = ({ chapter, content }) => {
   const router = useRouter();
   const [trackId, setTrackId] = useState(0);
   const { getData } = usePerfomanceHandler();
@@ -42,32 +41,6 @@ const SlokasComponent = ({ chapter }) => {
     refHookArray[sloakNum - 1].current.scrollIntoView({ behavior: "smooth" });
   };
 
-  const fetchData = () => {
-    getData(
-      `/api/gita`,
-      {
-        method: "POST",
-        body: JSON.stringify(`{\n"chapter":${chapter}}`),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      },
-      GITA_CH
-    ).then((response) => {
-      setData((prevState) => response);
-    });
-  };
-
-  //Load component on chapter change
-  // useEffect(() => {
-  //   fetchData();
-  // }, [chapter, sideNavVisible]);
-
-  //OnComponentLoad.
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const onPlayBtClickListener = (payload) => {
     const { chapterNumber, slokNumber } = payload;
     setTrackId((prevState) => slokNumber);
@@ -85,14 +58,14 @@ const SlokasComponent = ({ chapter }) => {
   };
 
   const onTrackPlayEndedListener = () => {
-    if (true && trackId < data.length) {
+    if (true && trackId < content.length) {
       setTrackId((prevState) => prevState + 1);
       selectSloak(trackId + 1);
     }
   };
 
   const onPlayerNextTrackListener = () => {
-    if (trackId < data.length) {
+    if (trackId < content.length) {
       setTrackId((prevState) => prevState + 1);
       selectSloak(trackId + 1);
     }
@@ -163,8 +136,8 @@ const SlokasComponent = ({ chapter }) => {
 
           <section className={`${classes.container}`}>
             <Stack>
-              {data.length > 0 &&
-                data.map((slokObj, index) => {
+              {content.length > 0 &&
+                content.map((slokObj, index) => {
                   let refToSlokCard = React.createRef();
                   refHookArray.push(refToSlokCard);
                   let verse = slokObj["verse"];
