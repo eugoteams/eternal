@@ -150,6 +150,7 @@ const Setting = (props) => {
             </button>
           </Group>
         </Stack>
+        {/* <div className={`${classes.mobile_bottom_pd}`}></div> */}
       </aside>
     </React.Fragment>
   );
