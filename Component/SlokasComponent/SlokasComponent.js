@@ -24,7 +24,6 @@ const SlokasComponent = ({ chapter, content }) => {
     translator,
     lang,
     readerPref,
-    chapters,
     contentType,
     fontType,
     audioTagRef, //It holds the reference to audio Tag,
@@ -33,7 +32,7 @@ const SlokasComponent = ({ chapter, content }) => {
     setReaderPref,
   } = useDispatch();
   const [error, setError] = useState("");
-  let chapterDetail = chapters[chapter - 1];
+
   let refHookArray = [];
 
   //Smooth Scrolling

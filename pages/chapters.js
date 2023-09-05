@@ -1,33 +1,23 @@
 /** @format */
 
 import ChapterComponent from "@/Component/ChapterComponent/ChapterComponent";
-import usePerfomanceHandler from "@/hooks/use-PerfomanceHandler";
-import { STORAGE_KEY } from "@/model/const";
-import { AppContext } from "@/sotre/store";
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 
-const Chapters = (props) => {
-  const [client, setClient] = useState(false);
-  const { dispatch } = useContext(AppContext);
-  const { getData } = usePerfomanceHandler();
-
-  useEffect(() => {
-    getData("api/harekrishna", { method: "GET" }, STORAGE_KEY).then(
-      (response) => {
-        dispatch({ type: "ADD_CH", payload: response });
-      }
-    );
-  }, [client]);
-
-  useEffect(() => {
-    setClient((prevState) => true);
-  }, []);
-
+const Chapters = ({ chapters }) => {
   return (
     <React.Fragment>
-      <ChapterComponent />
+      <ChapterComponent chapters={chapters} />
     </React.Fragment>
   );
 };
+
+export async function getStaticProps() {
+  const path = require("path");
+  const fs = require("fs");
+  const subPath = `/pages/api/db_sorted/chapters.json`;
+  let absolutePath = path.join(process.cwd(), subPath);
+  let chapters = JSON.parse(fs.readFileSync(absolutePath));
+  return { props: { chapters } };
+}
 
 export default Chapters;

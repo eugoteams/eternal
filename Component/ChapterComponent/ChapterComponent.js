@@ -1,23 +1,14 @@
 /** @format */
 
-import React, { useContext } from "react";
+import React from "react";
 import classes from "./ChapterComponenet.module.css";
-import { AppContext } from "@/sotre/store";
 import Image from "next/image";
 import Grid from "../UI/Grid/Grid";
 import useImage from "@/hooks/use-Image";
 import Link from "next/link";
-import useDispatch from "@/hooks/use-Dispatch";
 
-const ChapterComponent = (props) => {
+const ChapterComponent = ({ chapters }) => {
   const { getImage } = useImage();
-  const { chapters, setNavigation } = useDispatch();
-
-  const onClickListener = (chapter, sloks) => {
-    setNavigation("chapter", chapter);
-    setNavigation("sloks", sloks);
-  };
-
   return (
     <React.Fragment>
       <div className={`${classes.layout_container}`}>
@@ -34,15 +25,7 @@ const ChapterComponent = (props) => {
                 href={`/slokas/${chapter["chapter_number"]}`}
                 style={{ textDecoration: "none", color: "inherit" }}
               >
-                <div
-                  className={`${classes.container}`}
-                  onClick={() => {
-                    onClickListener(
-                      chapter["translation"],
-                      chapter["verses_count"]
-                    );
-                  }}
-                >
+                <div className={`${classes.container}`}>
                   <div className={`${classes.img_placeholder}`}>
                     <Image
                       className={`${classes.image}`}

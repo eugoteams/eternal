@@ -27,26 +27,25 @@ const StoreProvider = (props) => {
   const [client, setClient] = useState(false);
   const [player, setPlayer] = useState({ audioRef: "", isVisible: false });
 
+  //On DOM initialized.
   useEffect(() => {
     if (typeof window !== undefined && window.localStorage) {
       let dataInStorage = getFromStorage(PERSIST_SETTING);
+      console.log("Entered in to useEffect of client");
       if (dataInStorage) {
         dispatch({ type: "ADD_R", payload: dataInStorage });
+      } else {
+        saveToStorage(state, PERSIST_SETTING);
       }
     }
   }, [client]);
 
+  //Setting the DOM.
   useEffect(() => {
     setClient((prevState) => true);
-    /**Fetch Chapters from the api */
-    fetchData("/api/harekrishna", { method: "GET" }).then((data) => {
-      if (data["chapters"].length > 0) {
-        dispatch({ type: "ADD_CH", payload: data.chapters });
-        return;
-      }
-    });
   }, []);
 
+  //When ever state changes it stores in to local storage.
   useEffect(() => {
     if (client) {
       saveToStorage(state, PERSIST_SETTING);

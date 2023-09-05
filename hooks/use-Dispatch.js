@@ -18,7 +18,7 @@ const useDispatch = () => {
   let lang = readerPreferences["wordByWordLocale"];
   let theme = readerPreferences[""];
   let fontType = readerStyles["gitaFont"];
-  let chapters = state["chapters"];
+  // let chapters = state["chapters"];
   // let chapterNavigated = navigation["chapter"];
   let sideNavVisible = navigation["navigationIsVisible"];
   let sloks = navigation["sloks"];
@@ -52,7 +52,6 @@ const useDispatch = () => {
   };
 
   const setDefaultSetting = () => {
-    defaultSetting["chapters"] = state["chapters"];
     dispatch({
       type: "ADD_R",
       payload: { ...defaultSetting },
@@ -89,7 +88,7 @@ const useDispatch = () => {
     theme,
     readerStyles,
     fontType,
-    chapters,
+    // chapters,
     // chapterNavigated,
     sloks,
     sideNavVisible,

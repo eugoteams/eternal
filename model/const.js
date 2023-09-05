@@ -50,7 +50,6 @@ export const defaultAuthors = {
   sc: "sankar",
 };
 export const defaultSetting = {
-  chapters: [],
   navigation: {
     chapter: "Arjuna's Dilemma",
     sloks: 0,
