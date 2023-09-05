@@ -79,12 +79,9 @@ const AudioComponent = ({
               .catch((error) => {
                 // Auto-play was prevented
                 // Show paused UI.
-                console.log("error", error.name);
-
                 if (error.name === "NotAllowedError") {
-                  console.log("PopUp");
+                  //Called when error occured.
                   onBrowserError();
-                  alert("NotAllowedError");
                 }
                 return;
               });
