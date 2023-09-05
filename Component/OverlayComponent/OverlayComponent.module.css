@@ -153,11 +153,8 @@
 @media (max-width: 27em) {
   .overlay_content_box {
     width: 100vw;
-    height: 100vh;
-    background-color: red;
   }
   .overlay_cnt {
     width: 100%;
-    height: 100vh;
   }
 }

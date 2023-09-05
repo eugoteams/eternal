@@ -38,7 +38,7 @@
 }
 
 .mobile_bottom_pd {
-  display: none;
+  background-color: red;
   width: 100%;
   height: 3rem;
   padding: 2rem;
