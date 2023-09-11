@@ -36,7 +36,7 @@ const SlokasComponent = ({ chapter, content }) => {
   let refHookArray = [];
 
   //Smooth Scrolling
-  const selectSloak = (sloakNum) => {
+  const scrollTo = (sloakNum) => {
     refHookArray[sloakNum - 1].current.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -64,13 +64,14 @@ const SlokasComponent = ({ chapter, content }) => {
         let nextTrack = trackId + 1;
         setTrack((prevState) => nextTrack);
         audioSrcLoader(nextTrack);
-
+        scrollTo(nextTrack);
         break;
       case "backward":
         let prevTrack = trackId - 1;
         if (prevTrack > 0) {
           setTrack((prevState) => prevTrack);
           audioSrcLoader(prevTrack);
+          scrollTo(prevTrack);
         }
         break;
       case "seek":
@@ -86,6 +87,7 @@ const SlokasComponent = ({ chapter, content }) => {
         let playNext = trackId + 1;
         setTrack((prevState) => playNext);
         audioSrcLoader(playNext);
+        scrollTo(playNext);
         break;
       default:
         //no-opt

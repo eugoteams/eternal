@@ -58,6 +58,7 @@ const SlokCard = forwardRef(
               : `${classes.container}`
           }
           ref={ref}
+          tabIndex={slokNumber}
         >
           {/** Grid-Item-1 */}
           <div
