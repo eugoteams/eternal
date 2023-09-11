@@ -150,7 +150,8 @@ const Setting = (props) => {
             </button>
           </Group>
         </Stack>
-        {/** This div is only added for the safari browsers where the it displays the browser option on swiping to the bottom of screen. */}
+        {/** This div padding is to provide suffiecinet
+         * gap on safarai browser mobile so user can click on button. */}
         <div className={`${classes.mobile_bottom_pd}`}></div>
       </aside>
     </React.Fragment>

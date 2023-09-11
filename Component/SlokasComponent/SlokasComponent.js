@@ -17,7 +17,7 @@ import Modal from "../UI/Modal/Modal";
 
 const SlokasComponent = ({ chapter, content }) => {
   const router = useRouter();
-  const [trackId, setTrackId] = useState(0);
+  const [trackId, setTrack] = useState(0);
   const { getData } = usePerfomanceHandler();
   const { getTranslator } = useHelper();
   const {
@@ -32,7 +32,7 @@ const SlokasComponent = ({ chapter, content }) => {
     setReaderPref,
   } = useDispatch();
   const [error, setError] = useState("");
-
+  const audioRef = React.createRef();
   let refHookArray = [];
 
   //Smooth Scrolling
@@ -40,45 +40,61 @@ const SlokasComponent = ({ chapter, content }) => {
     refHookArray[sloakNum - 1].current.scrollIntoView({ behavior: "smooth" });
   };
 
+  const audioSrcLoader = (trackId) => {
+    audioRef.current.src = `/audio/1/${trackId}.mp3`;
+    audioRef.current.load();
+  };
+
   const onPlayBtClickListener = (payload) => {
     const { chapterNumber, slokNumber } = payload;
-    setTrackId((prevState) => slokNumber);
+    setTrack((prevState) => slokNumber);
+    audioSrcLoader(slokNumber);
   };
 
-  useEffect(() => {
-    console.log("AudioRef Tag ---> init", audioTagRef);
-    audioTagRef?.current?.play();
-  }, [audioTagRef]);
+  //AdComponenet control Listener
+  const controlListenerHanlder = (action) => {
+    switch (action.type) {
+      case "play":
+        audioRef.current.play();
+        break;
+      case "pause":
+        audioRef.current.pause();
+        break;
+      case "forward":
+        let nextTrack = trackId + 1;
+        setTrack((prevState) => nextTrack);
+        audioSrcLoader(nextTrack);
 
-  const onBrowserErrorListener = () => {
-    setError(
-      (prevState) => "browser error audio player interuppted by browser"
-    );
-  };
-
-  const onTrackPlayEndedListener = () => {
-    if (true && trackId < content.length) {
-      setTrackId((prevState) => prevState + 1);
-      selectSloak(trackId + 1);
-    }
-  };
-
-  const onPlayerNextTrackListener = () => {
-    if (trackId < content.length) {
-      setTrackId((prevState) => prevState + 1);
-      selectSloak(trackId + 1);
-    }
-  };
-  const onPlayerPrevTrackListener = () => {
-    if (trackId > 1) {
-      setTrackId((prevState) => prevState - 1);
-      selectSloak(trackId - 1);
+        break;
+      case "backward":
+        let prevTrack = trackId - 1;
+        if (prevTrack > 0) {
+          setTrack((prevState) => prevTrack);
+          audioSrcLoader(prevTrack);
+        }
+        break;
+      case "seek":
+        audioRef.current.currentTime = action.payload;
+        break;
+      case "close":
+        audioRef.current.pause();
+        break;
+      case "playBackRate":
+        audioRef.current.playbackRate = action.payload;
+        break;
+      case "ended":
+        let playNext = trackId + 1;
+        setTrack((prevState) => playNext);
+        audioSrcLoader(playNext);
+        break;
+      default:
+        //no-opt
+        break;
     }
   };
 
   const onAutoPlayClickListener = () => {
-    // setTrackId((prevState) => 0);
-    onTrackPlayEndedListener();
+    console.log("Play all with scroll effect");
   };
 
   const onItemSelectListener = (item) => {
@@ -170,12 +186,8 @@ const SlokasComponent = ({ chapter, content }) => {
           </section>
 
           <AudioComponent
-            trackId={trackId}
-            chapter={chapter}
-            onTrackPlayEnded={onTrackPlayEndedListener}
-            onPlayerNextTrack={onPlayerNextTrackListener}
-            onPlayerPrevTrack={onPlayerPrevTrackListener}
-            onBrowserError={onBrowserErrorListener}
+            ref={audioRef}
+            controlListener={controlListenerHanlder}
           />
           {error && <Modal message={error} onClick={onModalClickListener} />}
         </main>
