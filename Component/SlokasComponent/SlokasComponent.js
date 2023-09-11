@@ -41,7 +41,7 @@ const SlokasComponent = ({ chapter, content }) => {
   };
 
   const audioSrcLoader = (trackId) => {
-    audioRef.current.src = `/audio/1/${trackId}.mp3`;
+    audioRef.current.src = `/audio/${chapter}/${trackId}.mp3`;
     audioRef.current.load();
   };
 
@@ -51,7 +51,7 @@ const SlokasComponent = ({ chapter, content }) => {
     audioSrcLoader(slokNumber);
   };
 
-  //AdComponenet control Listener
+  //AudioComponenet control Listener
   const controlListenerHanlder = (action) => {
     switch (action.type) {
       case "play":
