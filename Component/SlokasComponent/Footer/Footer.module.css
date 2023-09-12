@@ -1,0 +1,38 @@
+/** @format */
+
+.container {
+  width: fit-content;
+  margin: 2rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.3rem;
+  text-transform: capitalize;
+}
+
+.container .button {
+  margin-left: 2rem;
+}
+
+.button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  color: #adb5bd;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  transition: all 0.5s;
+  text-decoration: none;
+}
+
+.button > span {
+  margin: auto 0.4rem;
+}
+
+.button:hover {
+  color: #343a40;
+  box-shadow: #212529 0px 1px 3px 0px, #212529 0px 0px 0px 1px;
+  font-weight: 400;
+}

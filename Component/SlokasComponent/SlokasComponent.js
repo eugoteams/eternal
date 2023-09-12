@@ -13,6 +13,7 @@ import Stack from "../UI/Stack/Stack";
 import useHelper from "@/hooks/use-Helper";
 import { ChevronLeft, Play } from "lucide-react";
 import Modal from "../UI/Modal/Modal";
+import Footer from "./Footer/Footer";
 
 const SlokasComponent = ({ chapter, content }) => {
   const router = useRouter();
@@ -213,6 +214,7 @@ const SlokasComponent = ({ chapter, content }) => {
           />
           {error && <Modal message={error} onClick={onModalClickListener} />}
         </main>
+        <Footer currentChapter={chapter} />
       </Layout>
     </React.Fragment>
   );
