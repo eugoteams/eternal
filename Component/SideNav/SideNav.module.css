@@ -1,0 +1,62 @@
+/**
+ * dropdwon style to display the sloks and verses side by side
+ *
+ * @format
+ */
+
+.dropdown {
+  background-color: #fffffe;
+  display: grid;
+  grid-template-columns: 75% 25%;
+  width: 100%;
+  height: 100vh;
+}
+
+.dropdown_item {
+  /* border-bottom: 1px solid #868e96; */
+  padding: 1rem;
+  font-size: 1.4rem;
+  display: flex;
+}
+.item_hover:hover {
+  background-color: #f1f3f5;
+}
+.dropdown_item_active {
+  background-color: #1c7ed6;
+}
+
+.dropdown_item span:first-child {
+  font-weight: 700;
+}
+.dropdown_item span:last-child {
+  font-weight: 500;
+  margin-left: 1rem;
+}
+
+.verses {
+  overflow: auto;
+  text-align: center;
+  border-left: 1px solid gray;
+  margin-right: 0.5rem;
+}
+
+/* width */
+.verses::-webkit-scrollbar {
+  width: 1rem;
+}
+
+/* Track */
+.verses::-webkit-scrollbar-track {
+  background: inherit;
+}
+
+/* Handle */
+.verses::-webkit-scrollbar-thumb {
+  background: #dee2e6;
+  border-radius: 0.5rem;
+}
+
+/* Handle on hover */
+.verses::-webkit-scrollbar-thumb:hover {
+  background: #868e96;
+}

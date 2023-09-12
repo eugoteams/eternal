@@ -65,78 +65,96 @@ export const defaultSetting = {
   },
 };
 
-export const CHAPTERS_DROP_DOWN = [
+export const CHAPTERS_MENU = [
   {
-    label: "Arjuna's Dilemma",
-    value: "Arjuna's Dilemma",
+    label: "Arjuna Visada Yoga",
+    value: "Arjuna Visada Yoga",
+    verses: 47,
   },
   {
     label: "Sankhya Yoga",
     value: "Sankhya Yoga",
+    verses: 72,
   },
   {
     label: "Karma Yoga",
     value: "Karma Yoga",
+    verses: 43,
   },
   {
     label: "Jnana Karma Sanyasa Yoga",
     value: "Jnana Karma Sanyasa Yoga",
+    verses: 42,
   },
   {
     label: "Karma Sanyasa Yoga",
     value: "Karma Sanyasa Yoga",
+    verses: 29,
   },
   {
     label: "Dhyana Yoga",
     value: "Dhyana Yoga",
+    verses: 47,
   },
   {
     label: "Gyaan Vigyana Yoga",
     value: "Gyaan Vigyana Yoga",
+    verses: 30,
   },
   {
     label: "Akshara Brahma Yoga",
     value: "Akshara Brahma Yoga",
+    verses: 28,
   },
   {
     label: "Raja Vidya Yoga",
     value: "Raja Vidya Yoga",
+    verses: 34,
   },
   {
     label: "Vibhooti Yoga",
     value: "Vibhooti Yoga",
+    verses: 42,
   },
   {
     label: "Vishwaroopa Darshana Yoga",
     value: "Vishwaroopa Darshana Yoga",
+    verses: 55,
   },
   {
     label: "Bhakti Yoga",
     value: "Bhakti Yoga",
+    verses: 20,
   },
   {
     label: "Ksetra Ksetrajna Vibhaaga Yoga",
     value: "Ksetra Ksetrajna Vibhaaga Yoga",
+    verses: 35,
   },
   {
     label: "Gunatraya Vibhaga Yoga",
     value: "Gunatraya Vibhaga Yoga",
+    verses: 27,
   },
   {
     label: "Purushottama Yoga",
     value: "Purushottama Yoga",
+    verses: 20,
   },
   {
     label: "Daivasura Sampad Vibhaga Yoga",
     value: "Daivasura Sampad Vibhaga Yoga",
+    verses: 16,
   },
   {
     label: "Sraddhatraya Vibhaga Yoga",
     value: "Sraddhatraya Vibhaga Yoga",
+    verses: 28,
   },
   {
     label: "Moksha Sanyaas Yoga",
     value: "Moksha Sanyaas Yoga",
+    verses: 78,
   },
 ];
 

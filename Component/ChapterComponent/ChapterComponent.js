@@ -6,8 +6,10 @@ import Image from "next/image";
 import Grid from "../UI/Grid/Grid";
 import useImage from "@/hooks/use-Image";
 import Link from "next/link";
+import useDispatch from "@/hooks/use-Dispatch";
 
 const ChapterComponent = ({ chapters }) => {
+  const { setNavigation, setNavigation_1 } = useDispatch();
   const { getImage } = useImage();
   return (
     <React.Fragment>
@@ -25,7 +27,16 @@ const ChapterComponent = ({ chapters }) => {
                 href={`/slokas/${chapter["chapter_number"]}`}
                 style={{ textDecoration: "none", color: "inherit" }}
               >
-                <div className={`${classes.container}`}>
+                <div
+                  className={`${classes.container}`}
+                  onClick={() => {
+                    //Will set the SlokHeaderComponent.
+                    setNavigation("chapter", chapter["translation"]);
+                    setNavigation("sloks", chapter["verses_count"]);
+                    setNavigation_1("chapter", chapter["translation"]);
+                    setNavigation_1("sloks", chapter["verses_count"]);
+                  }}
+                >
                   <div className={`${classes.img_placeholder}`}>
                     <Image
                       className={`${classes.image}`}

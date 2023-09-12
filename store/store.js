@@ -10,7 +10,6 @@ export const AppContext = React.createContext([]);
 const reducer = (state, action) => {
   switch (action.type) {
     case "ADD_R":
-      console.log("payload", action.payload);
       return { ...action.payload };
     default:
       console.log("Test", action);
@@ -23,7 +22,13 @@ const StoreProvider = (props) => {
   const { saveToStorage, getFromStorage } = useStorage();
   const [state, dispatch] = useReducer(reducer, defaultSetting);
   const [client, setClient] = useState(false);
-  const [player, setPlayer] = useState({ audioRef: "", isVisible: false });
+  const [nav, setNav] = useState({
+    chapter: "",
+    sloks: "",
+    openMenu: false,
+    startingVerse: 0,
+  });
+  console.log("nav", nav);
 
   //On DOM initialized.
   useEffect(() => {
@@ -50,7 +55,7 @@ const StoreProvider = (props) => {
   }, [state]);
 
   return (
-    <AppContext.Provider value={{ state, dispatch, player, setPlayer }}>
+    <AppContext.Provider value={{ state, dispatch, nav, setNav }}>
       {props.children}
     </AppContext.Provider>
   );

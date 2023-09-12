@@ -6,7 +6,7 @@ import { defaultAuthors, fontToggleBtx } from "@/model/const";
 import { useContext } from "react";
 
 const useDispatch = () => {
-  const { state, dispatch, player, setPlayer } = useContext(AppContext);
+  const { state, dispatch, nav, setNav } = useContext(AppContext);
   let readerPreferences = state["readingPreferencesN"];
   let readerStyles = state["gitaReaderStyles"];
   let navigation = state["navigation"];
@@ -17,12 +17,14 @@ const useDispatch = () => {
   let lang = readerPreferences["wordByWordLocale"];
   let theme = readerPreferences[""];
   let fontType = readerStyles["gitaFont"];
-  // let chapters = state["chapters"];
-  // let chapterNavigated = navigation["chapter"];
+  let chapterNavigated = navigation["chapter"];
+  let chapterNavigated_1 = nav["chapter"];
+
   let sideNavVisible = navigation["navigationIsVisible"];
   let sloks = navigation["sloks"];
-  let audioTagRef = player["audioRef"];
-  let isVisible = player["isVisible"];
+  let sloks_1 = nav["sloks"];
+  let sloakHeaderMenu = nav["openMenu"];
+  let startingVerse = nav["startingVerse"];
 
   const setReaderPref = (key, value) => {
     readerPreferences[key] = value;
@@ -50,6 +52,14 @@ const useDispatch = () => {
     });
   };
 
+  //SetNavigation_not in localstorage
+  const setNavigation_1 = (key, value) => {
+    nav[key] = value;
+    setNav((prevState) => {
+      return { ...nav };
+    });
+  };
+
   const setDefaultSetting = () => {
     dispatch({
       type: "ADD_R",
@@ -71,27 +81,12 @@ const useDispatch = () => {
     });
   };
 
-  // const setPlayer = (key, value) => {
-  //   player[key] = value;
-  //   dispatch({
-  //     type: "ADD_R",
-  //     payload: { ...state },
-  //   });
-  // };
-
-  const setPlayerState = (key, value) => {
-    player[key] = value;
-    setPlayer((prevState) => {
-      return { ...player };
-    });
-    console.log("Player State", player);
-  };
-
   return {
     setReaderPref,
     setReaderStyle,
     setNavigation,
-    setPlayerState,
+    //AppState -> notStored in LocalStorage
+    setNavigation_1,
     setDefaultSetting,
     readerPref,
     translator,
@@ -101,12 +96,14 @@ const useDispatch = () => {
     theme,
     readerStyles,
     fontType,
-    // chapters,
-    // chapterNavigated,
+    chapterNavigated,
     sloks,
     sideNavVisible,
-    audioTagRef, //It holds the refrenc to audio Tag,
-    isVisible, //on this state we will display / hide the player.
+    //AppState -> notStored in LocalStorage
+    chapterNavigated_1,
+    sloks_1,
+    sloakHeaderMenu,
+    startingVerse,
   };
 };
 
