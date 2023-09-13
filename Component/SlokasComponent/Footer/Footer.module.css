@@ -36,3 +36,14 @@
   box-shadow: #212529 0px 1px 3px 0px, #212529 0px 0px 0px 1px;
   font-weight: 400;
 }
+
+/*Mobile Large Screen */
+@media (max-width: 27em) {
+  .container {
+    font-size: 1rem;
+  }
+
+  .button {
+    padding: 0.5rem;
+  }
+}

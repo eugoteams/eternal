@@ -17,7 +17,6 @@ const Footer = ({ currentChapter }) => {
             <span>previous chapter</span>
           </Link>
         )}
-
         <div className={`${styles.button}`}>
           <span>beginning of chapter</span>
         </div>
