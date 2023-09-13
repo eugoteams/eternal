@@ -3,7 +3,7 @@
 import React, { forwardRef } from "react";
 import classes from "./SlokCard.module.css";
 import { ICON_COLOR, ICON_SIZE } from "@/model/const";
-import IconHolder from "../IconHolder/IconHolder";
+import IconHolder from "../../UI/IconHolder/IconHolder";
 import { Play, Bookmark } from "lucide-react";
 
 const SlokCard = forwardRef(

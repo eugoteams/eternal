@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import classes from "./SlokasComponent.module.css";
-import SlokCard from "../UI/SlokCard/SlokCard";
+import SlokCard from "./SlokCard/SlokCard";
 import { CHAPTERS_MENU, readingPrefSwitch } from "@/model/const";
 import AudioComponent from "../UI/AudioComponent/AudioComponent";
 import Switch from "../UI/Switch/Switch";
@@ -172,15 +172,6 @@ const SlokasComponent = ({ chapter, content }) => {
           style={{ fontFamily: `${fontType}` }}
           className={`${classes.root_main}`}
         >
-          <section>
-            <div className={`${classes.back_bt}`} onClick={onClickBack}>
-              <ChevronLeft
-                style={{ textAlign: "center" }}
-                className={`${classes.icon}`}
-              />
-              <span>back</span>
-            </div>
-          </section>
           <section>
             <Switch
               toggleButton={readingPrefSwitch}

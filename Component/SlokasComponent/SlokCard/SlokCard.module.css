@@ -219,7 +219,6 @@
   .content_container_reading_pref_pos {
     position: relative;
     transform: translateY(1rem);
-    background-color: red;
   }
 }
 

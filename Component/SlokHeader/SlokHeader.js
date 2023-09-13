@@ -1,10 +1,11 @@
 /** @format */
 
 import React from "react";
-import classes from "./SlokHeader.module.css";
+import styles from "./SlokHeader.module.css";
 import useDispatch from "@/hooks/use-Dispatch";
 import SideNav from "../SideNav/SideNav";
 import Drawer from "../UI/Drawer/Drawer";
+import { ChevronDown } from "lucide-react";
 
 const SlokHeader = (props) => {
   const {
@@ -20,16 +21,20 @@ const SlokHeader = (props) => {
 
   return (
     <React.Fragment>
-      <div className={`${classes.container}`}>
-        <span
+      <div className={`${styles.container}`}>
+        <div
+          className={`${styles.selected_text}`}
           onClick={(e) => {
+            e.preventDefault();
             setNavigation("navigationIsVisible", !sideNavVisible);
             setNavigation_1("openMenu", !sloakHeaderMenu);
           }}
         >
-          {chapterNavigated_1}
-        </span>
-        <span>{`sloks/${sloks_1}`}</span>
+          <span>{chapterNavigated_1}</span>
+          <ChevronDown size={14} />
+        </div>
+
+        <span>{`verses : ${sloks_1}`}</span>
       </div>
 
       {sloakHeaderMenu ? (

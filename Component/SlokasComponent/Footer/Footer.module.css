@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   text-transform: capitalize;
 }
 
@@ -23,7 +23,8 @@
   color: #adb5bd;
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
     rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-  transition: all 0.5s;
+  transition: all 0.4s;
+  font-weight: 500;
   text-decoration: none;
 }
 
@@ -34,16 +35,15 @@
 .button:hover {
   color: #343a40;
   box-shadow: #212529 0px 1px 3px 0px, #212529 0px 0px 0px 1px;
-  font-weight: 400;
 }
 
 /*Mobile Large Screen */
 @media (max-width: 27em) {
   .container {
-    font-size: 1rem;
-  }
-
-  .button {
+    flex-wrap: wrap;
     padding: 0.5rem;
+  }
+  .button {
+    margin: 1rem auto;
   }
 }
