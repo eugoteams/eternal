@@ -6,6 +6,7 @@ import useDispatch from "@/hooks/use-Dispatch";
 import SideNav from "../SideNav/SideNav";
 import Drawer from "../UI/Drawer/Drawer";
 import { ChevronDown } from "lucide-react";
+import useScrollDirection from "@/hooks/use-ScrollDirection";
 
 const SlokHeader = (props) => {
   const {
@@ -18,10 +19,15 @@ const SlokHeader = (props) => {
     sloks_1,
     sloakHeaderMenu,
   } = useDispatch();
-
+  const scrollDirection = useScrollDirection();
+  console.log("scrollDirection in Slok Header", scrollDirection);
   return (
     <React.Fragment>
-      <div className={`${styles.container}`}>
+      <div
+        className={`${styles.container} ${
+          scrollDirection === "up" ? `${styles.up}` : "hide"
+        }`}
+      >
         <div
           className={`${styles.selected_text}`}
           onClick={(e) => {

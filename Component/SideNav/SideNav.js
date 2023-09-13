@@ -43,6 +43,7 @@ const SideNav = (props) => {
             setNavigation("sloks", verses);
             setNavigation_1("chapter", value);
             setNavigation_1("sloks", verses);
+            setNavigation_1("startingVerse", 0);
             // setNavigation_1("openMenu", !sloakHeaderMenu);
           }}
         >

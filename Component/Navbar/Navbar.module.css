@@ -10,10 +10,23 @@
   padding: 1rem;
   position: relative;
   transition: all 0.5s ease;
-  /* position: sticky;
+  position: -webkit-sticky; /*Safari browser*/
+  position: sticky;
   top: 0;
-  background-color: #ffffff;
-  z-index: 9; */
+  background-color: #fffffe;
+  z-index: 2;
+  transition: all 0.4s;
+  height: fit-content;
+  background-color: aqua;
+  /* position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 12;
+  background-color: #fffffe; */
+}
+
+.down {
+  top: -3.6rem;
 }
 
 .container > div {

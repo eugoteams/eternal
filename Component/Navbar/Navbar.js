@@ -1,17 +1,18 @@
 /** @format */
 
 import React, { useState } from "react";
-import classes from "./Navbar.module.css";
+import styles from "./Navbar.module.css";
 import IconHolder from "../UI/IconHolder/IconHolder";
 import Group from "../UI/Group/Group";
 import Drawer from "../UI/Drawer/Drawer";
 import NavLinkComponent from "./NavLinkComponent/NavLinkComponent";
 import Setting from "../Setting/Setting";
-
-import { ICON_COLOR, ICON_SIZE } from "@/model/const";
 import { Menu, Settings } from "lucide-react";
+import useScrollDirection from "@/hooks/use-ScrollDirection";
 
 const Navbar = (props) => {
+  const scrollDirection = useScrollDirection();
+  console.log("scrollDorection", scrollDirection);
   const [drawerState, setDrawerSate] = useState("");
 
   const onClickDrawerListener = (type) => {
@@ -58,14 +59,18 @@ const Navbar = (props) => {
 
   return (
     <React.Fragment>
-      <main className={`${classes.container}`}>
-        <div className={`${classes.logo}`}>
+      <main
+        className={`${styles.container} ${
+          scrollDirection === "down" ? `${styles.down}` : "show"
+        }`}
+      >
+        <div className={`${styles.logo}`}>
           <h1>eternal</h1>
         </div>
 
-        <div className={`${classes.nav_container}`}>
+        <div className={`${styles.nav_container}`}>
           <div
-            className={`${classes.responsive_bt}`}
+            className={`${styles.responsive_bt}`}
             onClick={() => {
               onClickDrawerListener("nav");
             }}
@@ -79,7 +84,7 @@ const Navbar = (props) => {
           <NavLinkComponent />
           {drawerState}
         </div>
-        <div className={`${classes.setting_icon_container}`}>
+        <div className={`${styles.setting_icon_container}`}>
           <div
             onClick={() => {
               onClickDrawerListener("setting");
