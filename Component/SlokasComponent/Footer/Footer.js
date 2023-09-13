@@ -17,7 +17,13 @@ const Footer = ({ currentChapter }) => {
             <span>previous chapter</span>
           </Link>
         )}
-        <div className={`${styles.button}`}>
+        <div
+          className={`${styles.button}`}
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+        >
           <span>beginning of chapter</span>
         </div>
         {currentChapter < 18 && (

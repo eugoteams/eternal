@@ -144,7 +144,7 @@ export const CHAPTERS_MENU = [
   {
     label: "Daivasura Sampad Vibhaga Yoga",
     value: "Daivasura Sampad Vibhaga Yoga",
-    verses: 16,
+    verses: 24,
   },
   {
     label: "Sraddhatraya Vibhaga Yoga",
