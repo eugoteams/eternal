@@ -13,7 +13,7 @@
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
     rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   transition: all 0.2s ease;
-  scroll-margin-top: 5rem;
+  scroll-margin: 8rem;
 }
 
 .container:focus {
@@ -121,9 +121,17 @@
   font-size: 1.4rem;
   padding: 1rem;
   transition: all 0.2s ease;
+  scroll-margin: 8rem;
 }
+
 .action_container_reading_pref {
   padding: 1rem;
+}
+
+.action_container_reading_pref > span > mark {
+  font-weight: 500;
+  background-color: inherit;
+  color: #748ffc;
 }
 
 .action_container_reading_pref span:nth-child(2) {
@@ -220,8 +228,4 @@
     position: relative;
     transform: translateY(1rem);
   }
-}
-
-/* Break Down Of Layout*/
-@media (max-width: 32em) {
 }
