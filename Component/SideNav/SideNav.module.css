@@ -12,6 +12,11 @@
   height: 100vh;
 }
 
+.dropdown > div:first-child {
+  background-color: #1c7ed6;
+  padding-bottom: 8rem;
+}
+
 .dropdown_item {
   /* border-bottom: 1px solid #868e96; */
   padding: 1rem;
