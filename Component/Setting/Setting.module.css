@@ -44,7 +44,7 @@
   padding: 2rem;
 }
 
-/* Table Screen adding the bottom space for clicking the reser button*/
+/* Table Screen adding the bottom space for clicking the reset button*/
 @media (max-width: 48em) {
   .mobile_bottom_pd {
     display: block;
