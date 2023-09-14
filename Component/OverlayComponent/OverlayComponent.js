@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import classes from "./OverlayComponent.module.css";
+import styles from "./OverlayComponent.module.css";
 import { X } from "lucide-react";
 
 const OverlayComponent = (props) => {
@@ -9,17 +9,14 @@ const OverlayComponent = (props) => {
 
   return (
     <React.Fragment>
-      <div className={`${classes.container}`}>
+      <div className={`${styles.container}`}>
+        <div className={`${styles.overlay}`} onClick={onOverlayClickListener} />
         <div
-          className={`${classes.overlay}`}
-          onClick={onOverlayClickListener}
-        />
-        <div
-          className={`${classes.overlay_content_box} ${
-            classes[`pos_${position}`]
+          className={`${styles.overlay_content_box} ${
+            styles[`pos_${position}`]
           }`}
         >
-          <div className={`${classes.overlay_content_box_header}`}>
+          <div className={`${styles.overlay_content_box_header}`}>
             <h3>{title}</h3>
             <span
               onClick={onOverlayClickListener}

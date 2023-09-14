@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useState, useEffect } from "react";
-import classes from "./SlokasComponent.module.css";
+import styles from "./SlokasComponent.module.css";
 import SlokCard from "./SlokCard/SlokCard";
 import { CHAPTERS_MENU, readingPrefSwitch } from "@/model/const";
 import AudioComponent from "../UI/AudioComponent/AudioComponent";
@@ -170,7 +170,7 @@ const SlokasComponent = ({ chapter, content }) => {
       <Layout>
         <main
           style={{ fontFamily: `${fontType}` }}
-          className={`${classes.root_main}`}
+          className={`${styles.root_main}`}
         >
           <section>
             <Switch
@@ -180,8 +180,8 @@ const SlokasComponent = ({ chapter, content }) => {
               size="md"
             />
           </section>
-          <section className={`${classes.translator_section}`}>
-            <div className={`${classes.translator_name}`}>
+          <section className={`${styles.translator_section}`}>
+            <div className={`${styles.translator_name}`}>
               <Stack>
                 <span>translation by</span>
                 <span>{getTranslator(translator)["label"]}</span>
@@ -189,14 +189,14 @@ const SlokasComponent = ({ chapter, content }) => {
             </div>
 
             <div
-              className={`${classes.play_button}`}
+              className={`${styles.play_button}`}
               onClick={onAutoPlayClickListener}
             >
               <Play size={15} color="#3b5bdb" strokeWidth={3} />
               <span>play audio</span>
             </div>
           </section>
-          <section className={`${classes.container}`}>
+          <section className={`${styles.container}`}>
             <Stack>{Cards}</Stack>
           </section>
           <AudioComponent

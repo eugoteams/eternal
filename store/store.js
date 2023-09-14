@@ -28,7 +28,6 @@ const StoreProvider = (props) => {
     openMenu: false,
     startingVerse: 0,
   });
-  console.log("nav", nav);
 
   //On DOM initialized.
   useEffect(() => {

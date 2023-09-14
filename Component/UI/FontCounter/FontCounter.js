@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useContext, useEffect, useState } from "react";
-import classes from "./FontCounter.module.css";
+import styles from "./FontCounter.module.css";
 import { DefaultContext } from "react-icons";
 import { BiMinus, BiPlus } from "react-icons/bi";
 import { AppContext } from "@/store/store";
@@ -32,7 +32,7 @@ const FontCounter = ({ datakey }) => {
 
   return (
     <React.Fragment>
-      <div className={`${classes.container}`}>
+      <div className={`${styles.container}`}>
         <button onClick={(e) => plusMinusOpt("minus")}>
           <BiMinus />
         </button>

@@ -3,7 +3,8 @@
 .container {
   background-color: #fffffe;
 
-  padding: 1.5rem;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
   padding-left: 1.3rem;
   padding-right: 1.3rem;
   width: 100%;
@@ -20,7 +21,6 @@
   box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
   /* z-index: 2; */
   transition: all 0.4s;
-  /* background-color: rebeccapurple !important; */
 }
 
 .selected_text {

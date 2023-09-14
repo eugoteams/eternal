@@ -1,17 +1,15 @@
 /** @format */
 
 import React from "react";
-import classes from "./Modal.module.css";
+import styles from "./Modal.module.css";
 import { X } from "lucide-react";
-import IconHolder from "../IconHolder/IconHolder";
-import Stack from "../Stack/Stack";
 
 const Modal = ({ message, onClick }) => {
   return (
     <React.Fragment>
-      <div className={`${classes.modal}`}>
-        <div className={`${classes.overlay}`} onClick={onClick}></div>
-        <div className={`${classes.modal_cnt}`}>
+      <div className={`${styles.modal}`}>
+        <div className={`${styles.overlay}`} onClick={onClick}></div>
+        <div className={`${styles.modal_cnt}`}>
           <div
             style={{
               justifyContent: "end",

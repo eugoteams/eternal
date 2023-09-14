@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useEffect, useState } from "react";
-import classes from "./CheckBoxGroup.module.css";
+import styles from "./CheckBoxGroup.module.css";
 import Stack from "../Stack/Stack";
 
 const CheckBoxGroup = ({ defaultValue, onChange, data }) => {
@@ -21,10 +21,10 @@ const CheckBoxGroup = ({ defaultValue, onChange, data }) => {
           return (
             <label
               key={`${checkbox}_${index}`}
-              className={`${classes.checkbox_container}`}
+              className={`${styles.checkbox_container}`}
             >
               <input
-                className={`${classes.input}`}
+                className={`${styles.input}`}
                 type="checkbox"
                 name={checkbox}
                 value={checkbox}

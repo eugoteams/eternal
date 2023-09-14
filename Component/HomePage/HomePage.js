@@ -2,13 +2,13 @@
 
 import React from "react";
 import Layout from "../Layout/Layout";
-import classes from "./HomePage.module.css";
+import styles from "./HomePage.module.css";
 
 const HomePage = () => {
   return (
     <React.Fragment>
       <Layout>
-        <p className={`${classes.text}`}>the bhagwatam gita</p>
+        <p className={`${styles.text}`}>the bhagwatam gita</p>
       </Layout>
     </React.Fragment>
   );

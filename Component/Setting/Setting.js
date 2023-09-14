@@ -5,17 +5,12 @@ import Group from "../UI/Group/Group";
 import Switch from "../UI/Switch/Switch";
 import { fontToggleBtx } from "@/model/const";
 import Stack from "../UI/Stack/Stack";
-import classes from "./Setting.module.css";
+import styles from "./Setting.module.css";
 import CheckBoxGroup from "../UI/CheckBoxGroup/CheckBoxGroup";
 import DropDown from "../UI/DropDown/DropDown";
 import { translators, defaultAuthors } from "@/model/const";
 import useDispatch from "@/hooks/use-Dispatch";
-import {
-  CONTENT_TYPE_DATA,
-  LOCAL_DATA,
-  W_DISPLAY_DATA,
-  defaultSetting,
-} from "@/model/const";
+import { CONTENT_TYPE_DATA, LOCAL_DATA } from "@/model/const";
 
 const Setting = (props) => {
   const {
@@ -66,7 +61,7 @@ const Setting = (props) => {
     <React.Fragment>
       <aside>
         <Stack>
-          <h3 className={`${classes.title}`}>gita font</h3>
+          <h3 className={`${styles.title}`}>gita font</h3>
           <Group posV="center" posH="center">
             <Switch
               itemSelected={fontType}
@@ -77,13 +72,11 @@ const Setting = (props) => {
             />
           </Group>
           <Group posV="center" posH="center">
-            <p className={`${classes.text}`}>
-              {fontDescription["description"]}
-            </p>
+            <p className={`${styles.text}`}>{fontDescription["description"]}</p>
           </Group>
         </Stack>
         <Stack>
-          <h3 className={`${classes.title}`}>word by word</h3>
+          <h3 className={`${styles.title}`}>word by word</h3>
           <Group>
             <CheckBoxGroup
               defaultValue={contentType}
@@ -94,7 +87,7 @@ const Setting = (props) => {
             />
           </Group>
           <Group posV="center" posH="center">
-            <p className={`${classes.text}`}>
+            <p className={`${styles.text}`}>
               Transliteration refers to the method of mapping from one system of
               writing to another based on phonetic similarity,which are
               converted to characters that have similar pronunciation in the
@@ -103,7 +96,7 @@ const Setting = (props) => {
           </Group>
         </Stack>
         <Stack>
-          <h3 className={`${classes.title}`}>translation language</h3>
+          <h3 className={`${styles.title}`}>translation language</h3>
           <DropDown
             data={LOCAL_DATA}
             defaultValue={lang}
@@ -124,14 +117,14 @@ const Setting = (props) => {
             }}
           /> */}
           <Group posV="center" posH="center">
-            <p className={`${classes.text}`}>
+            <p className={`${styles.text}`}>
               Word by word translation source : partly web and majority of party
               id taken the book BHAGAVAD GITA AS IT IS.
             </p>
           </Group>
         </Stack>
         <Stack>
-          <h3 className={`${classes.title}`}>translation</h3>
+          <h3 className={`${styles.title}`}>translation</h3>
           <DropDown
             data={filterTranslatorByLang()}
             defaultValue={translator}
@@ -140,19 +133,19 @@ const Setting = (props) => {
             }}
           />
           <Group posV="center" posH="center">
-            <p className={`${classes.text}`}>{getTranslatorDescription()}</p>
+            <p className={`${styles.text}`}>{getTranslatorDescription()}</p>
           </Group>
         </Stack>
         <Stack>
           <Group posV="center" posH="center">
-            <button className={`${classes.button}`} onClick={resetTheSate}>
+            <button className={`${styles.button}`} onClick={resetTheSate}>
               reset settings
             </button>
           </Group>
         </Stack>
         {/** This div padding is to provide sufficient
          * gap on safarai browser mobile so user can click on button. */}
-        <div className={`${classes.mobile_bottom_pd}`}></div>
+        <div className={`${styles.mobile_bottom_pd}`}></div>
       </aside>
     </React.Fragment>
   );

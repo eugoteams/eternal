@@ -1,6 +1,5 @@
 /** @format */
 
-import { REACT_LOADABLE_MANIFEST } from "next/dist/shared/lib/constants";
 import React from "react";
 
 /**

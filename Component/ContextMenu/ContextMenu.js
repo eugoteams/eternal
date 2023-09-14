@@ -2,12 +2,11 @@
 
 import React from "react";
 import Link from "next/link";
-import classes from "./SideNav.module.css";
+import styles from "./ContextMenu.module.css";
 import useDispatch from "@/hooks/use-Dispatch";
 import { CHAPTERS_MENU } from "@/model/const";
-import Drawer from "../UI/Drawer/Drawer";
 
-const SideNav = (props) => {
+const ContextMenu = (props) => {
   const {
     chapterNavigated,
     sloks,
@@ -34,8 +33,8 @@ const SideNav = (props) => {
         <div
           className={
             value === chapterNavigated_1
-              ? `${classes.dropdown_item} ${classes.dropdown_item_active}`
-              : `${classes.dropdown_item} ${`${classes.item_hover}`}`
+              ? `${styles.dropdown_item} ${styles.dropdown_item_active}`
+              : `${styles.dropdown_item} ${`${styles.item_hover}`}`
           }
           onClick={(e) => {
             // setOpen((prevState) => !prevState);
@@ -62,8 +61,8 @@ const SideNav = (props) => {
         key={`nav_${index}`}
         className={
           1 === chapterNavigated
-            ? `${classes.dropdown_item} ${classes.dropdown_item_active}`
-            : `${classes.dropdown_item} ${`${classes.item_hover}`}`
+            ? `${styles.dropdown_item} ${styles.dropdown_item_active}`
+            : `${styles.dropdown_item} ${`${styles.item_hover}`}`
         }
         onClick={(e) => {
           setNavigation_1("startingVerse", index + 1);
@@ -77,12 +76,12 @@ const SideNav = (props) => {
 
   return (
     <React.Fragment>
-      <div className={`${classes.dropdown}`}>
+      <div className={`${styles.dropdown}`}>
         <div>{container_drop_down}</div>
-        <div className={`${classes.verses}`}>{verses}</div>
+        <div className={`${styles.verses}`}>{verses}</div>
       </div>
     </React.Fragment>
   );
 };
 
-export default SideNav;
+export default ContextMenu;

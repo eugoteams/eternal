@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useState } from "react";
-import classes from "./DropDown.module.css";
+import styles from "./DropDown.module.css";
 
 const DropDown = ({ data, defaultValue, onChange }) => {
   const [dropDown, setDropDown] = useState(false);
@@ -15,24 +15,24 @@ const DropDown = ({ data, defaultValue, onChange }) => {
 
   return (
     <React.Fragment>
-      <div className={`${classes.container}`}>
+      <div className={`${styles.container}`}>
         <div
-          className={`${classes.dropdown_placeholder}`}
+          className={`${styles.dropdown_placeholder}`}
           onClick={closeDropDown}
         >
           <span>{valueSelected}</span>
           {/* <LuChevronsDownUp /> */}
         </div>
         {dropDown && (
-          <div className={`${classes.dropdown_item_container}`}>
+          <div className={`${styles.dropdown_item_container}`}>
             {data.map((item, index) => {
               const { value, label } = item;
               return (
                 <p
                   className={
                     value === defaultValue
-                      ? `${classes.dropdown_item} ${classes.dropdown_item_active}`
-                      : `${classes.dropdown_item} ${`${classes.item_hover}`}`
+                      ? `${styles.dropdown_item} ${styles.dropdown_item_active}`
+                      : `${styles.dropdown_item} ${`${styles.item_hover}`}`
                   }
                   key={`${label}_${index}`}
                   onClick={(e) => {

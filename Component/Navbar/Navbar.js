@@ -12,7 +12,6 @@ import useScrollDirection from "@/hooks/use-ScrollDirection";
 
 const Navbar = (props) => {
   const scrollDirection = useScrollDirection();
-  console.log("scrollDorection", scrollDirection);
   const [drawerState, setDrawerSate] = useState("");
 
   const onClickDrawerListener = (type) => {

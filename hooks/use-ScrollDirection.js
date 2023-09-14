@@ -1,8 +1,9 @@
 /** @format */
 import React, { useState, useEffect } from "react";
+/*https://www.codemzy.com/blog/react-sticky-header-disappear-scroll*/
 const useScrollDirection = () => {
   const [scrollDirection, setScrollDirection] = useState(null);
-  /*https://www.codemzy.com/blog/react-sticky-header-disappear-scroll*/
+
   useEffect(() => {
     let lastScrollY = window.pageYOffset;
 

@@ -3,16 +3,12 @@
 .container {
   text-transform: capitalize;
   margin: 2rem auto;
-  /* width: 30rem; */
-  /* width: 35rem; */
   border-radius: 10px;
   border: 1px solid #868e96;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
   justify-items: center;
-  /* font-size: 1.1rem; */
-  /* font-size: 1.5rem; */
   font-weight: 500;
   overflow: hidden;
   transition: all 0.5s ease;

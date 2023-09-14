@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { forwardRef } from "react";
-import classes from "./SlokCard.module.css";
+import styles from "./SlokCard.module.css";
 import { ICON_COLOR, ICON_SIZE } from "@/model/const";
 import IconHolder from "../../UI/IconHolder/IconHolder";
 import { Play, Bookmark } from "lucide-react";
@@ -54,8 +54,8 @@ const SlokCard = forwardRef(
         <section
           className={
             readerPref === "reading"
-              ? `${classes.container_reading_pref}`
-              : `${classes.container}`
+              ? `${styles.container_reading_pref}`
+              : `${styles.container}`
           }
           ref={ref}
           tabIndex={slokNumber}
@@ -64,8 +64,8 @@ const SlokCard = forwardRef(
           <div
             className={
               readerPref === "reading"
-                ? `${classes.action_container_reading_pref}`
-                : `${classes.action_container}`
+                ? `${styles.action_container_reading_pref}`
+                : `${styles.action_container}`
             }
           >
             <span>
@@ -88,20 +88,20 @@ const SlokCard = forwardRef(
           <div
             className={
               readerPref === "reading"
-                ? `${classes.content_container} ${classes.content_container_reading_pref_pos}`
-                : `${classes.content_container}`
+                ? `${styles.content_container} ${styles.content_container_reading_pref_pos}`
+                : `${styles.content_container}`
             }
           >
-            <div className={`${classes.div_with_sloak}`}>{mergeLines()}</div>
+            <div className={`${styles.div_with_sloak}`}>{mergeLines()}</div>
             {readerPref === "translation" && slokMeaning !== "" && (
-              <div className={`${classes.div_with_header}`}>
+              <div className={`${styles.div_with_header}`}>
                 <h3>word meanings</h3>
                 <div>{newLine(slokMeaning)}</div>
               </div>
             )}
             {readerPref === "translation" && (
-              <div className={`${classes.div_with_header}`}>
-                <h3 className={`${classes.h3_translation}`}>translation</h3>
+              <div className={`${styles.div_with_header}`}>
+                <h3 className={`${styles.h3_translation}`}>translation</h3>
                 <div>{newLine(slokTranslation)}</div>
               </div>
             )}

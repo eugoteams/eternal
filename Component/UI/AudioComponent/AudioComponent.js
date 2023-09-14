@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useState, forwardRef } from "react";
-import classes from "./AudioComponent.module.css";
+import styles from "./AudioComponent.module.css";
 import {
   MoreHorizontal,
   Pause,
@@ -76,11 +76,11 @@ const AudioComponent = forwardRef(({ controlListener }, ref) => {
           }}
         ></audio>
         {playerState["playerClosed"] && (
-          <div className={`${classes.container}`}>
+          <div className={`${styles.container}`}>
             <div>
               <input
                 type="range"
-                className={`${classes.slider}`}
+                className={`${styles.slider}`}
                 onChange={(e) => {
                   controlListener({ type: "seek", payload: e.target.value });
                   stateHandler("trackDurationPlayed", e.target.value);
@@ -91,9 +91,9 @@ const AudioComponent = forwardRef(({ controlListener }, ref) => {
               />
             </div>
             <div>{convertSecToMinutes(playerState["trackDurationPlayed"])}</div>
-            <div className={`${classes.controls}`}>
+            <div className={`${styles.controls}`}>
               <div
-                className={`${classes.icons} `}
+                className={`${styles.icons} `}
                 onClick={(e) => {
                   stateHandler("optMenu", !playerState["optMenu"]);
                 }}
@@ -101,12 +101,12 @@ const AudioComponent = forwardRef(({ controlListener }, ref) => {
                 <MoreHorizontal />
               </div>
               <div
-                className={`${classes.icons}`}
+                className={`${styles.icons}`}
                 onClick={(e) => controlListener({ type: "backward" })}
               >
                 <SkipBack />
               </div>
-              <div className={`${classes.icons}`}>
+              <div className={`${styles.icons}`}>
                 {playerState["play"] ? (
                   <Pause
                     onClick={(e) => {
@@ -124,13 +124,13 @@ const AudioComponent = forwardRef(({ controlListener }, ref) => {
                 )}
               </div>
               <div
-                className={`${classes.icons}`}
+                className={`${styles.icons}`}
                 onClick={(e) => controlListener({ type: "forward" })}
               >
                 <SkipForward />
               </div>
               <div
-                className={`${classes.icons}`}
+                className={`${styles.icons}`}
                 onClick={(e) => {
                   stateHandler("playerClosed", !playerState["playerClosed"]);
                   controlListener({ type: "close" });
@@ -141,7 +141,7 @@ const AudioComponent = forwardRef(({ controlListener }, ref) => {
             </div>
             <div>{convertSecToMinutes(playerState["trackDuration"])}</div>
             {playerState["optMenu"] && (
-              <div className={`${classes.playback_opt}`}>
+              <div className={`${styles.playback_opt}`}>
                 {playbackRate.map((playRate, index) => {
                   return (
                     <span

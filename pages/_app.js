@@ -10,7 +10,6 @@ export default function App({ Component, pageProps }) {
   const router = useRouter();
   const path = router.pathname;
   let SlokasHeader = path.split("/").includes("slokas") ? <SlokHeader /> : "";
-  console.log(path.split("/").includes("slokas"));
   return (
     <>
       <StoreProvider>

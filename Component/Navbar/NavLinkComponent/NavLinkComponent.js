@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import classes from "./NavLinkComponent.module.css";
+import styles from "./NavLinkComponent.module.css";
 import Link from "next/link";
 
 const NavLinkComponent = ({ breakPoint, onLinkClick }) => {
@@ -24,8 +24,8 @@ const NavLinkComponent = ({ breakPoint, onLinkClick }) => {
       <nav
         className={
           breakPoint === "md"
-            ? `${classes.nav_container_item_responsive}`
-            : `${classes.nav_container_item}`
+            ? `${styles.nav_container_item_responsive}`
+            : `${styles.nav_container_item}`
         }
       >
         {linkLabels.map((link, _) => {
@@ -33,7 +33,7 @@ const NavLinkComponent = ({ breakPoint, onLinkClick }) => {
             <Link
               key={`${link["label"]}`}
               href={`${link["path"]}`}
-              className={`${classes.nav_link}`}
+              className={`${styles.nav_link}`}
               onClick={(e) => {
                 console.log(onLinkClick);
                 if (onLinkClick !== undefined) {
