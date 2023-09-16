@@ -1,0 +1,13 @@
+/** @format */
+
+.ft_text {
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between;
+  width: fit-content;
+  /* width: 12rem; */
+  line-height: 1.5;
+  word-spacing: 0.5rem;
+}

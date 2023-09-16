@@ -1,5 +1,6 @@
 /** @format */
 
+import Footer from "@/Component/Footer/Footer";
 import Navbar from "@/Component/Navbar/Navbar";
 import SlokHeader from "@/Component/SlokHeader/SlokHeader";
 import StoreProvider from "@/store/store";
@@ -16,6 +17,7 @@ export default function App({ Component, pageProps }) {
         <Navbar />
         {SlokasHeader}
         <Component {...pageProps} />
+        {/* <Footer /> */}
       </StoreProvider>
     </>
   );

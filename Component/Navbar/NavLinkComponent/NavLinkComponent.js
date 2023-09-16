@@ -16,18 +16,12 @@ const NavLinkComponent = ({ breakPoint, onLinkClick }) => {
     },
     {
       label: "art",
-      path: "/gallery",
+      path: "/audio",
     },
   ];
   return (
     <React.Fragment>
-      <nav
-        className={
-          breakPoint === "md"
-            ? `${styles.nav_container_item_responsive}`
-            : `${styles.nav_container_item}`
-        }
-      >
+      <nav className={`${styles.nav_container_item}`}>
         {linkLabels.map((link, _) => {
           return (
             <Link

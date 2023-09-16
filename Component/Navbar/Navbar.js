@@ -7,7 +7,8 @@ import Group from "../UI/Group/Group";
 import Drawer from "../UI/Drawer/Drawer";
 import NavLinkComponent from "./NavLinkComponent/NavLinkComponent";
 import Setting from "../Setting/Setting";
-import { Menu, Settings } from "lucide-react";
+import { CgMenuLeft } from "react-icons/cg";
+import { LuSettings } from "react-icons/lu";
 import useScrollDirection from "@/hooks/use-ScrollDirection";
 
 const Navbar = (props) => {
@@ -69,18 +70,17 @@ const Navbar = (props) => {
 
         <div className={`${styles.nav_container}`}>
           <div
-            className={`${styles.responsive_bt}`}
             onClick={() => {
               onClickDrawerListener("nav");
             }}
           >
             <Group posV={"center"} posH={"flex-start"}>
               <IconHolder>
-                <Menu />
+                <CgMenuLeft style={{ fontSize: "2.5rem" }} />
               </IconHolder>
             </Group>
           </div>
-          <NavLinkComponent />
+          {/* <NavLinkComponent /> */}
           {drawerState}
         </div>
         <div className={`${styles.setting_icon_container}`}>
@@ -90,7 +90,7 @@ const Navbar = (props) => {
             }}
           >
             <IconHolder>
-              <Settings />
+              <LuSettings style={{ fontSize: "2.5rem" }} />
             </IconHolder>
           </div>
         </div>

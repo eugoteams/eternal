@@ -17,6 +17,7 @@ import ch15 from "../public/assets/images/ch15.jpeg";
 import ch16 from "../public/assets/images/ch16.jpeg";
 import ch17 from "../public/assets/images/ch17.jpeg";
 import ch18 from "../public/assets/images/ch18.jpeg";
+import krishna_sm from "../public/assets/images/little_krishna.png";
 
 const useImage = () => {
   const arrayOfImages = [
@@ -38,6 +39,7 @@ const useImage = () => {
     ch16,
     ch17,
     ch18,
+    krishna_sm,
   ];
   const getImage = (imageId) => {
     return arrayOfImages.filter((id, index) => {

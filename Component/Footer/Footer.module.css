@@ -1,0 +1,8 @@
+/** @format */
+
+.container {
+  width: 100%;
+  background-color: #fffffd;
+  position: relative;
+  bottom: 0;
+}
