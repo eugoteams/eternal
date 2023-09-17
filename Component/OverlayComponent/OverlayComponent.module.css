@@ -37,16 +37,14 @@
 
 .pos_right {
   right: 0;
-  -webkit-animation: scale-up-hor-right 0.5s cubic-bezier(0.39, 0.575, 0.565, 1)
-    both;
-  animation: scale-up-hor-right 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  -webkit-animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 .pos_left {
   left: 0;
-  -webkit-animation: scale-up-hor-left 0.3s cubic-bezier(0.39, 0.575, 0.565, 1)
-    both;
-  animation: scale-up-hor-left 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  -webkit-animation: slide-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 .overlay_content_box_header {
@@ -83,69 +81,53 @@
 
 /**
  * ----------------------------------------
- * animation scale-up-hor-left
+ * animation slide-right
  * ----------------------------------------
  */
-@-webkit-keyframes scale-up-hor-left {
+@-webkit-keyframes slide-right {
   0% {
-    -webkit-transform: scaleX(0.4);
-    transform: scaleX(0.4);
-    -webkit-transform-origin: 0% 0%;
-    transform-origin: 0% 0%;
+    -webkit-transform: translateX(-45rem);
+    transform: translateX(-45rem);
   }
   100% {
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1);
-    -webkit-transform-origin: 0% 0%;
-    transform-origin: 0% 0%;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
   }
 }
-@keyframes scale-up-hor-left {
+@keyframes slide-right {
   0% {
-    -webkit-transform: scaleX(0.4);
-    transform: scaleX(0.4);
-    -webkit-transform-origin: 0% 0%;
-    transform-origin: 0% 0%;
+    -webkit-transform: translateX(-45rem);
+    transform: translateX(-45rem);
   }
   100% {
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1);
-    -webkit-transform-origin: 0% 0%;
-    transform-origin: 0% 0%;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
   }
 }
 
 /**
  * ----------------------------------------
- * animation scale-up-hor-right
+ * animation slide-left
  * ----------------------------------------
  */
-@-webkit-keyframes scale-up-hor-right {
+@-webkit-keyframes slide-left {
   0% {
-    -webkit-transform: scaleX(0.4);
-    transform: scaleX(0.4);
-    -webkit-transform-origin: 100% 100%;
-    transform-origin: 100% 100%;
+    -webkit-transform: translateX(45rem);
+    transform: translateX(45rem);
   }
   100% {
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1);
-    -webkit-transform-origin: 100% 100%;
-    transform-origin: 100% 100%;
+    -webkit-transform: translateX(-1rem);
+    transform: translateX(-1rem);
   }
 }
-@keyframes scale-up-hor-right {
+@keyframes slide-left {
   0% {
-    -webkit-transform: scaleX(0.4);
-    transform: scaleX(0.4);
-    -webkit-transform-origin: 100% 100%;
-    transform-origin: 100% 100%;
+    -webkit-transform: translateX(45rem);
+    transform: translateX(45rem);
   }
   100% {
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1);
-    -webkit-transform-origin: 100% 100%;
-    transform-origin: 100% 100%;
+    -webkit-transform: translateX(-1rem);
+    transform: translateX(-1rem);
   }
 }
 
