@@ -1,0 +1,28 @@
+/** @format */
+
+.container {
+  background-color: gray;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, var(250px));
+  grid-auto-rows: 10px;
+  justify-content: center;
+}
+
+.container > div {
+  padding: 0;
+  margin: 15px 10px;
+  border-radius: 16px;
+  background-color: red;
+}
+
+.card_small {
+  grid-row-end: span 26;
+}
+
+.card_medium {
+  grid-row-end: span 33px;
+}
+
+.card_large {
+  grid-row-end: span 45;
+}

@@ -33,10 +33,3 @@
 .container > p::first-letter {
   text-transform: capitalize;
 }
-
-/*Larger Mobile Scrren 26em => 43em*/
-@media (max-width: 43em) {
-  .container {
-    /* // height: fit-content; */
-  }
-}

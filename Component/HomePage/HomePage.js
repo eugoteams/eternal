@@ -9,6 +9,7 @@ import SimpleCard from "./SimpleCard/SimpleCard";
 import Image from "next/image";
 import { BiMouse } from "react-icons/bi";
 import Grid from "../UI/Grid/Grid";
+import ImageGrid from "../ImageGrid/ImageGrid";
 
 const HomePage = () => {
   return (
@@ -16,7 +17,7 @@ const HomePage = () => {
       <Layout>
         <div className={`${styles.hero}`}>
           <div className={`${styles.hero_text}`}>
-            <h1>Eternal bhagavad gita </h1>
+            <h1> bhagavad gita </h1>
             <p>
               Immerse yourself in the sacred teaching of Lord Krishna with
               Eternal .Explore the wisdom of ages and apply it to your modern
@@ -40,14 +41,18 @@ const HomePage = () => {
               <span>scroll to see more sections</span>
             </div>
           </div>
-          <div className={`${styles.image_container}`}>
+          <div className={`${styles.cnt}`}>
+            <ImageGrid />
+          </div>
+          {/* <div className={`${styles.image_container}`}>
             <Image
-              src={"/assets/images/hero.jpeg"}
+              src={"/assets/images/bhagavadgita_6.jpeg"}
               alt="srimad bhagavad gita.jpeg"
               layout="fill"
               objectFit="fill"
+              style={{ borderRadius: "0.5rem", overflow: "hidden" }}
             />
-          </div>
+          </div> */}
         </div>
 
         {/* Feature Section* */}
