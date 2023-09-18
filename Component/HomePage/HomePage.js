@@ -10,12 +10,90 @@ import Image from "next/image";
 import { BiMouse } from "react-icons/bi";
 import Grid from "../UI/Grid/Grid";
 import ImageGrid from "../ImageGrid/ImageGrid";
+import Chapter from "@/pages/slokas/[ch]";
 
-const HomePage = () => {
+const HomePage = ({ chapters }) => {
   return (
     <React.Fragment>
       <Layout>
-        <div className={`${styles.hero}`}>
+        <div className={`${styles.pin_container}`}>
+          {chapters.map((chapter, index) => {
+            let chapterNumber =
+              chapter["chapter_number"] / 10 < 1
+                ? "0" + chapter["chapter_number"]
+                : chapter["chapter_number"];
+            // return (
+            //   <div className={`${styles.card} ${styles.card_sm}`}>
+            //     <Image
+            //       src={`/assets/images/ch${chapterNumber}.jpeg`}
+            //       alt="srimad bhagavad gita.jpeg"
+            //       layout="fill"
+            //       objectFit="fill"
+            //       style={{ borderRadius: "0.5rem", overflow: "hidden" }}
+            //     />
+            //   </div>
+            // );
+          })}
+          <div className={`${styles.card} ${styles.card_sm}`}>
+            <div className={`${styles.image_container}`}>
+              <Image
+                src={`/assets/images/ch01.jpeg`}
+                alt="srimad bhagavad gita.jpeg"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+          </div>
+          <div className={`${styles.card} ${styles.card_md}`}>
+            {" "}
+            <div className={`${styles.image_container}`}>
+              <Image
+                src={`/assets/images/ch02.jpeg`}
+                alt="srimad bhagavad gita.jpeg"
+                layout="fill"
+                objectFit="cover"
+                style={{ borderRadius: "0.5rem", overflow: "hidden" }}
+              />
+            </div>
+          </div>
+          <div className={`${styles.card} ${styles.card_l}`}>
+            <div className={`${styles.image_container}`}>
+              <Image
+                src={`/assets/images/ch03.jpeg`}
+                alt="srimad bhagavad gita.jpeg"
+                layout="fill"
+                objectFit="cover"
+                style={{ borderRadius: "0.5rem", overflow: "hidden" }}
+              />
+            </div>
+          </div>
+          <div className={`${styles.card} ${styles.card_sm}`}>
+            <div className={`${styles.image_container}`}>
+              <Image
+                src={`/assets/images/ch04.jpeg`}
+                alt="srimad bhagavad gita.jpeg"
+                layout="fill"
+                objectFit="cover"
+                style={{ borderRadius: "0.5rem", overflow: "hidden" }}
+              />
+            </div>
+          </div>
+          <div className={`${styles.card} ${styles.card_md}`}></div>
+          <div className={`${styles.card} ${styles.card_l}`}></div>
+          <div className={`${styles.card} ${styles.card_sm}`}></div>
+          <div className={`${styles.card} ${styles.card_md}`}></div>
+          <div className={`${styles.card} ${styles.card_l}`}></div>
+          <div className={`${styles.card} ${styles.card_sm}`}></div>
+          <div className={`${styles.card} ${styles.card_md}`}></div>
+          <div className={`${styles.card} ${styles.card_l}`}></div>
+          <div className={`${styles.card} ${styles.card_sm}`}></div>
+          <div className={`${styles.card} ${styles.card_md}`}></div>
+          <div className={`${styles.card} ${styles.card_l}`}></div>
+          <div className={`${styles.card} ${styles.card_sm}`}></div>
+          <div className={`${styles.card} ${styles.card_md}`}></div>
+          <div className={`${styles.card} ${styles.card_l}`}></div>
+        </div>
+        {/* <div className={`${styles.hero}`}>
           <div className={`${styles.hero_text}`}>
             <h1> bhagavad gita </h1>
             <p>
@@ -43,8 +121,8 @@ const HomePage = () => {
           </div>
           <div className={`${styles.cnt}`}>
             <ImageGrid />
-          </div>
-          {/* <div className={`${styles.image_container}`}>
+          </div> */}
+        {/* <div className={`${styles.image_container}`}>
             <Image
               src={"/assets/images/bhagavadgita_6.jpeg"}
               alt="srimad bhagavad gita.jpeg"
@@ -52,11 +130,11 @@ const HomePage = () => {
               objectFit="fill"
               style={{ borderRadius: "0.5rem", overflow: "hidden" }}
             />
-          </div> */}
-        </div>
+          </div>
+               </div> */}
 
         {/* Feature Section* */}
-
+        {/*
         <div className={`${styles.feature}`}>
           <span>explore</span>
           <h2>the wisdom of Bhagavad Gita</h2>
@@ -93,11 +171,11 @@ const HomePage = () => {
               }
             />
           </div>
-        </div>
+        </div> */}
 
         {/**Feature List Section */}
 
-        <div className={`${styles.feature}`}>
+        {/* <div className={`${styles.feature}`}>
           <span>discover</span>
           <h2>Explore the World Of Bhagavad Gita Translation</h2>
           <p>
@@ -124,10 +202,10 @@ const HomePage = () => {
                 "eternal provides a seamless and intuitive platform for easy naviagation and study of the Bhagavad Gita.Enjoy a hassle-free learnig experince."
               }
             />
-          </div>
-        </div>
+          </div>  </div> */}
+
         {/**CTA Section */}
-        <div className={`${styles.cta}`}>
+        {/* <div className={`${styles.cta}`}>
           <div className={`${styles.cta_container}`}>
             <h2>start your spiritual journey today</h2>
             <p>
@@ -140,7 +218,7 @@ const HomePage = () => {
               </Link>
             </div>
           </div>
-        </div>
+        </div> */}
       </Layout>
     </React.Fragment>
   );

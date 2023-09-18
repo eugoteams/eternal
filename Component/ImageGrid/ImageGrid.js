@@ -37,7 +37,10 @@ const ImageGrid = (props) => {
         height={175}
         x={424}
         y={68}
-        preserveAspectRatio="xMidYMid slice"
+        preserveAspectRatio="none meet"
+        rx={20}
+        clipPath="url(#a)"
+        className={`${styles.image}`}
       />
       <rect
         width={193}
