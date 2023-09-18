@@ -11,75 +11,76 @@ import { BiMouse } from "react-icons/bi";
 import Grid from "../UI/Grid/Grid";
 import ImageGrid from "../ImageGrid/ImageGrid";
 import Chapter from "@/pages/slokas/[ch]";
+import useImage from "@/hooks/use-Image";
 
 const HomePage = ({ chapters }) => {
+  const { getImage } = useImage();
+  let count = 1;
   return (
     <React.Fragment>
       <Layout>
         <div className={`${styles.pin_container}`}>
           {chapters.map((chapter, index) => {
+            let classStyle = "sm";
             let chapterNumber =
               chapter["chapter_number"] / 10 < 1
                 ? "0" + chapter["chapter_number"]
                 : chapter["chapter_number"];
-            // return (
-            //   <div className={`${styles.card} ${styles.card_sm}`}>
-            //     <Image
-            //       src={`/assets/images/ch${chapterNumber}.jpeg`}
-            //       alt="srimad bhagavad gita.jpeg"
-            //       layout="fill"
-            //       objectFit="fill"
-            //       style={{ borderRadius: "0.5rem", overflow: "hidden" }}
-            //     />
-            //   </div>
-            // );
+            count = count + 1;
+            switch (true) {
+              case count === 1:
+                classStyle = "sm";
+                break;
+              case count === 2:
+                classStyle = "md";
+                break;
+              case count === 3:
+                classStyle = "l";
+                break;
+              default:
+                classStyle = "sm";
+                count = 2;
+
+                break;
+            }
+
+            console.log("chapter", chapter["translation"], classStyle);
+            return (
+              <div
+                className={`${styles.card} ${styles[`card_${classStyle}`]}`}
+                key={`${chapterNumber}`}
+              >
+                <div className={`${styles.img_placeholder}`}>
+                  <Image
+                    className={`${styles.image}`}
+                    src={getImage(index)}
+                    alt="gita iamge"
+                    width="100"
+                    height="100"
+                  />
+                </div>
+                {chapter["translation"]}-{classStyle}
+              </div>
+            );
           })}
-          <div className={`${styles.card} ${styles.card_sm}`}>
-            <div className={`${styles.image_container}`}>
+          {/* <div className={`${styles.card} ${styles.card_sm}`}>
+            <div className={`${styles.img_placeholder}`}>
               <Image
-                src={`/assets/images/ch01.jpeg`}
-                alt="srimad bhagavad gita.jpeg"
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
-          </div>
-          <div className={`${styles.card} ${styles.card_md}`}>
-            {" "}
-            <div className={`${styles.image_container}`}>
-              <Image
-                src={`/assets/images/ch02.jpeg`}
-                alt="srimad bhagavad gita.jpeg"
-                layout="fill"
-                objectFit="cover"
-                style={{ borderRadius: "0.5rem", overflow: "hidden" }}
-              />
-            </div>
-          </div>
-          <div className={`${styles.card} ${styles.card_l}`}>
-            <div className={`${styles.image_container}`}>
-              <Image
-                src={`/assets/images/ch03.jpeg`}
-                alt="srimad bhagavad gita.jpeg"
-                layout="fill"
-                objectFit="cover"
-                style={{ borderRadius: "0.5rem", overflow: "hidden" }}
-              />
-            </div>
-          </div>
-          <div className={`${styles.card} ${styles.card_sm}`}>
-            <div className={`${styles.image_container}`}>
-              <Image
-                src={`/assets/images/ch04.jpeg`}
-                alt="srimad bhagavad gita.jpeg"
-                layout="fill"
-                objectFit="cover"
-                style={{ borderRadius: "0.5rem", overflow: "hidden" }}
+                className={`${styles.image}`}
+                src={getImage(1)}
+                alt="gita iamge"
+                width="100"
+                height="100"
               />
             </div>
           </div>
           <div className={`${styles.card} ${styles.card_md}`}></div>
-          <div className={`${styles.card} ${styles.card_l}`}></div>
+
+          <div className={`${styles.card} ${styles.card_md}`}>1</div>
+          <div className={`${styles.card} ${styles.card_l}`}>2</div>
+          <div className={`${styles.card} ${styles.card_sm}`}>3</div>
+          <div className={`${styles.card} ${styles.card_md}`}>4</div>
+          <div className={`${styles.card} ${styles.card_l}`}>5</div>
           <div className={`${styles.card} ${styles.card_sm}`}></div>
           <div className={`${styles.card} ${styles.card_md}`}></div>
           <div className={`${styles.card} ${styles.card_l}`}></div>
@@ -89,9 +90,7 @@ const HomePage = ({ chapters }) => {
           <div className={`${styles.card} ${styles.card_sm}`}></div>
           <div className={`${styles.card} ${styles.card_md}`}></div>
           <div className={`${styles.card} ${styles.card_l}`}></div>
-          <div className={`${styles.card} ${styles.card_sm}`}></div>
-          <div className={`${styles.card} ${styles.card_md}`}></div>
-          <div className={`${styles.card} ${styles.card_l}`}></div>
+          */}
         </div>
         {/* <div className={`${styles.hero}`}>
           <div className={`${styles.hero_text}`}>

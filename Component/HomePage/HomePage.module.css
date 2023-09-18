@@ -2,34 +2,54 @@
 
 .pin_container {
   padding: 0;
-  width: 80vw;
+  width: 95rem;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 250px);
+  grid-template-columns: repeat(auto-fill, 30rem);
   grid-auto-rows: 10px;
   justify-content: center;
-  /* background-color: black; */
+  /* background-color: rebeccapurple; */
 }
 
 .card {
   padding: 0;
-  margin: 15px 10px;
+  margin: 1.5rem 0.5rem;
   border-radius: 16px;
-  background-color: red;
+  font-size: 1.3rem;
+  /* background-color: red; */
+  text-align: center;
 }
 
 .card_sm {
-  grid-row-end: span 26;
+  grid-row-end: span 33;
+  position: relative;
 }
 
 .card_md {
-  grid-row-end: span 33;
-}
-
-.card_l {
   grid-row-end: span 45;
 }
 
+.card_l {
+  grid-row-end: span 35;
+}
+
+.img_placeholder {
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  border-radius: 2rem;
+}
+/*Tablet View*/
+@media (max-width: 48em) {
+}
+/*Mobile Large*/
 @media (max-width: 27em) {
   .pin_container {
     padding: 1rem;
@@ -97,23 +117,6 @@
   justify-content: center;
   /*
   background-color: gray; */
-}
-
-.image_container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  background-color: rebeccapurple;
-  overflow: hidden;
-  border-radius: 16px;
-  /* position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-  border-radius: 0.5rem;
-  overflow: hidden; */
 }
 
 /* .image_sm {
