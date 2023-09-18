@@ -1,12 +1,9 @@
 /** @format */
 
 .pin_container {
-  margin: 0;
   padding: 0;
   width: 80vw;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fill, 250px);
   grid-auto-rows: 10px;
@@ -31,6 +28,25 @@
 
 .card_l {
   grid-row-end: span 45;
+}
+
+@media (max-width: 27em) {
+  .pin_container {
+    background-color: gray;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card_sm {
+    grid-row-end: span 26;
+  }
+
+  .card_md {
+    grid-row-end: span 30;
+  }
+
+  .card_l {
+    grid-row-end: span 34;
+  }
 }
 
 .hero {
