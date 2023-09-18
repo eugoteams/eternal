@@ -32,6 +32,8 @@
 
 @media (max-width: 27em) {
   .pin_container {
+    padding: 1rem;
+    width: 100vw;
     background-color: gray;
     grid-template-columns: repeat(2, 1fr);
   }
