@@ -6,7 +6,6 @@ export default function Home({ chapters }) {
   return (
     <React.Fragment>
       <HomePage chapters={chapters} />
-      {/* <OverlayComponent /> */}
     </React.Fragment>
   );
 }

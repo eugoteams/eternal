@@ -23,7 +23,7 @@ const ContextMenu = (props) => {
     let chapterIndex = index + 1;
     return (
       <Link
-        href={`/slokas/${chapterIndex}`}
+        href={`/chapter/${chapterIndex}`}
         key={`${value}_${index}`}
         style={{
           textDecoration: "none",

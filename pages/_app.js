@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 export default function App({ Component, pageProps }) {
   const router = useRouter();
   const path = router.pathname;
-  let SlokasHeader = path.split("/").includes("slokas") ? <SlokHeader /> : "";
+  let SlokasHeader = path.split("/").includes("chapter") ? <SlokHeader /> : "";
   return (
     <>
       <StoreProvider>
