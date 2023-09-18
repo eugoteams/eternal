@@ -1,8 +1,8 @@
 /** @format */
 
 .container {
-  height: 8rem;
-  padding-bottom: 2rem;
+  height: auto;
+  padding-bottom: 1.3rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
@@ -19,10 +19,8 @@
   left: 0;
   right: 0;
   z-index: 2;
-
-  -webkit-animation: scale-up-ver-bottom 0.4s
-    cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  animation: scale-up-ver-bottom 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  -webkit-animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 .container > div:first-child {
@@ -31,15 +29,11 @@
   height: 100%;
 }
 
-/* .icons {
-  font-size: 1.5rem;
+.icons {
+  font-size: 2rem;
   font-weight: 800;
   cursor: pointer;
 }
-
-.icons:hover {
-  color: red;
-} */
 
 .controls {
   width: 25rem;
@@ -50,6 +44,7 @@
 
 /*Playback Speed*/
 .playback_opt {
+  cursor: pointer;
   background-color: #e9ecef;
   width: 19rem;
   border-radius: 5px;
@@ -59,7 +54,6 @@
   position: absolute;
   top: -29rem;
   left: 30%;
-
   z-index: 2;
 }
 
@@ -131,39 +125,28 @@
   outline-offset: 0.125rem;
 }
 
-.scale-up-ver-bottom {
-}
-
 /**
  * ----------------------------------------
- * animation scale-up-ver-bottom
+ * animation slide-top
  * ----------------------------------------
  */
-@-webkit-keyframes scale-up-ver-bottom {
+@-webkit-keyframes slide-top {
   0% {
-    -webkit-transform: scaleY(0.4);
-    transform: scaleY(0.4);
-    -webkit-transform-origin: 0% 100%;
-    transform-origin: 0% 100%;
+    -webkit-transform: translateY(15rem);
+    transform: translateY(15rem);
   }
   100% {
-    -webkit-transform: scaleY(1);
-    transform: scaleY(1);
-    -webkit-transform-origin: 0% 100%;
-    transform-origin: 0% 100%;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
   }
 }
-@keyframes scale-up-ver-bottom {
+@keyframes slide-top {
   0% {
-    -webkit-transform: scaleY(0.4);
-    transform: scaleY(0.4);
-    -webkit-transform-origin: 0% 100%;
-    transform-origin: 0% 100%;
+    -webkit-transform: translateY(15rem);
+    transform: translateY(15rem);
   }
   100% {
-    -webkit-transform: scaleY(1);
-    transform: scaleY(1);
-    -webkit-transform-origin: 0% 100%;
-    transform-origin: 0% 100%;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
   }
 }

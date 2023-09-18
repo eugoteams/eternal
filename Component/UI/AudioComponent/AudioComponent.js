@@ -2,14 +2,14 @@
 
 import React, { useState, forwardRef } from "react";
 import styles from "./AudioComponent.module.css";
+import { FiMoreHorizontal } from "react-icons/fi";
 import {
-  MoreHorizontal,
-  Pause,
-  Play,
-  SkipBack,
-  SkipForward,
-  X,
-} from "lucide-react";
+  FaPlay,
+  FaPause,
+  FaForward,
+  FaBackward,
+  FaXmark,
+} from "react-icons/fa6";
 
 const AudioComponent = forwardRef(({ controlListener }, ref) => {
   const [playerState, setState] = useState({
@@ -93,50 +93,40 @@ const AudioComponent = forwardRef(({ controlListener }, ref) => {
             <div>{convertSecToMinutes(playerState["trackDurationPlayed"])}</div>
             <div className={`${styles.controls}`}>
               <div
-                className={`${styles.icons} `}
                 onClick={(e) => {
                   stateHandler("optMenu", !playerState["optMenu"]);
                 }}
               >
-                <MoreHorizontal />
+                <FiMoreHorizontal className={`${styles.icons}`} />
               </div>
-              <div
-                className={`${styles.icons}`}
-                onClick={(e) => controlListener({ type: "backward" })}
-              >
-                <SkipBack />
+              <div onClick={(e) => controlListener({ type: "backward" })}>
+                <FaBackward />
               </div>
-              <div className={`${styles.icons}`}>
+              <div>
                 {playerState["play"] ? (
-                  <Pause
+                  <FaPause
                     onClick={(e) => {
-                      console.log("Player *****", playerState["play"]);
                       controlListener({ type: "pause" });
                     }}
                   />
                 ) : (
-                  <Play
+                  <FaPlay
                     onClick={(e) => {
-                      console.log("Player**** ", playerState["play"]);
                       controlListener({ type: "play" });
                     }}
                   />
                 )}
               </div>
-              <div
-                className={`${styles.icons}`}
-                onClick={(e) => controlListener({ type: "forward" })}
-              >
-                <SkipForward />
+              <div onClick={(e) => controlListener({ type: "forward" })}>
+                <FaForward />
               </div>
               <div
-                className={`${styles.icons}`}
                 onClick={(e) => {
                   stateHandler("playerClosed", !playerState["playerClosed"]);
                   controlListener({ type: "close" });
                 }}
               >
-                <X />
+                <FaXmark />
               </div>
             </div>
             <div>{convertSecToMinutes(playerState["trackDuration"])}</div>
