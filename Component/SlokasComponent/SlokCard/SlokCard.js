@@ -29,9 +29,9 @@ const SlokCard = forwardRef(
     const newLine = (data) => {
       return data.split("\n").map((data, index) => {
         return (
-          <div style={{ margin: "0.5rem auto" }} key={`${data}_${index}`}>
+          <p style={{ margin: "0.5rem auto" }} key={`${data}_${index}`}>
             {data}
-          </div>
+          </p>
         );
       });
     };
@@ -79,9 +79,9 @@ const SlokCard = forwardRef(
             </span>
 
             <span>
-              <IconHolder>
+              {/* <IconHolder>
                 <Bookmark size={ICON_SIZE} color={ICON_COLOR} />
-              </IconHolder>
+              </IconHolder> */}
             </span>
           </div>
           {/** Grid-Item-2 */}
@@ -95,13 +95,13 @@ const SlokCard = forwardRef(
             <div className={`${styles.div_with_sloak}`}>{mergeLines()}</div>
             {readerPref === "translation" && slokMeaning !== "" && (
               <div className={`${styles.div_with_header}`}>
-                <h3>word meanings</h3>
+                <h3>word meanings :</h3>
                 <div>{newLine(slokMeaning)}</div>
               </div>
             )}
             {readerPref === "translation" && (
               <div className={`${styles.div_with_header}`}>
-                <h3 className={`${styles.h3_translation}`}>translation</h3>
+                <h3>translation :</h3>
                 <div>{newLine(slokTranslation)}</div>
               </div>
             )}

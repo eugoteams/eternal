@@ -3,10 +3,10 @@
 import React from "react";
 import styles from "./SlokHeader.module.css";
 import useDispatch from "@/hooks/use-Dispatch";
-import Drawer from "../UI/Drawer/Drawer";
+import Drawer from "../../UI/Drawer/Drawer";
 import { ChevronDown } from "lucide-react";
 import useScrollDirection from "@/hooks/use-ScrollDirection";
-import ContextMenu from "../ContextMenu/ContextMenu";
+import ContextMenu from "../../ContextMenu/ContextMenu";
 
 const SlokHeader = (props) => {
   const {

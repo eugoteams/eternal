@@ -6,17 +6,15 @@ import SlokCard from "./SlokCard/SlokCard";
 import { CHAPTERS_MENU, readingPrefSwitch } from "@/model/const";
 import AudioComponent from "../UI/AudioComponent/AudioComponent";
 import Switch from "../UI/Switch/Switch";
-import { useRouter } from "next/router";
 import useDispatch from "@/hooks/use-Dispatch";
 import Layout from "../Layout/Layout";
 import Stack from "../UI/Stack/Stack";
 import useHelper from "@/hooks/use-Helper";
-import { ChevronLeft, Play } from "lucide-react";
+import { BsFillPlayFill } from "react-icons/bs";
 import Modal from "../UI/Modal/Modal";
 import Footer from "./Footer/Footer";
 
 const SlokasComponent = ({ chapter, content }) => {
-  const router = useRouter();
   const [trackId, setTrack] = useState(0);
   const { getTranslator } = useHelper();
   const {
@@ -49,6 +47,7 @@ const SlokasComponent = ({ chapter, content }) => {
 
   //Smooth Scrolling
   const scrollTo = (sloakNum) => {
+    refHookArray[sloakNum - 1].current.focus();
     refHookArray[sloakNum - 1].current.scrollIntoView({
       behavior: "smooth",
     });
@@ -121,6 +120,8 @@ const SlokasComponent = ({ chapter, content }) => {
   };
 
   const onAutoPlayClickListener = () => {
+    setTrack((prevState) => 1);
+    audioSrcLoader(1);
     console.log("Play all with scroll effect");
   };
 
@@ -128,9 +129,6 @@ const SlokasComponent = ({ chapter, content }) => {
     setReaderPref("readingPreference", item);
   };
 
-  const onClickBack = () => {
-    router.push("/chapters");
-  };
   const onModalClickListener = () => {
     setError((prevState) => "");
   };
@@ -192,7 +190,8 @@ const SlokasComponent = ({ chapter, content }) => {
               className={`${styles.play_button}`}
               onClick={onAutoPlayClickListener}
             >
-              <Play size={15} color="#3b5bdb" strokeWidth={3} />
+              <BsFillPlayFill style={{ fontSize: "1.8rem" }} />
+              {/* <Play size={15} color="#3b5bdb" strokeWidth={3} /> */}
               <span>play audio</span>
             </div>
           </section>
