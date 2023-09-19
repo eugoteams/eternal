@@ -18,6 +18,8 @@ import ch16 from "../public/assets/images/ch16.jpeg";
 import ch17 from "../public/assets/images/ch17.jpeg";
 import ch18 from "../public/assets/images/ch18.jpeg";
 import krishna_sm from "../public/assets/images/little_krishna.png";
+import gita from "../public/assets/images/gita.jpeg";
+import vyasa from "../public/assets/images/vyasa.jpeg";
 
 const useImage = () => {
   const arrayOfImages = [
@@ -40,6 +42,8 @@ const useImage = () => {
     ch17,
     ch18,
     krishna_sm,
+    gita,
+    vyasa,
   ];
   const getImage = (imageId) => {
     return arrayOfImages.filter((id, index) => {

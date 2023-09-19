@@ -7,9 +7,10 @@ import Grid from "../UI/Grid/Grid";
 import useImage from "@/hooks/use-Image";
 import Link from "next/link";
 import useDispatch from "@/hooks/use-Dispatch";
+/**Component was used for the initial version v1.1.2 */
 
 const ChapterComponent = ({ chapters }) => {
-  const { setNavigation, setNavigation_1 } = useDispatch();
+  const { setNavigation } = useDispatch();
   const { getImage } = useImage();
   return (
     <React.Fragment>
@@ -33,8 +34,6 @@ const ChapterComponent = ({ chapters }) => {
                     //Will set the SlokHeaderComponent.
                     setNavigation("chapter", chapter["translation"]);
                     setNavigation("sloks", chapter["verses_count"]);
-                    setNavigation_1("chapter", chapter["translation"]);
-                    setNavigation_1("sloks", chapter["verses_count"]);
                   }}
                 >
                   <div className={`${styles.img_placeholder}`}>

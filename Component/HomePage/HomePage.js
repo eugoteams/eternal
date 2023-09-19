@@ -7,9 +7,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { BiMouse } from "react-icons/bi";
 import useImage from "@/hooks/use-Image";
+import useDispatch from "@/hooks/use-Dispatch";
 
 const HomePage = ({ chapters }) => {
   const { getImage } = useImage();
+  const { setNavigation } = useDispatch();
   let count = 1;
   return (
     <React.Fragment>
@@ -37,8 +39,8 @@ const HomePage = ({ chapters }) => {
               </div>
 
               <div className={`${styles.button}`}>
-                <Link href="/chapters" className={`${styles.link}`}>
-                  <span>about gita</span>
+                <Link href="/about_gita" className={`${styles.link}`}>
+                  <span>explore gita</span>
                 </Link>
               </div>
             </div>
@@ -83,7 +85,15 @@ const HomePage = ({ chapters }) => {
                 style={{ textDecoration: "none", color: "inherit" }}
                 className={`${styles.card} ${styles[`card_${classStyle}`]}`}
               >
-                <div className={`${styles.img_placeholder}`}>
+                <div
+                  className={`${styles.img_placeholder}`}
+                  onClick={() => {
+                    //Will set the SlokHeaderComponent.
+                    setNavigation("chapter", chapter["translation"]);
+                    setNavigation("sloks", chapter["verses_count"]);
+                    setNavigation("startingVerse", 0);
+                  }}
+                >
                   <Image
                     className={`${styles.image}`}
                     src={getImage(index)}

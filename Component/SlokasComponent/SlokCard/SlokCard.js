@@ -4,7 +4,8 @@ import React, { forwardRef } from "react";
 import styles from "./SlokCard.module.css";
 import { ICON_COLOR, ICON_SIZE } from "@/model/const";
 import IconHolder from "../../UI/IconHolder/IconHolder";
-import { Play, Bookmark } from "lucide-react";
+
+import { FaPlay } from "react-icons/fa6";
 
 const SlokCard = forwardRef(
   (
@@ -74,7 +75,7 @@ const SlokCard = forwardRef(
 
             <span onClick={onClickPlay} onTouchStart={onClickPlay}>
               <IconHolder>
-                <Play size={ICON_SIZE} color={ICON_COLOR} />
+                <FaPlay style={{ fontSize: "1.5rem", color: "#7950f2" }} />
               </IconHolder>
             </span>
 

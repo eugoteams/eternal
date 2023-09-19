@@ -26,23 +26,15 @@ const SlokasComponent = ({ chapter, content }) => {
     startingVerse,
     setReaderPref,
     setNavigation,
-    setNavigation_1,
   } = useDispatch();
   const [error, setError] = useState("");
   const audioRef = React.createRef();
   let refHookArray = [];
 
   useEffect(() => {
-    console.log(
-      "SlokasComponent --> setNavigation",
-      chapter,
-      CHAPTERS_MENU[chapter - 1]
-    );
     const { label, value, verses } = CHAPTERS_MENU[chapter - 1];
     setNavigation("chapter", value);
     setNavigation("sloks", verses);
-    setNavigation_1("chapter", value);
-    setNavigation_1("sloks", verses);
   }, [chapter]);
 
   //Smooth Scrolling
@@ -55,11 +47,6 @@ const SlokasComponent = ({ chapter, content }) => {
 
   useEffect(() => {
     if (startingVerse != 0) {
-      console.log(
-        refHookArray.length,
-        startingVerse,
-        refHookArray[startingVerse - 1]
-      );
       scrollTo(startingVerse);
     }
   }, [startingVerse]);
@@ -122,7 +109,6 @@ const SlokasComponent = ({ chapter, content }) => {
   const onAutoPlayClickListener = () => {
     setTrack((prevState) => 1);
     audioSrcLoader(1);
-    console.log("Play all with scroll effect");
   };
 
   const onItemSelectListener = (item) => {

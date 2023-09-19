@@ -10,12 +10,9 @@ const ContextMenu = (props) => {
   const {
     chapterNavigated,
     sloks,
-    setNavigation,
-    sideNavVisible,
-    setNavigation_1,
-    chapterNavigated_1,
-    sloks_1,
     sloakHeaderMenu,
+    setNavigation,
+    startingVerse,
   } = useDispatch();
 
   let container_drop_down = CHAPTERS_MENU.map((chapter, index) => {
@@ -32,18 +29,15 @@ const ContextMenu = (props) => {
       >
         <div
           className={
-            value === chapterNavigated_1
+            value === chapterNavigated
               ? `${styles.dropdown_item} ${styles.dropdown_item_active}`
               : `${styles.dropdown_item} ${`${styles.item_hover}`}`
           }
           onClick={(e) => {
-            // setOpen((prevState) => !prevState);
             setNavigation("chapter", value);
             setNavigation("sloks", verses);
-            setNavigation_1("chapter", value);
-            setNavigation_1("sloks", verses);
-            setNavigation_1("startingVerse", 0);
-            // setNavigation_1("openMenu", !sloakHeaderMenu);
+            setNavigation("startingVerse", 0);
+            setNavigation("openMenu", !sloakHeaderMenu);
           }}
         >
           <span>
@@ -55,21 +49,23 @@ const ContextMenu = (props) => {
     );
   });
 
-  let verses = [...Array(sloks_1)].map((_, index) => {
+  let verses = [...Array(sloks)].map((_, index) => {
+    let verseNum = index + 1;
     return (
       <p
         key={`nav_${index}`}
         className={
-          1 === chapterNavigated
+          startingVerse === verseNum
             ? `${styles.dropdown_item} ${styles.dropdown_item_active}`
             : `${styles.dropdown_item} ${`${styles.item_hover}`}`
         }
         onClick={(e) => {
-          setNavigation_1("startingVerse", index + 1);
-          // setNavigation_1("openMenu", !sloakHeaderMenu);
+          e.preventDefault();
+          setNavigation("openMenu", !sloakHeaderMenu);
+          setNavigation("startingVerse", verseNum);
         }}
       >
-        {index + 1}
+        {verseNum}
       </p>
     );
   });

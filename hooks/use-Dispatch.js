@@ -17,12 +17,9 @@ const useDispatch = () => {
   let lang = readerPreferences["wordByWordLocale"];
   let theme = readerPreferences[""];
   let fontType = readerStyles["gitaFont"];
-  let chapterNavigated = navigation["chapter"];
-  let chapterNavigated_1 = nav["chapter"];
-
+  let chapterNavigated = nav["chapter"];
   let sideNavVisible = navigation["navigationIsVisible"];
-  let sloks = navigation["sloks"];
-  let sloks_1 = nav["sloks"];
+  let sloks = nav["sloks"];
   let sloakHeaderMenu = nav["openMenu"];
   let startingVerse = nav["startingVerse"];
 
@@ -44,16 +41,8 @@ const useDispatch = () => {
     });
   };
 
-  const setNavigation = (key, value) => {
-    navigation[key] = value;
-    dispatch({
-      type: "ADD_R",
-      payload: { ...state },
-    });
-  };
-
   //SetNavigation_not in localstorage
-  const setNavigation_1 = (key, value) => {
+  const setNavigation = (key, value) => {
     nav[key] = value;
     setNav((prevState) => {
       return { ...nav };
@@ -86,7 +75,6 @@ const useDispatch = () => {
     setReaderStyle,
     setNavigation,
     //AppState -> notStored in LocalStorage
-    setNavigation_1,
     setDefaultSetting,
     readerPref,
     translator,
@@ -100,8 +88,6 @@ const useDispatch = () => {
     sloks,
     sideNavVisible,
     //AppState -> notStored in LocalStorage
-    chapterNavigated_1,
-    sloks_1,
     sloakHeaderMenu,
     startingVerse,
   };

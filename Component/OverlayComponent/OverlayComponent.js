@@ -2,7 +2,7 @@
 
 import React from "react";
 import styles from "./OverlayComponent.module.css";
-import { X } from "lucide-react";
+import { AiOutlineClose } from "react-icons/ai";
 
 const OverlayComponent = (props) => {
   const { position = "left", onOverlayClickListener, title } = props;
@@ -22,7 +22,7 @@ const OverlayComponent = (props) => {
               onClick={onOverlayClickListener}
               style={{ marginTop: "0.5rem" }}
             >
-              <X />
+              <AiOutlineClose />
             </span>
           </div>
           <div style={{ marginTop: "0.5rem" }}>{props.children}</div>

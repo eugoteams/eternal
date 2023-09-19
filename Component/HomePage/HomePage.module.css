@@ -56,7 +56,7 @@
   margin: 5rem auto;
   display: grid;
   grid-template-columns: repeat(auto-fill, 30rem);
-  grid-auto-rows: 1.2rem;
+  grid-auto-rows: 1.3rem;
   justify-content: center;
 }
 

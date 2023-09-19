@@ -11,12 +11,8 @@ const NavLinkComponent = ({ breakPoint, onLinkClick }) => {
       path: "/",
     },
     {
-      label: "chapters",
-      path: "/chapters",
-    },
-    {
-      label: "art",
-      path: "/audio",
+      label: "about gita",
+      path: "/about_gita",
     },
   ];
   return (
@@ -29,7 +25,6 @@ const NavLinkComponent = ({ breakPoint, onLinkClick }) => {
               href={`${link["path"]}`}
               className={`${styles.nav_link}`}
               onClick={(e) => {
-                console.log(onLinkClick);
                 if (onLinkClick !== undefined) {
                   onLinkClick();
                 }

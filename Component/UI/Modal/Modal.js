@@ -2,7 +2,7 @@
 
 import React from "react";
 import styles from "./Modal.module.css";
-import { X } from "lucide-react";
+import { AiOutlineClose } from "react-icons/ai";
 
 const Modal = ({ message, onClick }) => {
   return (
@@ -18,7 +18,7 @@ const Modal = ({ message, onClick }) => {
             }}
             onClick={onClick}
           >
-            <X size={14} />
+            <AiOutlineClose />
           </div>
 
           <div>{message}</div>

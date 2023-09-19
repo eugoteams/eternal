@@ -12,7 +12,7 @@ const reducer = (state, action) => {
     case "ADD_R":
       return { ...action.payload };
     default:
-      console.log("Test", action);
+      //no-opt
       break;
   }
 };

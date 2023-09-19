@@ -61,22 +61,25 @@
   transition: all 0.5s ease;
 }
 
+.overlay_content_box_header > h3 {
+  text-transform: capitalize;
+}
+
 /* Scroll-Bar Customization */
-.overlay_cnt::-webkit-scrollbar {
-  width: 1rem;
+.overlay_content_box::-webkit-scrollbar {
+  width: 0.5rem;
 }
 
-.overlay_cnt::-webkit-scrollbar-track {
-  background: #f1f3f5;
+.overlay_content_box::-webkit-scrollbar-track {
+  background: inherit;
 }
 
-.overlay_cnt::-webkit-scrollbar-thumb {
-  background: #ced4da;
-  border-radius: 0.5rem;
+.overlay_content_box::-webkit-scrollbar-thumb {
+  background: inherit;
 }
 
-.overlay_cnt::-webkit-scrollbar-thumb:hover {
-  background: #555;
+.overlay_content_box::-webkit-scrollbar-thumb:hover {
+  background: inherit;
 }
 
 /**

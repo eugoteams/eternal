@@ -2,7 +2,7 @@
 
 import React from "react";
 import styles from "./Footer.module.css";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import Link from "next/link";
 
 const Footer = ({ currentChapter }) => {
@@ -12,8 +12,13 @@ const Footer = ({ currentChapter }) => {
     <React.Fragment>
       <div className={`${styles.container}`}>
         {currentChapter > 1 && (
-          <Link href={`/slokas/${prevChapter}`} className={`${styles.button}`}>
-            <ChevronLeft size={14} strokeWidth="3" />
+          <Link href={`/chapter/${prevChapter}`} className={`${styles.button}`}>
+            <BiChevronLeft
+              style={{
+                fontSize: "2rem",
+                fontWeight: "bold",
+              }}
+            />
             <span>previous chapter</span>
           </Link>
         )}
@@ -27,9 +32,17 @@ const Footer = ({ currentChapter }) => {
           <span>beginning of chapter</span>
         </div>
         {currentChapter < 18 && (
-          <Link href={`/slokas/${nextChapter}`} className={`${styles.button} `}>
+          <Link
+            href={`/chapter/${nextChapter}`}
+            className={`${styles.button} `}
+          >
             <span>next chapter</span>
-            <ChevronRight size={14} strokeWidth="3" />
+            <BiChevronRight
+              style={{
+                fontSize: "2rem",
+                fontWeight: "bold",
+              }}
+            />
           </Link>
         )}
       </div>
