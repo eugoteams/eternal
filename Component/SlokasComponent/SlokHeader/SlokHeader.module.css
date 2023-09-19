@@ -2,7 +2,6 @@
 
 .container {
   background-color: #fffffe;
-
   padding-top: 6rem;
   /* padding-bottom: 1rem; */
   padding-left: 2rem;
@@ -15,13 +14,13 @@
   top: 0;
   left: 0;
   transform: translateY(-6rem);
+  z-index: 10;
   display: flex;
   font-size: 1.4rem;
   text-transform: capitalize;
   align-items: center;
   justify-content: space-between;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
-
   transition: all 0.4s;
 }
 
