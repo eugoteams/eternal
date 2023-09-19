@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import styles from "./DropDown.module.css";
+import { HiMiniChevronUpDown } from "react-icons/hi2";
 
 const DropDown = ({ data, defaultValue, onChange }) => {
   const [dropDown, setDropDown] = useState(false);
@@ -21,7 +22,12 @@ const DropDown = ({ data, defaultValue, onChange }) => {
           onClick={closeDropDown}
         >
           <span>{valueSelected}</span>
-          {/* <LuChevronsDownUp /> */}
+          <HiMiniChevronUpDown
+            style={{
+              fontSize: "1.4rem",
+              fontWeight: "bold",
+            }}
+          />
         </div>
         {dropDown && (
           <div className={`${styles.dropdown_item_container}`}>

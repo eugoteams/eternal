@@ -16,6 +16,7 @@ const AudioChapters = (props) => {
   const { getImage } = useImage();
   const audioRef = React.createRef();
   const [play, setControl] = useState(0);
+  const [chapter, setChapter] = useState(0);
   const [lang, setLang] = useState("en");
   const audioSrcLoader = (trackId) => {
     audioRef.current.src = `/audio/lib/${lang}/${trackId}.mp3`;
@@ -27,10 +28,11 @@ const AudioChapters = (props) => {
     switch (action.type) {
       case "play":
         audioRef.current.play();
-
+        setControl((prevState) => chapter);
         break;
       case "pause":
         audioRef.current.pause();
+        setControl((prevState) => 0);
         break;
       case "forward":
         //Forward
@@ -62,14 +64,19 @@ const AudioChapters = (props) => {
   return (
     <React.Fragment>
       <Layout>
-        <p>New Feaure will be added later</p>
-        <DropDown
-          data={langCode}
-          defaultValue={lang}
-          onChange={(value) => {
-            setLang((prevState) => value);
-          }}
-        />
+        <div className={`${style.select_area}`}>
+          <span>Select the Language</span>
+          <div>
+            <DropDown
+              data={langCode}
+              defaultValue={lang}
+              onChange={(value) => {
+                setLang((prevState) => value);
+              }}
+            />
+          </div>
+        </div>
+
         {CHAPTERS_MENU.map((chapter, index) => {
           let trackTitle = chapter["label"];
           let meaning = chapter["meaning"]["en"];
@@ -101,7 +108,7 @@ const AudioChapters = (props) => {
                   </div>
                 </div>
 
-                <div>
+                <div className={`${style.icon_control}`}>
                   <IconHolder>
                     {play === number ? (
                       <FaPause
@@ -119,6 +126,7 @@ const AudioChapters = (props) => {
                           e.preventDefault();
                           audioSrcLoader(index + 1);
                           setControl((prevState) => number);
+                          setChapter((prevState) => number);
                         }}
                       />
                     )}

@@ -13,10 +13,14 @@
   border: 1px solid rebeccapurple;
   width: 100%;
   padding: 0.5rem;
-  display: grid;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-transform: capitalize;
+  /* display: grid;
   grid-template-columns: 1fr 7rem;
   align-items: center;
-  justify-items: center;
+  justify-items: center; */
 }
 
 .dropdown_item_container {
