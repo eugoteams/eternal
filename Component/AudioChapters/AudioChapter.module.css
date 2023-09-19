@@ -1,0 +1,61 @@
+/** @format */
+
+.track {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-transform: capitalize;
+  margin: 1rem;
+}
+
+.right_cnt {
+  margin-left: 1rem;
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid gray;
+}
+
+.number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #495057;
+}
+
+.icon {
+  font-size: 1.4rem;
+  color: #4263eb;
+}
+
+.card {
+  /* border: 1px solid rebeccapurple; */
+  width: 35rem;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.image_container {
+  width: 7rem;
+  height: 7rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.track_description {
+  margin-left: 2rem;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  font-size: 1.3rem;
+}
+.track_description > span {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+}

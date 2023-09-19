@@ -33,6 +33,7 @@ const AudioComponent = forwardRef(({ controlListener }, ref) => {
   ];
 
   const convertSecToMinutes = (time) => {
+    console.log(time);
     let minutes = Math.floor(time / 60);
     let extraSeconds = Math.round(time % 60);
     extraSeconds = extraSeconds < 10 ? "0" + extraSeconds : extraSeconds;

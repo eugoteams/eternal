@@ -69,91 +69,143 @@ export const CHAPTERS_MENU = [
   {
     label: "Arjuna Visada Yoga",
     value: "Arjuna Visada Yoga",
+    meaning: { en: "Arjuna's Dilemma", hi: "अर्जुन विषाद योग" },
+
     verses: 47,
   },
   {
     label: "Sankhya Yoga",
     value: "Sankhya Yoga",
+    meaning: { en: "Transcendental Knowledge", hi: "गीता का सार" },
     verses: 72,
   },
   {
     label: "Karma Yoga",
     value: "Karma Yoga",
+    meaning: { en: "Path of Selfless Service", hi: "कर्मयोग" },
     verses: 43,
   },
   {
     label: "Jnana Karma Sanyasa Yoga",
     value: "Jnana Karma Sanyasa Yoga",
+    meaning: {
+      en: "Path of Knowledge and the Disciplines of Action",
+      hi: "दिव्य ज्ञान",
+    },
     verses: 42,
   },
   {
     label: "Karma Sanyasa Yoga",
     value: "Karma Sanyasa Yoga",
+    meaning: {
+      en: "Path of Renunciation",
+      hi: "कर्मयोग-कृष्णभावनाभावित कर्म",
+    },
     verses: 29,
   },
   {
     label: "Dhyana Yoga",
     value: "Dhyana Yoga",
+    meaning: { en: "Path of Meditation", hi: "ध्यानयोग" },
     verses: 47,
   },
   {
     label: "Gyaan Vigyana Yoga",
     value: "Gyaan Vigyana Yoga",
+    meaning: { en: "Self-Knowledge and Enlightenment", hi: "भगवद्ज्ञान" },
     verses: 30,
   },
   {
     label: "Akshara Brahma Yoga",
     value: "Akshara Brahma Yoga",
+    meaning: { en: "Path of the Eternal God", hi: "भगवत्प्राप्ति" },
     verses: 28,
   },
   {
     label: "Raja Vidya Yoga",
     value: "Raja Vidya Yoga",
+    meaning: {
+      en: "Yoga through the King of Sciences",
+      hi: "परम गुह्य ज्ञान",
+    },
     verses: 34,
   },
   {
     label: "Vibhooti Yoga",
     value: "Vibhooti Yoga",
+    meaning: {
+      en: "Yoga through Appreciating the Infinite Opulences of God",
+      hi: "श्री भगवान् का ऐश्वर्य",
+    },
     verses: 42,
   },
   {
     label: "Vishwaroopa Darshana Yoga",
     value: "Vishwaroopa Darshana Yoga",
+    meaning: {
+      en: "Yoga through Beholding the Cosmic Form of God",
+      hi: "विराट रूप",
+    },
     verses: 55,
   },
   {
     label: "Bhakti Yoga",
     value: "Bhakti Yoga",
+    meaning: { en: "The Yoga of Devotion", hi: "भक्तियोग" },
     verses: 20,
   },
   {
     label: "Ksetra Ksetrajna Vibhaaga Yoga",
     value: "Ksetra Ksetrajna Vibhaaga Yoga",
+    meaning: {
+      en: "Yoga through Distinguishing the Field and the Knower of the Field",
+      hi: "प्रकृति, पुरुष तथा चेतना",
+    },
     verses: 35,
   },
   {
     label: "Gunatraya Vibhaga Yoga",
     value: "Gunatraya Vibhaga Yoga",
+    meaning: {
+      en: "Yoga through Understanding the Three Modes of Material Nature",
+      hi: "प्रकृति के तीन गुण",
+    },
     verses: 27,
   },
   {
     label: "Purushottama Yoga",
     value: "Purushottama Yoga",
+    meaning: {
+      en: "The Yoga of the Supreme Divine Personality",
+      hi: "पुरुषोत्तम योग",
+    },
     verses: 20,
   },
   {
     label: "Daivasura Sampad Vibhaga Yoga",
     value: "Daivasura Sampad Vibhaga Yoga",
+    meaning: {
+      en: "Yoga through Discerning the Divine and Demoniac Natures",
+      hi: "दैवी तथा आसुरी स्वभाव",
+    },
     verses: 24,
   },
   {
     label: "Sraddhatraya Vibhaga Yoga",
     value: "Sraddhatraya Vibhaga Yoga",
+    meaning: {
+      en: "Yoga through Discerning the Three Divisions of Faith",
+      hi: "श्रद्धा के विभाग",
+    },
     verses: 28,
   },
   {
     label: "Moksha Sanyaas Yoga",
     value: "Moksha Sanyaas Yoga",
+    meaning: {
+      en: "Yoga through the Perfection of Renunciation and Surrender",
+      hi: "उपसंहार-संन्यास की सिद्धि",
+    },
     verses: 78,
   },
 ];
