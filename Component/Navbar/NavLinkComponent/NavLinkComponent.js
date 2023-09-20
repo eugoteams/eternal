@@ -11,6 +11,10 @@ const NavLinkComponent = ({ breakPoint, onLinkClick }) => {
       path: "/",
     },
     {
+      label: "listen",
+      path: "/audio",
+    },
+    {
       label: "about gita",
       path: "/about_gita",
     },

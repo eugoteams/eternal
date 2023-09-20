@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./AudioChapter.module.css";
 import Layout from "../Layout/Layout";
 import AudioComponent from "../UI/AudioComponent/AudioComponent";
@@ -15,12 +15,29 @@ import langCode from "@/model/LangCode";
 const AudioChapters = (props) => {
   const { getImage } = useImage();
   const audioRef = React.createRef();
-  const [play, setControl] = useState(0);
-  const [chapter, setChapter] = useState(0);
+  // const [chapter, setChapter] = useState(0);
   const [lang, setLang] = useState("en");
-  const audioSrcLoader = (trackId) => {
-    audioRef.current.src = `/audio/lib/${lang}/${trackId}.mp3`;
-    audioRef.current.load();
+  const [trackId, setTrack] = useState(0);
+  const [play, setPlay] = useState(false);
+  const [player, setPlayer] = useState(false);
+  const [durationPlayed, setDutationPlaye] = useState(0);
+
+  const audioSrcLoader = (track, d = 1) => {
+    console.log(
+      "audioSrc",
+      `/audio/lib/${lang}/${track}.mp3`,
+      durationPlayed,
+      d
+    );
+    audioRef.current.src = `/audio/lib/${lang}/${track}.mp3`;
+    if (durationPlayed !== 0 && d === 1) {
+      audioRef.current.currentTime = durationPlayed;
+      audioRef.current.play();
+    } else {
+      audioRef.current.load();
+    }
+
+    console.log("playerOpen", player);
   };
 
   //AudioComponenet control Listener
@@ -28,11 +45,13 @@ const AudioChapters = (props) => {
     switch (action.type) {
       case "play":
         audioRef.current.play();
-        setControl((prevState) => chapter);
+        setPlay((prevState) => !play);
+        console.log("playing");
         break;
       case "pause":
         audioRef.current.pause();
-        setControl((prevState) => 0);
+        setPlay((prevState) => !play);
+        // console.log("pause");
         break;
       case "forward":
         //Forward
@@ -41,10 +60,12 @@ const AudioChapters = (props) => {
         //backward
         break;
       case "seek":
+        setDutationPlaye((prevState) => action.payload);
         audioRef.current.currentTime = action.payload;
         break;
       case "close":
         audioRef.current.pause();
+        setPlay((prevState) => !play);
         break;
       case "playBackRate":
         audioRef.current.playbackRate = action.payload;
@@ -53,13 +74,25 @@ const AudioChapters = (props) => {
         //no track Play ended
         console.log("ended");
         break;
+      case "durationPlayed":
+        //duration played
+        //console.log("durationPlayed", action.payload);
+        setDutationPlaye((prevState) => action.payload);
+        break;
+      case "loadedMetaData":
+        setPlayer((prevState) => true);
+        break;
       default:
         //no-opt
         break;
     }
   };
 
-  console.log(play);
+  useEffect(() => {
+    // setPlayer((prevState) => false);
+    // setDutationPlaye((prevState) => 0);
+  }, [trackId]);
+  // console.log(trackId);
 
   return (
     <React.Fragment>
@@ -80,7 +113,8 @@ const AudioChapters = (props) => {
         {CHAPTERS_MENU.map((chapter, index) => {
           let trackTitle = chapter["label"];
           let meaning = chapter["meaning"]["en"];
-          let number = (index + 1) / 10 < 1 ? `0` + (index + 1) : index + 1;
+          let chapterNumber = index + 1;
+          let number = chapterNumber / 10 < 1 ? `0${chapterNumber}` : index + 1;
           return (
             <div className={`${style.track}`} key={`track_${index + 1}`}>
               <span className={`${style.number}`}>{number}.</span>
@@ -100,7 +134,7 @@ const AudioChapters = (props) => {
                     className={`${style.track_description}`}
                     onClick={(e) => {
                       e.preventDefault();
-                      audioSrcLoader(index + 1);
+                      // audioSrcLoader(chapterNumber);
                     }}
                   >
                     <h3>{trackTitle}</h3>
@@ -110,13 +144,14 @@ const AudioChapters = (props) => {
 
                 <div className={`${style.icon_control}`}>
                   <IconHolder>
-                    {play === number ? (
+                    {trackId === chapterNumber && play ? (
+                      // <div className={`${style.loader}`}></div>
                       <FaPause
-                        className={`${style.icon}`}
+                        className={`${style.icon_pause}`}
                         onClick={(e) => {
                           e.preventDefault();
                           audioRef.current.pause();
-                          setControl((prevState) => 0);
+                          setPlay((prevState) => !play);
                         }}
                       />
                     ) : (
@@ -124,9 +159,18 @@ const AudioChapters = (props) => {
                         className={`${style.icon}`}
                         onClick={(e) => {
                           e.preventDefault();
-                          audioSrcLoader(index + 1);
-                          setControl((prevState) => number);
-                          setChapter((prevState) => number);
+
+                          console.log("---->", trackId, chapterNumber);
+                          if (trackId !== chapterNumber) {
+                            console.log("Chapter & trackID is not equal ");
+                            setTrack((prevState) => chapterNumber);
+                            audioSrcLoader(chapterNumber, 0);
+                            setPlay((prevState) => true);
+                            setDutationPlaye((prevState) => 0);
+                          } else {
+                            setPlay((prevState) => !prevState);
+                            audioSrcLoader(chapterNumber);
+                          }
                         }}
                       />
                     )}

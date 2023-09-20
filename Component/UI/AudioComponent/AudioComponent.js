@@ -33,7 +33,6 @@ const AudioComponent = forwardRef(({ controlListener }, ref) => {
   ];
 
   const convertSecToMinutes = (time) => {
-    console.log(time);
     let minutes = Math.floor(time / 60);
     let extraSeconds = Math.round(time % 60);
     extraSeconds = extraSeconds < 10 ? "0" + extraSeconds : extraSeconds;
@@ -47,7 +46,6 @@ const AudioComponent = forwardRef(({ controlListener }, ref) => {
     });
   };
 
-  // console.log(playerState["play"]);
   return (
     <React.Fragment>
       <div>
@@ -64,6 +62,10 @@ const AudioComponent = forwardRef(({ controlListener }, ref) => {
           }}
           onPause={() => {
             stateHandler("play", false);
+            controlListener({
+              type: "durationPlayed",
+              payload: ref.current.currentTime,
+            });
           }}
           onTimeUpdate={() => {
             stateHandler("trackDurationPlayed", ref.current.currentTime);
@@ -74,6 +76,7 @@ const AudioComponent = forwardRef(({ controlListener }, ref) => {
           }}
           onLoadedMetadata={(value) => {
             stateHandler("trackDuration", ref.current.duration);
+            controlListener({ type: "loadedMetaData" });
           }}
         ></audio>
         {playerState["playerClosed"] && (
