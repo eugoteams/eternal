@@ -39,8 +39,8 @@ const HomePage = ({ chapters }) => {
               </div>
 
               <div className={`${styles.button}`}>
-                <Link href="/about_gita" className={`${styles.link}`}>
-                  <span>explore gita</span>
+                <Link href="/audio" className={`${styles.link}`}>
+                  <span>listen to chapters</span>
                 </Link>
               </div>
             </div>

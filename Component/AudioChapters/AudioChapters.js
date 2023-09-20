@@ -13,10 +13,6 @@ import DropDown from "../UI/DropDown/DropDown";
 import langCode from "@/model/LangCode";
 
 const AudioChapters = (props) => {
-  const title = "bhagavad";
-  const subtext = "gita";
-
-  const [text, setText] = useState(9);
   const { getImage } = useImage();
   const audioRef = React.createRef();
   const trackRefArray = [];
@@ -111,37 +107,6 @@ const AudioChapters = (props) => {
   return (
     <React.Fragment>
       <Layout>
-        <div className={`${style.title}`}>
-          <div className={`${style.test}`}>
-            <Image
-              src={getImage(text)}
-              alt="gita iamge"
-              width="100"
-              height="100"
-            />
-          </div>
-          <div className={`${style.text_cnt}`}>
-            {[...Array(title.length)].map((_, index) => {
-              return (
-                <span
-                  key={`title_${index}`}
-                  onMouseEnter={(e) => {
-                    e.preventDefault();
-                    setText((prevState) => index);
-                    console.log("onMouseEnete");
-                  }}
-                >
-                  {title[index]}
-                </span>
-              );
-            })}
-          </div>
-          <div className={`${style.text_cnt}`}>
-            {[...Array(subtext.length)].map((_, index) => {
-              return <span key={`subtext_${index}`}>{subtext[index]}</span>;
-            })}
-          </div>
-        </div>
         <div className={`${style.select_area}`}>
           <span>Select the Language</span>
           <div>

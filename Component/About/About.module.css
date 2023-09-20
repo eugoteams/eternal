@@ -27,6 +27,10 @@
   text-align: justify;
 }
 
+.container > ul {
+  padding: 3rem;
+}
+
 .container > ul > li {
   font-size: 1.5rem;
   font-weight: 400;
