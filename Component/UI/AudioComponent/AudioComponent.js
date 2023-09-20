@@ -59,6 +59,9 @@ const AudioComponent = forwardRef(({ controlListener }, ref) => {
             if (!playerState["playerClosed"]) {
               stateHandler("playerClosed", !playerState["playerClosed"]);
             }
+            controlListener({
+              type: "play",
+            });
           }}
           onPause={() => {
             stateHandler("play", false);
