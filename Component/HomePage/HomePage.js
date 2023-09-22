@@ -24,7 +24,6 @@ const HomePage = ({ chapters }) => {
               width={120}
               className={`${styles.hero_img}`}
             />
-
             <h1> bhagavad gita </h1>
             <p>
               Immerse yourself in the sacred teaching of Lord Krishna with
@@ -50,6 +49,7 @@ const HomePage = ({ chapters }) => {
             </div>
           </div>
         </div>
+
         <div className={`${styles.grid_autofill_container}`}>
           {chapters.map((chapter, index) => {
             let classStyle = "sm";
