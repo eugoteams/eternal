@@ -218,6 +218,12 @@
     width: 100vw;
   }
 
+  .hero_img {
+    margin-top: 2rem;
+    width: 22rem;
+    height: 22rem;
+  }
+
   .hero_text {
     width: 100%;
   }
@@ -233,6 +239,12 @@
 @media (max-width: 27em) {
   .hero_text > h1 {
     font-size: 4rem;
+  }
+
+  .hero_img {
+    margin-top: 1rem;
+    width: 20rem;
+    height: 20rem;
   }
 
   .hero_text > p {
