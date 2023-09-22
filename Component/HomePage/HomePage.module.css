@@ -231,9 +231,6 @@
 }
 /*Mobile Large*/
 @media (max-width: 27em) {
-  .hero_text {
-    width: 100%;
-  }
   .hero_text > h1 {
     font-size: 4rem;
   }
@@ -244,7 +241,7 @@
 
   .grid_autofill_container {
     padding: 1rem;
-    width: 100vw;
+    width: 100%;
     grid-template-columns: repeat(2, 1fr);
   }
 
