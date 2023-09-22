@@ -20,7 +20,7 @@ const OverlayComponent = (props) => {
             <h3>{title}</h3>
             <span
               onClick={onOverlayClickListener}
-              style={{ marginTop: "0.5rem" }}
+              style={{ marginTop: "0.5rem", marginRight: "1rem" }}
             >
               <AiOutlineClose />
             </span>
