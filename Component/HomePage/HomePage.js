@@ -32,7 +32,14 @@ const HomePage = ({ chapters }) => {
             </p>
             <div className={`${styles.click_to_action_container}`}>
               <div className={`${styles.button}`}>
-                <Link href="/chapter/1" className={`${styles.link}`}>
+                <Link
+                  href="/chapter/1"
+                  className={`${styles.link}`}
+                  onClick={() => {
+                    //Will set the SlokHeaderComponent.
+                    setNavigation("startingVerse", 0);
+                  }}
+                >
                   <span>read chapter 1</span>
                 </Link>
               </div>

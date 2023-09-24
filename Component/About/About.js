@@ -5,10 +5,11 @@ import styles from "./About.module.css";
 import Layout from "../Layout/Layout";
 import Link from "next/link";
 import useImage from "@/hooks/use-Image";
+import useDispatch from "@/hooks/use-Dispatch";
 
 const About = (props) => {
   const { getImage } = useImage();
-
+  const { setNavigation } = useDispatch();
   return (
     <React.Fragment>
       <Layout>
@@ -250,7 +251,13 @@ const About = (props) => {
             Mahabharata.
           </p>
         </div>
-        <div className={`${styles.container_center}`}>
+        <div
+          className={`${styles.container_center}`}
+          onClick={() => {
+            //Will set the SlokHeaderComponent.
+            setNavigation("startingVerse", 0);
+          }}
+        >
           <Link href={`/chapter/1`} className={`${styles.button} `}>
             <span>start reading the gita</span>
           </Link>
