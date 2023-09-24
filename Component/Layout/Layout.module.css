@@ -16,6 +16,6 @@
 /*Layout breakdown before Mobile Larger View -425px*/
 @media (max-width: 47em) {
   .layout {
-    width: 100vw;
+    width: 98%;
   }
 }
