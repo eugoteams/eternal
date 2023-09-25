@@ -105,8 +105,8 @@ const HomePage = ({ chapters }) => {
                     className={`${styles.image}`}
                     src={getImage(index)}
                     alt="gita iamge"
-                    width="100"
-                    height="100"
+                    width="800"
+                    height="800"
                   />
                 </div>
                 <div className={`${styles.descriptionContainer}`}>
