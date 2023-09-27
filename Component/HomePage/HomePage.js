@@ -81,7 +81,6 @@ const HomePage = ({ chapters }) => {
               default:
                 classStyle = "sm";
                 count = 2;
-
                 break;
             }
 

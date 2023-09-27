@@ -13,6 +13,29 @@
   margin: 1rem;
   position: relative;
   scroll-margin: 3rem;
+  position: relative;
+}
+
+/* Loaders**/
+.Loader {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* display: none; */
+  z-index: 12;
+}
+
+.loader_overlay {
+  width: 100%;
+  height: 100%;
+  background-color: #f8f9fa;
+  opacity: 0.1;
+}
+
+.track:hover .Loader {
+  /* display: block; */
 }
 
 .select_area {

@@ -11,7 +11,7 @@ const NavLinkComponent = ({ breakPoint, onLinkClick }) => {
       path: "/",
     },
     {
-      label: "listen",
+      label: "audio chapters",
       path: "/audio",
     },
     {

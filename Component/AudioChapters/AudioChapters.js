@@ -11,6 +11,7 @@ import { FaPlay, FaPause } from "react-icons/fa6";
 import IconHolder from "../UI/IconHolder/IconHolder";
 import DropDown from "../UI/DropDown/DropDown";
 import langCode from "@/model/LangCode";
+import Loader from "../UI/Loader/Loader";
 
 const AudioChapters = (props) => {
   const { getImage } = useImage();
@@ -20,6 +21,7 @@ const AudioChapters = (props) => {
   const [trackId, setTrack] = useState(0);
   const [play, setPlay] = useState(false);
   const [durationPlayed, setDutationPlaye] = useState(0);
+  const [loader, setLoader] = useState(false);
 
   const audioSrcLoader = (track, d = 1) => {
     audioRef.current.src = `/audio/lib/${lang}/${track}.mp3`;
@@ -45,6 +47,7 @@ const AudioChapters = (props) => {
       case "play":
         audioRef.current.play();
         setPlay((prevState) => true);
+        setLoader((prevState) => false);
         break;
       case "pause":
         audioRef.current.pause();
@@ -58,6 +61,7 @@ const AudioChapters = (props) => {
         if (trackId < 18) {
           setTrack((prevState) => nextTrack);
         }
+        setLoader((prevState) => true);
         break;
       case "backward":
         //backward
@@ -68,6 +72,7 @@ const AudioChapters = (props) => {
         if (prevTrack > 0) {
           setTrack((prevState) => prevTrack);
         }
+        setLoader((prevState) => true);
         break;
       case "seek":
         setDutationPlaye((prevState) => action.payload);
@@ -108,7 +113,7 @@ const AudioChapters = (props) => {
     <React.Fragment>
       <Layout>
         <div className={`${style.select_area}`}>
-          <span>Select the Language</span>
+          <span>Select the audio Language</span>
           <div>
             <DropDown
               data={langCode}
@@ -175,6 +180,7 @@ const AudioChapters = (props) => {
                           className={`${style.icon}`}
                           onClick={(e) => {
                             e.preventDefault();
+                            setLoader((prevState) => !prevState);
                             if (trackId !== chapterNumber) {
                               setTrack((prevState) => chapterNumber);
                               audioSrcLoader(chapterNumber, 0);
@@ -190,6 +196,28 @@ const AudioChapters = (props) => {
                     </IconHolder>
                   </div>
                 </div>
+                {/** Loader Container */}
+                {loader && trackId === chapterNumber ? (
+                  <div className={`${style.Loader}`}>
+                    <div className={`${style.loader_overlay}`}></div>
+                    <div
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                      }}
+                    >
+                      <Loader />
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
             );
           })}

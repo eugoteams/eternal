@@ -43,8 +43,22 @@ const SlokCard = forwardRef(
       return slokSplit?.map((slok, index) => {
         return (
           <div key={`${slok}_${index}`} style={{ margin: "0.5rem auto" }}>
-            <span>{slok}</span>
-            <span>{transliterationSplit[index]}</span>
+            <span
+              style={{
+                color: "#212529",
+                fontWeight: 500,
+              }}
+            >
+              {slok}
+            </span>
+            <span
+              style={{
+                color: "#4263eb",
+                fontWeight: 500,
+              }}
+            >
+              {transliterationSplit[index]}
+            </span>
           </div>
         );
       });
