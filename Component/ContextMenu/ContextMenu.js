@@ -65,7 +65,7 @@ const ContextMenu = (props) => {
           setNavigation("startingVerse", verseNum);
         }}
       >
-        {verseNum}
+        {`${verseNum}.v`}
       </p>
     );
   });
