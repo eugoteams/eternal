@@ -57,7 +57,7 @@ const HomePage = ({ chapters }) => {
           </div>
         </div>
 
-        <div className={`${styles.grid_autofill_container}`}>
+        <section className={`${styles.grid_autofill_container}`}>
           {chapters.map((chapter, index) => {
             let classStyle = "sm";
             let chapterNumber =
@@ -123,7 +123,7 @@ const HomePage = ({ chapters }) => {
               </Link>
             );
           })}
-        </div>
+        </section>
       </Layout>
     </React.Fragment>
   );

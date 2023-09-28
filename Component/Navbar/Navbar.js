@@ -59,7 +59,7 @@ const Navbar = (props) => {
 
   return (
     <React.Fragment>
-      <main
+      <header
         className={`${styles.container} ${
           scrollDirection === "down" ? `${styles.down}` : "show"
         }`}
@@ -94,7 +94,7 @@ const Navbar = (props) => {
             </IconHolder>
           </div>
         </div>
-      </main>
+      </header>
     </React.Fragment>
   );
 };

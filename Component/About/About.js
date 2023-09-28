@@ -13,13 +13,13 @@ const About = (props) => {
   return (
     <React.Fragment>
       <Layout>
-        <div className={`${styles.container_center}`}>
+        <section className={`${styles.container_center}`}>
           <img
             src={getImage(19)["src"]}
             alt="author of bhagavad gita vyasa muni"
           />
-        </div>
-        <div className={`${styles.container}`}>
+        </section>
+        <section className={`${styles.container}`}>
           <h1>What is Bhagavad Gita ?</h1>
           <p>
             Bhagavad Gita, also known as the Gita - "The Song of The Lord" is a
@@ -47,8 +47,8 @@ const About = (props) => {
             and the material body as well as the revelation of the Ultimate
             Purpose of Life.
           </p>
-        </div>
-        <div className={`${styles.container}`}>
+        </section>
+        <section className={`${styles.container}`}>
           <h1>What are some major themes in the Bhagavad Gita?</h1>
           <p>
             The Bhagavad Gita is revered for its profound teachings on ethics,
@@ -233,8 +233,8 @@ const About = (props) => {
             influence on Hinduism, as well as on many other spiritual and
             philosophical traditions around the world.
           </p>
-        </div>
-        <div className={`${styles.container}`}>
+        </section>
+        <section className={`${styles.container}`}>
           <h1>Who Wrote Bhagavad Gita ?</h1>
           <div className={`${styles.container_center}`}>
             <img
@@ -250,8 +250,8 @@ const About = (props) => {
             traditions. He is traditionally regarded as the author of the epic
             Mahabharata.
           </p>
-        </div>
-        <div
+        </section>
+        <section
           className={`${styles.container_center}`}
           onClick={() => {
             //Will set the SlokHeaderComponent.
@@ -261,7 +261,7 @@ const About = (props) => {
           <Link href={`/chapter/1`} className={`${styles.button} `}>
             <span>start reading the gita</span>
           </Link>
-        </div>
+        </section>
       </Layout>
     </React.Fragment>
   );

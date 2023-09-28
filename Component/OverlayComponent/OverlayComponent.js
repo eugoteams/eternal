@@ -9,7 +9,7 @@ const OverlayComponent = (props) => {
 
   return (
     <React.Fragment>
-      <div className={`${styles.container}`}>
+      <aside className={`${styles.container}`}>
         <div className={`${styles.overlay}`} onClick={onOverlayClickListener} />
         <div
           className={`${styles.overlay_content_box} ${
@@ -27,7 +27,7 @@ const OverlayComponent = (props) => {
           </div>
           <div style={{ marginTop: "0.5rem" }}>{props.children}</div>
         </div>
-      </div>
+      </aside>
     </React.Fragment>
   );
 };

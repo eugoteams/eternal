@@ -5,7 +5,7 @@ import styles from "./Layout.module.css";
 const Layout = (props) => {
   return (
     <React.Fragment>
-      <div className={`${styles.layout}`}>{props.children}</div>
+      <main className={`${styles.layout}`}>{props.children}</main>
     </React.Fragment>
   );
 };
